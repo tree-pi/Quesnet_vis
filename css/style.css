@@ -1,0 +1,325 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+
+body {
+   /*
+    padding-bottom: 10px;
+    padding-top: 10px;*/
+    width: 2000px;
+    height: 1400px;
+    margin: 0px;
+   background-color: white;
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-weight: 300; 
+    font-size: 13pt;
+    overflow: hidden;   
+
+}
+
+
+@-webkit-keyframes pulse-win {
+      0% {background-color: #ff9800;}
+    100% {background-color: #f2f2f2;}
+}
+
+@-webkit-keyframes pulse-lose {
+      0% {background-color: #607d8b;}
+    100% {background-color: #f2f2f2;}
+}
+
+/* text styling */
+strong {
+  font-weight: 600;         
+}
+
+.warm {
+  color: steelblue;
+  text-align: justify;
+}
+
+.cool {
+  color: #ccccff;
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+.tutorial {
+  font-family: 'Indie Flower', cursive; /* a google font. */
+  font-size: 25px;
+  line-height: 1.2;
+  color: #e91e63;
+}
+
+.hint{
+  margin-left: 20px;
+  top:270px;
+  position: fixed;
+  font-weight: 400;
+  font-size: 19px;
+
+}
+.instruction{
+    margin-left: 20px;
+    top: 220px;
+    position:  fixed;  
+}
+.gamestart{
+  
+  left: 150px;
+  top:330px;
+  position: fixed;
+  font-size:25px;
+  font-weight: 400;
+  font-family: 'Arvo', serif;
+  color:white;
+}
+.gameres{
+  left: 150px;
+  top:330px;
+  position: fixed;
+  font-size:25px;
+  font-weight: 400;
+  font-family: 'Arvo', serif;
+}
+.gameres.won{
+  color:rgb(50,200,50);
+  opacity: 0;
+
+}
+.gameres.lost{
+  color:rgb(200, 50,50);
+  opacity: 0;
+}
+
+
+#ruleques{
+  position: fixed;
+}
+
+#rulequestext{
+  max-width: 400px;
+}
+
+#explanation{
+  max-width: 350px;
+}
+
+.choice-box { /*for quiz in the tutorial*/
+      display:block;
+      text-align:center;
+      margin:8px;
+      padding:10px 0;
+      border:1px solid #666;
+      cursor:pointer;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      max-width: 200px;
+  }
+ #choice-block {
+      display:block;
+      list-style:none;
+      margin:0;
+      padding:0;
+
+  }
+  #submitbutton {
+      background:#5a6b8c;
+  }
+  #submitbutton:hover {
+      background:#7b8da6;
+  }
+
+/* these are all the same for now, but easy to modify individually */
+#container-not-an-ad, #container-error, #container-exp, #container-consent, #container-instructions, #container-questionnaire {
+    /*background: white;*/
+    margin: 10px;
+    font-size: 15px;
+}
+
+.container
+{  height: 800;
+   width:450px; /* or whatever width you want. */
+   max-width:450px; /* or whatever width you want. */
+   display: inline-block;
+   overflow: hidden;
+}
+
+img{
+  width:inherit;
+ 
+}
+/*.sepia { filter: sepia(100%); }*/
+
+/* ad.html  - the ad that people view first */
+#adlogo {
+    width: 140px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    margin-right: 1em;
+}
+
+/* consent.html - the consent form */
+#consent {
+  margin: 0 auto;
+  margin-top: 0;
+  width: 800px;
+  font-size: 100%;
+}
+
+.legal {
+  text-align: justify;
+  font-size: 11pt;
+  line-height: 1.1em;
+}
+
+#trial {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
+#query {
+  color: darkgray;
+}
+
+.question {
+  margin-left: 30px;
+}
+
+
+/* errors */
+#error img {
+  padding-right: 10px;
+  padding-top: 15px;
+}
+
+/* graphics */
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 0px;
+}
+
+/*spinner*/
+#spinnersvg{
+   top: 375px;
+   left:50px;
+   position: fixed;
+   width:350px;
+   height: 200px;          
+}
+.spinner {
+  transition: 2s ease-out;
+  -webkit-transition: -webkit-transform 2s ease-out;
+}
+
+/*card deck*/
+#deckcontainer{
+  position: fixed; top: 220px; left: 464px; /*fixed so works for stage and tutorial htmls*/
+  width: 300px;height: 100%;
+  overflow: visible;
+}
+
+/*card*/
+
+.cardframe {
+  transition: x .15s ;} 
+.card {
+  /*animation*/
+  /*transition: x .1s cubic-bezier(0.68,-.55,.265,1.55);}*/
+  width: 80px;
+  height: 100px;
+  perspective: 600px;
+
+  transition: transform 2s;
+  transform-style: preserve-3d;}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+
+
+.card_face {
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+
+  /*rounded corner rectangle*/
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+
+  backface-visibility: hidden;
+}
+
+.card_face-front {
+  background:white;
+  /*text*/
+  letter-spacing:-8px;
+  text-align: center;
+  font-size: 70px;
+  padding-right: 10px;
+}
+
+
+
+.card_face-back {
+  background: grey;
+  transform: rotateY(180deg);
+}
+
+/***power bar***/
+#progress{
+  width:200px; left: 40px;top: 120px; position:relative;;
+}
+.progress-bars {
+   width: 350px;
+   min-height: 100px;
+   margin-bottom: 50px;
+   padding: 25px 0 0 25px;
+   float: left;
+}
+
+.bar {
+   display: block;
+   overflow: hidden;
+   height: 18px;
+   width: 0px;
+   border: 1px solid rgba(0, 0, 0, 0.5);
+   border-radius: 10px;
+   margin-bottom: 5px;
+   margin-left: 10px;
+   box-shadow: 1px 1px 1px #888888;
+}
+
+.pattern {
+   height: 100%;
+   width: 100%;
+   background-image: url(../images/pattern.png);
+   background-color: #FB7457;
+}
+
+.percentage {
+   margin-left: 0px;
+   text-align: center;
+   font-family: "Verdana", sans-serif;
+   font-size: 0.8em;
+   line-height: 18px;
+}
+
