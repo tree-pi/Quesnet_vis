@@ -1,0 +1,50 @@
+What is curiosity?
+	_specification_ What is the time scale of curiosity?
+		_answer_ lifelong (personality trait). ""[]
+			_follow-up_ Is curiosity a stable trait?
+				_answer_ Probably not.[Kashdan et al. 2004]
+
+		_answer_ seconds (state).""[]
+		_follow-up_ What is the operationalized definition?
+			_answer_ Melbourne Curiosity Inventory (MCI). "20-item trait and state curiosity subscales."[Naylor 1981]
+			_answer_ State-Trait Personality Inventory (STPI). "10-item trait and state curiosity subscales; includes trait and state scales for other characteristics (i.e., anxiety, anger, & depression)"[Spielberger 1979]
+	_answer_ a motivator of exploratory behavior. [Grossnickle,2016]
+		_definition_ What is "exploratory behavior"?
+			_follow-up_ What is the operationalized definition?
+				_answer_ Choosing the door without knowing what is inside. A task adapted from Harter and Zigler (1974). [Gilmore and Cuskelly, 2011]
+		_follow-up_ What constitutes the motivation for information?
+			_specification_ What is the internal computation for motivation?
+				_answer_ Positive prediction error. ""[Kaplan et al, 2007]
+				_answer_ Learning progress. ""[]
+				_answer_ Surprise. ""[]
+			_answer_ Interest-type curiosity. "The desire to gain new information for the purpose of enjoyment or interest."[Litman 2005]
+			_answer_ Deprivation-type curiosity. "The desire to gain new information to reduce the unknown or feelings of ignorance"[Litman 2005]
+
+	_answer_ a need for information. [Grossnickle,2016]
+		_follow-up_ What kind of new information is seeken? <categorization>
+			_specification_ What is the domain of information?
+				_answer_ Physical curiosity. "The exploration and manipulation of oneself and surroundings" [Dewey 1910]
+				_answer_ Perceptual curiosity. "Exploration through sensory stimulation (e.g., visual or auditory inspection) in order to acquire new information" [Berlyne 1954; Litman and Spielberger 2003]
+				_answer_ Social curiosity. "The use of language to engage explorations through questions and appeals to other individuals for information" [Dewey 1910]; "a desire to know about other people"[Renner 2006]
+				_answer_ Epistemic/Intellectual curiosity."A need or desire for knowledge, information, or the exploration of academic environments"[Kang et al. 2009; Litman 2010]
+				_follow-up_ What is the developmental order of different types of curiosity?
+					_answer_  physical, social, and intellectual curiosity develop sequentially in children from the former to the latter.[Dewey 1910 (from Grossnickle, 2016)]
+			_specification_ What is the structure of information?
+				_specification_ What is the number of topics being seeken for?
+					_answer_ Breadth knowledge. "Curiosity about many different topics, ideas, or experiences in a constant search for variation"[Loewenstein 1994]
+					_answer_ Depth knowledge. "Curiosity for ideas and experiences directed in a more sustained manner toward a single topic or area"[Levitt et al. 2009; Loewenstein 1994]
+				_specification_ What is the number of connection between information?
+					_answer_ Closely connected knowledge (hunter). []
+					_answer_ Loosely connectedd knowledge (busy bees). []
+		_follow-up_ What is the purpose of curiosity?
+			_specification_ Is it to increase or decrease arousal?
+				_answer_ Diverse curiosity. "The motive to increase arousal and reduce boredom by seeking uncertainty and new experiences" [Arnone and Grabowsky 1992; Kashdan et al. 2009]
+				_answer_ Specific curiosity. "The motive to reduce uncertainty through directed exploration of stimuli"[Arnone and Grabowsky 1992; Spielberger and Starr 1994]
+			_specification_ Is it for gathering interesting information or to reduce unknown?
+				_answer_ Interest-type curiosity. "The desire to gain new information for the purpose of enjoyment or interest."[Litman 2005]
+					_follow-up_ Why is some information interesting? 
+					_follow-up_ What is the operationalized definition?
+						_answer_ Epistemic curiosity scale. [Litman 2008]
+				_answer_ Deprivation-type curiosity. "The desire to gain new information to reduce the unknown or feelings of ignorance"[Litman 2005]
+					_follow-up_ What is the operationalized definition?
+						_answer_ Curiosity as a Feeling of Deprivation Scale (CFD scale). [Litman and Jimerson 2004]

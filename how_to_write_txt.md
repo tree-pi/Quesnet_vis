@@ -1,0 +1,1 @@
+a short phrase, "label" appears in the visusalization. The question label should end with "?" while the answer label with ".". The followed detailed explaination won't appear as label.
