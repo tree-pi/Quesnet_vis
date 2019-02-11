@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "What is curiosity?", "label": "What is curiosity?", "shape": "dot", "title": "What is curiosity?"}, {"id": "What is the time scale of curiosity?", "label": "What is the time scale of curiosity?", "shape": "dot", "title": "What is the time scale of curiosity?"}, {"id": "a motivator of exploratory behavior. [Grossnickle,2016]", "label": "a motivator of exploratory behavior. [Grossnickle,2016]", "shape": "dot", "title": "a motivator of exploratory behavior. [Grossnickle,2016]"}, {"id": "a need for information.", "label": "a need for information.", "shape": "dot", "title": "a need for information."}, {"id": "lifelong (personality trait).", "label": "lifelong (personality trait).", "shape": "dot", "title": "lifelong (personality trait)."}, {"id": "seconds (state).", "label": "seconds (state).", "shape": "dot", "title": "seconds (state)."}, {"id": "What is the operationalized definition?", "label": "What is the operationalized definition?", "shape": "dot", "title": "What is the operationalized definition?"}, {"id": "Is curiosity a stable trait?", "label": "Is curiosity a stable trait?", "shape": "dot", "title": "Is curiosity a stable trait?"}, {"id": "Probably not.[Kashdan et al. 2004]", "label": "Probably not.[Kashdan et al. 2004]", "shape": "dot", "title": "Probably not.[Kashdan et al. 2004]"}, {"id": "Melbourne Curiosity Inventory (MCI).", "label": "Melbourne Curiosity Inventory (MCI).", "shape": "dot", "title": "Melbourne Curiosity Inventory (MCI)."}, {"id": "State-Trait Personality Inventory (STPI).", "label": "State-Trait Personality Inventory (STPI).", "shape": "dot", "title": "State-Trait Personality Inventory (STPI)."}, {"id": "What is exploratory behavior?", "label": "What is exploratory behavior?", "shape": "dot", "title": "What is exploratory behavior?"}, {"id": "Choosing the door without knowing what is inside.", "label": "Choosing the door without knowing what is inside.", "shape": "dot", "title": "Choosing the door without knowing what is inside."}, {"id": "Interest-type curiosity.", "label": "Interest-type curiosity.", "shape": "dot", "title": "Interest-type curiosity."}, {"id": " Epistemic curiosity scale. ", "label": " Epistemic curiosity scale. ", "shape": "dot", "title": " Epistemic curiosity scale. "}, {"id": "Deprivation-type curiosity.", "label": "Deprivation-type curiosity.", "shape": "dot", "title": "Deprivation-type curiosity."}, {"id": "", "label": "", "shape": "dot", "title": ""}, {"id": "What constitutes the motivation for information?", "label": "What constitutes the motivation for information?", "shape": "dot", "title": "What constitutes the motivation for information?"}, {"id": "What is the internal computation for motivation?", "label": "What is the internal computation for motivation?", "shape": "dot", "title": "What is the internal computation for motivation?"}, {"id": "Positive prediction error. ", "label": "Positive prediction error. ", "shape": "dot", "title": "Positive prediction error. "}, {"id": "Learning progress.", "label": "Learning progress.", "shape": "dot", "title": "Learning progress."}, {"id": "Surprise.", "label": "Surprise.", "shape": "dot", "title": "Surprise."}, {"id": "Is it for gathering interesting information or to reduce unknown?", "label": "Is it for gathering interesting information or to reduce unknown?", "shape": "dot", "title": "Is it for gathering interesting information or to reduce unknown?"}, {"id": "Why is some information interesting? ", "label": "Why is some information interesting? ", "shape": "dot", "title": "Why is some information interesting? "}, {"id": "follow-up_ What kind of new information is seeken? \u003ccategorization\u003e", "label": "follow-up_ What kind of new information is seeken? \u003ccategorization\u003e", "shape": "dot", "title": "follow-up_ What kind of new information is seeken? \u003ccategorization\u003e"}, {"id": "Loosely connectedd knowledge (busy bees).", "label": "Loosely connectedd knowledge (busy bees).", "shape": "dot", "title": "Loosely connectedd knowledge (busy bees)."}, {"id": "What is the purpose of curiosity?", "label": "What is the purpose of curiosity?", "shape": "dot", "title": "What is the purpose of curiosity?"}, {"id": "What kind of new information is seeken? \u003ccategorization\u003e", "label": "What kind of new information is seeken? \u003ccategorization\u003e", "shape": "dot", "title": "What kind of new information is seeken? \u003ccategorization\u003e"}, {"id": "What is the domain of information?", "label": "What is the domain of information?", "shape": "dot", "title": "What is the domain of information?"}, {"id": "What is the structure of information?", "label": "What is the structure of information?", "shape": "dot", "title": "What is the structure of information?"}, {"id": "Physical curiosity.", "label": "Physical curiosity.", "shape": "dot", "title": "Physical curiosity."}, {"id": "Perceptual curiosity.", "label": "Perceptual curiosity.", "shape": "dot", "title": "Perceptual curiosity."}, {"id": "Social curiosity.", "label": "Social curiosity.", "shape": "dot", "title": "Social curiosity."}, {"id": "Epistemic/Intellectual curiosity.", "label": "Epistemic/Intellectual curiosity.", "shape": "dot", "title": "Epistemic/Intellectual curiosity."}, {"id": "What is the developmental order of different types of curiosity?", "label": "What is the developmental order of different types of curiosity?", "shape": "dot", "title": "What is the developmental order of different types of curiosity?"}, {"id": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter.", "label": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter.", "shape": "dot", "title": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter."}, {"id": "What is the number of topics being seeken for?", "label": "What is the number of topics being seeken for?", "shape": "dot", "title": "What is the number of topics being seeken for?"}, {"id": "What is the number of connection between information?", "label": "What is the number of connection between information?", "shape": "dot", "title": "What is the number of connection between information?"}, {"id": "Breadth knowledge.", "label": "Breadth knowledge.", "shape": "dot", "title": "Breadth knowledge."}, {"id": "Depth knowledge.", "label": "Depth knowledge.", "shape": "dot", "title": "Depth knowledge."}, {"id": "Closely connected knowledge (hunter)", "label": "Closely connected knowledge (hunter)", "shape": "dot", "title": "Closely connected knowledge (hunter)"}, {"id": "Is it to increase or decrease arousal?", "label": "Is it to increase or decrease arousal?", "shape": "dot", "title": "Is it to increase or decrease arousal?"}, {"id": "Diverse curiosity. ", "label": "Diverse curiosity. ", "shape": "dot", "title": "Diverse curiosity. "}, {"id": "Specific curiosity.", "label": "Specific curiosity.", "shape": "dot", "title": "Specific curiosity."}]);
+        edges = new vis.DataSet([{"from": "What is curiosity?", "to": "What is the time scale of curiosity?"}, {"from": "What is curiosity?", "to": "a motivator of exploratory behavior. [Grossnickle,2016]"}, {"from": "What is curiosity?", "to": "a need for information."}, {"from": "What is the time scale of curiosity?", "to": "lifelong (personality trait)."}, {"from": "What is the time scale of curiosity?", "to": "seconds (state)."}, {"from": "What is the time scale of curiosity?", "to": "What is the operationalized definition?"}, {"from": "lifelong (personality trait).", "to": "Is curiosity a stable trait?"}, {"from": "Is curiosity a stable trait?", "to": "Probably not.[Kashdan et al. 2004]"}, {"from": "What is the operationalized definition?", "to": "Melbourne Curiosity Inventory (MCI)."}, {"from": "What is the operationalized definition?", "to": "State-Trait Personality Inventory (STPI)."}, {"from": "What is the operationalized definition?", "to": "What is exploratory behavior?"}, {"from": "What is the operationalized definition?", "to": "Choosing the door without knowing what is inside."}, {"from": "What is the operationalized definition?", "to": "Interest-type curiosity."}, {"from": "What is the operationalized definition?", "to": " Epistemic curiosity scale. "}, {"from": "What is the operationalized definition?", "to": "Deprivation-type curiosity."}, {"from": "What is the operationalized definition?", "to": ""}, {"from": "a motivator of exploratory behavior. [Grossnickle,2016]", "to": "What is exploratory behavior?"}, {"from": "a motivator of exploratory behavior. [Grossnickle,2016]", "to": "What constitutes the motivation for information?"}, {"from": "What is the internal computation for motivation?", "to": "What constitutes the motivation for information?"}, {"from": "What is the internal computation for motivation?", "to": "Positive prediction error. "}, {"from": "What is the internal computation for motivation?", "to": "Learning progress."}, {"from": "What is the internal computation for motivation?", "to": "Surprise."}, {"from": "Interest-type curiosity.", "to": "What constitutes the motivation for information?"}, {"from": "Interest-type curiosity.", "to": "Is it for gathering interesting information or to reduce unknown?"}, {"from": "Interest-type curiosity.", "to": "Why is some information interesting? "}, {"from": "Deprivation-type curiosity.", "to": "What constitutes the motivation for information?"}, {"from": "Deprivation-type curiosity.", "to": "Is it for gathering interesting information or to reduce unknown?"}, {"from": "a need for information.", "to": "follow-up_ What kind of new information is seeken? \u003ccategorization\u003e"}, {"from": "a need for information.", "to": "Loosely connectedd knowledge (busy bees)."}, {"from": "a need for information.", "to": "What is the purpose of curiosity?"}, {"from": "What kind of new information is seeken? \u003ccategorization\u003e", "to": "What is the domain of information?"}, {"from": "What kind of new information is seeken? \u003ccategorization\u003e", "to": "What is the structure of information?"}, {"from": "What is the domain of information?", "to": "Physical curiosity."}, {"from": "What is the domain of information?", "to": "Perceptual curiosity."}, {"from": "What is the domain of information?", "to": "Social curiosity."}, {"from": "What is the domain of information?", "to": "Epistemic/Intellectual curiosity."}, {"from": "What is the domain of information?", "to": "What is the developmental order of different types of curiosity?"}, {"from": "What is the developmental order of different types of curiosity?", "to": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter."}, {"from": "What is the structure of information?", "to": "What is the number of topics being seeken for?"}, {"from": "What is the structure of information?", "to": "What is the number of connection between information?"}, {"from": "What is the number of topics being seeken for?", "to": "Breadth knowledge."}, {"from": "What is the number of topics being seeken for?", "to": "Depth knowledge."}, {"from": "What is the number of connection between information?", "to": "Closely connected knowledge (hunter)"}, {"from": "What is the number of connection between information?", "to": ""}, {"from": "What is the purpose of curiosity?", "to": "Is it to increase or decrease arousal?"}, {"from": "What is the purpose of curiosity?", "to": "Is it for gathering interesting information or to reduce unknown?"}, {"from": "Is it to increase or decrease arousal?", "to": "Diverse curiosity. "}, {"from": "Is it to increase or decrease arousal?", "to": "Specific curiosity."}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
