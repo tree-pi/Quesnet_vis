@@ -1,0 +1,48 @@
+{"feature": "ans", "index": "0", "start": "What is curiosity?", "end": "What is the time scale of curiosity?"}
+{"feature": "ans", "index": "1", "start": "What is the time scale of curiosity?", "end": "lifelong (personality trait)."}
+{"feature": "ans", "index": "2", "start": "lifelong (personality trait).", "end": "Is curiosity a stable trait?"}
+{"feature": "ans", "index": "3", "start": "Is curiosity a stable trait?", "end": "Probably not.[Kashdan et al. 2004]"}
+{"feature": "ans", "index": "4", "start": "What is the time scale of curiosity?", "end": "seconds (state)."}
+{"feature": "ans", "index": "5", "start": "What is the time scale of curiosity?", "end": "What is the operationalized definition?"}
+{"feature": "ans", "index": "6", "start": "What is the operationalized definition?", "end": "Melbourne Curiosity Inventory (MCI)."}
+{"feature": "ans", "index": "7", "start": "What is the operationalized definition?", "end": "State-Trait Personality Inventory (STPI)."}
+{"feature": "ans", "index": "4", "start": "What is curiosity?", "end": "a motivator of exploratory behavior. [Grossnickle,2016]"}
+{"feature": "ans", "index": "4", "start": "a motivator of exploratory behavior. [Grossnickle,2016]", "end": "What is exploratory behavior?"}
+{"feature": "ans", "index": "4", "start": "What is exploratory behavior?", "end": "What is the operationalized definition?"}
+{"feature": "ans", "index": "4", "start": "What is the operationalized definition?", "end": "Choosing the door without knowing what is inside."}
+{"feature": "ans", "index": "4", "start": "a motivator of exploratory behavior. [Grossnickle,2016]", "end": "What constitutes the motivation for information?"}
+{"feature": "ans", "index": "4", "start": "What constitutes the motivation for information?", "end": "What is the internal computation for motivation?"}
+{"feature": "ans", "index": "4", "start": "What is the internal computation for motivation?", "end": "Positive prediction error. "}
+{"feature": "ans", "index": "4", "start": "What is the internal computation for motivation?", "end": "Learning progress."}
+{"feature": "ans", "index": "4", "start": "What is the internal computation for motivation?", "end": "Surprise."}
+{"feature": "ans", "index": "4", "start": "What constitutes the motivation for information?", "end": "Interest-type curiosity."}
+{"feature": "ans", "index": "4", "start": "What constitutes the motivation for information?", "end": "Deprivation-type curiosity."}
+{"feature": "ans", "index": "4", "start": "What is curiosity?", "end": "a need for information."}
+{"feature": "ans", "index": "4", "start": "a need for information.", "end": "follow-up_ What kind of new information is seeken? <categorization>"}
+{"feature": "ans", "index": "4", "start": "What kind of new information is seeken? <categorization>", "end": "What is the domain of information?"}
+{"feature": "ans", "index": "4", "start": "What is the domain of information?", "end": "Physical curiosity."}
+{"feature": "ans", "index": "4", "start": "What is the domain of information?", "end": "Perceptual curiosity."}
+{"feature": "ans", "index": "4", "start": "What is the domain of information?", "end": "Social curiosity."}
+{"feature": "ans", "index": "4", "start": "What is the domain of information?", "end": "Epistemic/Intellectual curiosity."}
+{"feature": "ans", "index": "4", "start": "What is the domain of information?", "end": "What is the developmental order of different types of curiosity?"}
+{"feature": "ans", "index": "4", "start": "What is the developmental order of different types of curiosity?", "end": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter."}
+{"feature": "ans", "index": "4", "start": "What kind of new information is seeken? <categorization>", "end": "What is the structure of information?"}
+{"feature": "ans", "index": "4", "start": "What is the structure of information?", "end": "What is the number of topics being seeken for?"}
+{"feature": "ans", "index": "4", "start": "What is the number of topics being seeken for?", "end": "Breadth knowledge."}
+{"feature": "ans", "index": "4", "start": "What is the number of topics being seeken for?", "end": "Depth knowledge."}
+{"feature": "ans", "index": "4", "start": "What is the structure of information?", "end": "What is the number of connection between information?"}
+{"feature": "ans", "index": "4", "start": "What is the number of connection between information?", "end": "Closely connected knowledge (hunter)"}
+{"feature": "ans", "index": "4", "start": "What is the number of connection between information?", "end": ""}
+{"feature": "ans", "index": "4", "start": "a need for information.", "end": "Loosely connectedd knowledge (busy bees)."}
+{"feature": "ans", "index": "4", "start": "a need for information.", "end": "What is the purpose of curiosity?"}
+{"feature": "ans", "index": "4", "start": "What is the purpose of curiosity?", "end": "Is it to increase or decrease arousal?"}
+{"feature": "ans", "index": "4", "start": "Is it to increase or decrease arousal?", "end": "Diverse curiosity. "}
+{"feature": "ans", "index": "4", "start": "Is it to increase or decrease arousal?", "end": "Specific curiosity."}
+{"feature": "ans", "index": "4", "start": "What is the purpose of curiosity?", "end": "Is it for gathering interesting information or to reduce unknown?"}
+{"feature": "ans", "index": "4", "start": "Is it for gathering interesting information or to reduce unknown?", "end": "Interest-type curiosity."}
+{"feature": "ans", "index": "4", "start": "Interest-type curiosity.", "end": "Why is some information interesting? "}
+{"feature": "ans", "index": "4", "start": "Interest-type curiosity.", "end": "What is the operationalized definition?"}
+{"feature": "ans", "index": "4", "start": "What is the operationalized definition?", "end": " Epistemic curiosity scale. "}
+{"feature": "ans", "index": "4", "start": "Is it for gathering interesting information or to reduce unknown?", "end": "Deprivation-type curiosity."}
+{"feature": "ans", "index": "4", "start": "Deprivation-type curiosity.", "end": "What is the operationalized definition?"}
+{"feature": "ans", "index": "4", "start": "What is the operationalized definition?", "end": ""}

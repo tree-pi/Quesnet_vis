@@ -1,0 +1,48 @@
+{"feature": "Question", "id": "What is curiosity?"}
+{"feature": "specification", "id": "What is the time scale of curiosity?"}
+{"feature": "answer", "id": "lifelong (personality trait)."}
+{"feature": "follow-up", "id": "Is curiosity a stable trait?"}
+{"feature": "answer", "id": "Probably not.[Kashdan et al. 2004]"}
+{"feature": "answer", "id": "seconds (state)."}
+{"feature": "follow-up", "id": "What is the operationalized definition?"}
+{"feature": "answer", "id": "Melbourne Curiosity Inventory (MCI)."}
+{"feature": "answer", "id": "State-Trait Personality Inventory (STPI)."}
+{"feature": "answer", "id": "a motivator of exploratory behavior. [Grossnickle,2016]"}
+{"feature": "definition", "id": "What is exploratory behavior?"}
+{"feature": "follow-up", "id": "What is the operationalized definition?"}
+{"feature": "answer", "id": "Choosing the door without knowing what is inside."}
+{"feature": "follow-up", "id": " What constitutes the motivation for information?"}
+{"feature": "specification", "id": "What is the internal computation for motivation?"}
+{"feature": "answer", "id": "Positive prediction error. "}
+{"feature": "answer", "id": "Learning progress."}
+{"feature": "answer", "id": "Surprise."}
+{"feature": "answer", "id": "Interest-type curiosity."}
+{"feature": "answer", "id": "Deprivation-type curiosity."}
+{"feature": "answer", "id": "a need for information."}
+{"feature": "follow-up", "id": "What kind of new information is seeken? <categorization>"}
+{"feature": "specification", "id": "What is the domain of information?"}
+{"feature": "answer", "id": "Physical curiosity."}
+{"feature": "answer", "id": "Perceptual curiosity."}
+{"feature": "answer", "id": "Social curiosity."}
+{"feature": "answer", "id": "Epistemic/Intellectual curiosity."}
+{"feature": "follow-up", "id": "What is the developmental order of different types of curiosity?"}
+{"feature": "answer", "id": "physical, social, and intellectual curiosity develop sequentially in children from the former to the latter."}
+{"feature": "specification", "id": "What is the structure of information?"}
+{"feature": "specification", "id": "What is the number of topics being seeken for?"}
+{"feature": "answer", "id": "Breadth knowledge."}
+{"feature": "answer", "id": "Depth knowledge."}
+{"feature": "specification", "id": "What is the number of connection between information?"}
+{"feature": "answer", "id": "Closely connected knowledge (hunter)"}
+{"feature": "answer", "id": "Loosely connectedd knowledge (busy bees)."}
+{"feature": "follow-up", "id": "What is the purpose of curiosity?"}
+{"feature": "specification", "id": "Is it to increase or decrease arousal?"}
+{"feature": "answer", "id": "Diverse curiosity. "}
+{"feature": "answer", "id": "Specific curiosity."}
+{"feature": "specification", "id": "Is it for gathering interesting information or to reduce unknown?"}
+{"feature": "answer", "id": "Interest-type curiosity."}
+{"feature": "follow-up", "id": "Why is some information interesting? "}
+{"feature": "follow-up", "id": "What is the operationalized definition?"}
+{"feature": "answer", "id": " Epistemic curiosity scale. "}
+{"feature": "answer", "id": "Deprivation-type curiosity."}
+{"feature": "follow-up", "id": "What is the operationalized definition?"}
+{"feature": "answer", "id": "Curiosity as a Feeling of Deprivation Scale (CFD scale)."}

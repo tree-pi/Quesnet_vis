@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "What is interest?", "label": "What is interest?", "shape": "dot", "title": "What is interest?"}, {"font": {"color": "white"}, "id": "What is the time scale of interest?", "label": "What is the time scale of interest?", "shape": "dot", "title": "What is the time scale of interest?"}, {"font": {"color": "white"}, "id": "It has to be concerned towards particular objects or contents.", "label": "It has to be concerned towards particular objects or contents.", "shape": "dot", "title": "It has to be concerned towards particular objects or contents."}, {"font": {"color": "white"}, "id": "What is the developing process of interest?", "label": "What is the developing process of interest?", "shape": "dot", "title": "What is the developing process of interest?"}, {"font": {"color": "white"}, "id": "What are the affective responses associated with interest?", "label": "What are the affective responses associated with interest?", "shape": "dot", "title": "What are the affective responses associated with interest?"}, {"font": {"color": "white"}, "id": "Situational interest.", "label": "Situational interest.", "shape": "dot", "title": "Situational interest."}, {"font": {"color": "white"}, "id": "Individual interest.", "label": "Individual interest.", "shape": "dot", "title": "Individual interest."}, {"font": {"color": "white"}, "id": "What makes the object interesting?", "label": "What makes the object interesting?", "shape": "dot", "title": "What makes the object interesting?"}, {"font": {"color": "white"}, "id": "knowledge of, positive feelings toward, and value for the object of interest.", "label": "knowledge of, positive feelings toward, and value for the object of interest.", "shape": "dot", "title": "knowledge of, positive feelings toward, and value for the object of interest."}, {"font": {"color": "white"}, "id": "successful performance \u003cReeve 1989\u003e or anticipated success.", "label": "successful performance \u003cReeve 1989\u003e or anticipated success.", "shape": "dot", "title": "successful performance \u003cReeve 1989\u003e or anticipated success."}, {"font": {"color": "white"}, "id": "Are these factors distinctive from each other?", "label": "Are these factors distinctive from each other?", "shape": "dot", "title": "Are these factors distinctive from each other?"}, {"font": {"color": "white"}, "id": "Are these factors neccesary for evoking interest?", "label": "Are these factors neccesary for evoking interest?", "shape": "dot", "title": "Are these factors neccesary for evoking interest?"}, {"font": {"color": "white"}, "id": " positive feelings and value may be one thing.", "label": " positive feelings and value may be one thing.", "shape": "dot", "title": " positive feelings and value may be one thing."}, {"font": {"color": "white"}, "id": "Prior knowledge is neccesary.", "label": "Prior knowledge is neccesary.", "shape": "dot", "title": "Prior knowledge is neccesary."}, {"font": {"color": "white"}, "id": "If one has negative feeling towards an object will it still be interesting?", "label": "If one has negative feeling towards an object will it still be interesting?", "shape": "dot", "title": "If one has negative feeling towards an object will it still be interesting?"}, {"font": {"color": "white"}, "id": "four-phase model of interest development.", "label": "four-phase model of interest development.", "shape": "dot", "title": "four-phase model of interest development."}, {"font": {"color": "white"}, "id": "increased attention and persistence.", "label": "increased attention and persistence.", "shape": "dot", "title": "increased attention and persistence."}, {"font": {"color": "white"}, "id": "positive feelings of enjoyment.", "label": "positive feelings of enjoyment.", "shape": "dot", "title": "positive feelings of enjoyment."}]);
+        edges = new vis.DataSet([{"from": "What is interest?", "to": "What is the time scale of interest?"}, {"from": "What is interest?", "to": "It has to be concerned towards particular objects or contents."}, {"from": "What is interest?", "to": "What is the developing process of interest?"}, {"from": "What is interest?", "to": "What are the affective responses associated with interest?"}, {"from": "What is the time scale of interest?", "to": "Situational interest."}, {"from": "What is the time scale of interest?", "to": "Individual interest."}, {"from": "It has to be concerned towards particular objects or contents.", "to": "What makes the object interesting?"}, {"from": "What makes the object interesting?", "to": "knowledge of, positive feelings toward, and value for the object of interest."}, {"from": "What makes the object interesting?", "to": "successful performance \u003cReeve 1989\u003e or anticipated success."}, {"from": "What makes the object interesting?", "to": "Are these factors distinctive from each other?"}, {"from": "What makes the object interesting?", "to": "Are these factors neccesary for evoking interest?"}, {"from": "Are these factors distinctive from each other?", "to": " positive feelings and value may be one thing."}, {"from": "Are these factors neccesary for evoking interest?", "to": "Prior knowledge is neccesary."}, {"from": "Are these factors neccesary for evoking interest?", "to": "If one has negative feeling towards an object will it still be interesting?"}, {"from": "What is the developing process of interest?", "to": "four-phase model of interest development."}, {"from": "What are the affective responses associated with interest?", "to": "increased attention and persistence."}, {"from": "What are the affective responses associated with interest?", "to": "positive feelings of enjoyment."}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": true,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

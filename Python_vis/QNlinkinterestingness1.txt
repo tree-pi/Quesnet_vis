@@ -1,0 +1,17 @@
+{"feature": "ans", "index": "0", "start": "What is interest?", "end": "What is the time scale of interest?"}
+{"feature": "ans", "index": "0", "start": "What is the time scale of interest?", "end": "Situational interest."}
+{"feature": "ans", "index": "0", "start": "What is the time scale of interest?", "end": "Individual interest."}
+{"feature": "ans", "index": "0", "start": "What is interest?", "end": "It has to be concerned towards particular objects or contents."}
+{"feature": "ans", "index": "0", "start": "It has to be concerned towards particular objects or contents.", "end": "What makes the object interesting?"}
+{"feature": "ans", "index": "0", "start": "What makes the object interesting?", "end": "knowledge of, positive feelings toward, and value for the object of interest."}
+{"feature": "ans", "index": "0", "start": "What makes the object interesting?", "end": "successful performance <Reeve 1989> or anticipated success."}
+{"feature": "ans", "index": "0", "start": "What makes the object interesting?", "end": "Are these factors distinctive from each other?"}
+{"feature": "ans", "index": "0", "start": "Are these factors distinctive from each other?", "end": " positive feelings and value may be one thing."}
+{"feature": "ans", "index": "0", "start": "What makes the object interesting?", "end": "Are these factors neccesary for evoking interest?"}
+{"feature": "ans", "index": "0", "start": "Are these factors neccesary for evoking interest?", "end": "Prior knowledge is neccesary."}
+{"feature": "ans", "index": "0", "start": "Are these factors neccesary for evoking interest?", "end": "If one has negative feeling towards an object will it still be interesting?"}
+{"feature": "ans", "index": "0", "start": "What is interest?", "end": "What is the developing process of interest?"}
+{"feature": "ans", "index": "0", "start": "What is the developing process of interest?", "end": "four-phase model of interest development."}
+{"feature": "ans", "index": "0", "start": "What is interest?", "end": "What are the affective responses associated with interest?"}
+{"feature": "ans", "index": "0", "start": "What are the affective responses associated with interest?", "end": "increased attention and persistence."}
+{"feature": "ans", "index": "0", "start": "What are the affective responses associated with interest?", "end": "positive feelings of enjoyment."}

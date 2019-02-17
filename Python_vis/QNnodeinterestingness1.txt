@@ -1,0 +1,18 @@
+{"feature": "Question", "id": "What is interest?"}
+{"feature": "specification", "id": "What is the time scale of interest?"}
+{"feature": "answer", "id": "Situational interest."}
+{"feature": "answer", "id": "Individual interest."}
+{"feature": "answer", "id": "It has to be concerned towards particular objects or contents."}
+{"feature": "follow-up", "id": "What makes the object interesting?"}
+{"feature": "answer", "id": "knowledge of, positive feelings toward, and value for the object of interest."}
+{"feature": "answer", "id": "successful performance <Reeve 1989> or anticipated success."}
+{"feature": "follow-up", "id": "Are these factors distinctive from each other?"}
+{"feature": "answer", "id": "positive feelings and value may be one thing. "}
+{"feature": "follow-up", "id": "Are these factors neccesary for evoking interest?"}
+{"feature": "answer", "id": "Prior knowledge is neccesary."}
+{"feature": "unanswered", "id": "If one has negative feeling towards an object will it still be interesting?"}
+{"feature": "specificaion", "id": "What is the developing process of interest?"}
+{"feature": "answer", "id": "four-phase model of interest development."}
+{"feature": "specification", "id": "What are the affective responses associated with interest?"}
+{"feature": "answer", "id": "increased attention and persistence."}
+{"feature": "answer", "id": "positive feelings of enjoyment."}
