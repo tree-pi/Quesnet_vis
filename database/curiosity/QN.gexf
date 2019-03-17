@@ -1,0 +1,588 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf version="1.2" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes class="edge" mode="static">
+      <attribute id="3" title="label" type="string" />
+      <attribute id="4" title="id_lk" type="string" />
+    </attributes>
+    <attributes class="node" mode="static">
+      <attribute id="0" title="feature" type="string" />
+      <attribute id="1" title="content" type="string" />
+      <attribute id="2" title="reference" type="string" />
+    </attributes>
+    <meta>
+      <creator>NetworkX 2.2</creator>
+      <lastmodified>17/03/2019</lastmodified>
+    </meta>
+    <nodes>
+      <node id="qd79119" label="What is curiosity?">
+        <attvalues>
+          <attvalue for="0" value="Central question" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="qd22874" label="What is the time scale of curiosity?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad79597" label="lifelong (personality trait)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;&quot;" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="qd30499" label="Is curiosity a stable trait?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad10667" label="Probably not">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="Kashdan et al. 2004" />
+        </attvalues>
+      </node>
+      <node id="ad53710" label="seconds (state)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="&quot;&quot;" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="qd62913" label="What is the operationalized definition?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad15403" label="Melbourne Curiosity Inventory (MCI)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;20-item trait and state curiosity subscales.&quot;" />
+          <attvalue for="2" value="Naylor 1981" />
+        </attvalues>
+      </node>
+      <node id="ad46932" label="State-Trait Personality Inventory (STPI)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;10-item trait and state curiosity subscales; includes trait and state scales for other characteristics (i.e., anxiety, anger, &amp; depression)&quot;" />
+          <attvalue for="2" value="Spielberger 1979" />
+        </attvalues>
+      </node>
+      <node id="ad12382" label="a motivator of exploratory behavior">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="Grossnickle,2016" />
+        </attvalues>
+      </node>
+      <node id="qd38937" label="What is &quot;exploratory behavior&quot;?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd94544" label="What is the operationalized definition?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad29837" label="Choosing the door without knowing what is inside">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" A task adapted from Harter and Zigler (1974). " />
+          <attvalue for="2" value="Gilmore and Cuskelly, 2011" />
+        </attvalues>
+      </node>
+      <node id="qd27792" label="What constitutes the motivation for information?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd4208" label="What is the internal computation for motivation?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad16828" label="Positive prediction error">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;&quot;" />
+          <attvalue for="2" value="Kaplan et al, 2007" />
+        </attvalues>
+      </node>
+      <node id="ad51222" label="Learning progress">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;&quot;" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="ad57479" label="Surprise">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;&quot;" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="ad37482" label="Interest-type curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The desire to gain new information for the purpose of enjoyment or interest.&quot;" />
+          <attvalue for="2" value="Litman 2005" />
+        </attvalues>
+      </node>
+      <node id="ad23111" label="Deprivation-type curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The desire to gain new information to reduce the unknown or feelings of ignorance&quot;" />
+          <attvalue for="2" value="Litman 2005" />
+        </attvalues>
+      </node>
+      <node id="ad13948" label="a need for information">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="Grossnickle,2016" />
+        </attvalues>
+      </node>
+      <node id="qd65201" label="What kind of new information is seeken?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd93656" label="What is the domain of information?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad87928" label="Physical curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The exploration and manipulation of oneself and surroundings&quot; " />
+          <attvalue for="2" value="Dewey 1910" />
+        </attvalues>
+      </node>
+      <node id="ad53790" label="Perceptual curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;Exploration through sensory stimulation (e.g., visual or auditory inspection) in order to acquire new information&quot; " />
+          <attvalue for="2" value="Berlyne 1954; Litman and Spielberger 2003" />
+        </attvalues>
+      </node>
+      <node id="ad60433" label="Social curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The use of language to engage explorations through questions and appeals to other individuals for information&quot; " />
+          <attvalue for="2" value="Dewey 1910" />
+        </attvalues>
+      </node>
+      <node id="ad47911" label="Epistemic/Intellectual curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="&quot;A need or desire for knowledge, information, or the exploration of academic environments&quot;" />
+          <attvalue for="2" value="Kang et al. 2009; Litman 2010" />
+        </attvalues>
+      </node>
+      <node id="qd35997" label="What is the developmental order of different types of curiosity?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad66540" label=" physical, social, and intellectual curiosity develop sequentially in children from the former to the latter">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="Dewey 1910 (from Grossnickle, 2016)" />
+        </attvalues>
+      </node>
+      <node id="qd65751" label="What is the structure of information?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd69235" label="What is the number of topics being seeken for?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad57796" label="Breadth knowledge">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;Curiosity about many different topics, ideas, or experiences in a constant search for variation&quot;" />
+          <attvalue for="2" value="Loewenstein 1994" />
+        </attvalues>
+      </node>
+      <node id="ad22893" label="Depth knowledge">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;Curiosity for ideas and experiences directed in a more sustained manner toward a single topic or area&quot;" />
+          <attvalue for="2" value="Levitt et al. 2009; Loewenstein 1994" />
+        </attvalues>
+      </node>
+      <node id="qd7650" label="What is the number of connection between information?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad67272" label="Closely connected knowledge (hunter)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="ad77613" label="Loosely connectedd knowledge (busy bees)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="qd58954" label="What is the purpose of curiosity?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd53250" label="Is it to increase or decrease arousal?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad71240" label="Diverse curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The motive to increase arousal and reduce boredom by seeking uncertainty and new experiences&quot; " />
+          <attvalue for="2" value="Arnone and Grabowsky 1992; Kashdan et al. 2009" />
+        </attvalues>
+      </node>
+      <node id="ad99867" label="Specific curiosity">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" &quot;The motive to reduce uncertainty through directed exploration of stimuli&quot;" />
+          <attvalue for="2" value="Arnone and Grabowsky 1992; Spielberger and Starr 1994" />
+        </attvalues>
+      </node>
+      <node id="qd74559" label="Is it for gathering interesting information or to reduce unknown?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd79869" label="Why is some information interesting?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="qd20509" label="What is the operationalized definition?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad57054" label="Epistemic curiosity scale">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="Litman 2008" />
+        </attvalues>
+      </node>
+      <node id="qd80123" label="What is the operationalized definition?">
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad97586" label="Curiosity as a Feeling of Deprivation Scale (CFD scale)">
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value=" " />
+          <attvalue for="2" value="Litman and Jimerson 2004" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="qd79119" target="qd22874">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l69727" />
+        </attvalues>
+      </edge>
+      <edge id="1" source="qd79119" target="ad12382">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l83566" />
+        </attvalues>
+      </edge>
+      <edge id="2" source="qd79119" target="ad13948">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l82866" />
+        </attvalues>
+      </edge>
+      <edge id="3" source="qd22874" target="ad79597">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l31277" />
+        </attvalues>
+      </edge>
+      <edge id="4" source="qd22874" target="ad53710">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l80665" />
+        </attvalues>
+      </edge>
+      <edge id="5" source="qd22874" target="qd62913">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l82686" />
+        </attvalues>
+      </edge>
+      <edge id="6" source="ad79597" target="qd30499">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l70264" />
+        </attvalues>
+      </edge>
+      <edge id="7" source="qd30499" target="ad10667">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l37981" />
+        </attvalues>
+      </edge>
+      <edge id="8" source="qd62913" target="ad15403">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l64164" />
+        </attvalues>
+      </edge>
+      <edge id="9" source="qd62913" target="ad46932">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l50014" />
+        </attvalues>
+      </edge>
+      <edge id="10" source="ad12382" target="qd38937">
+        <attvalues>
+          <attvalue for="3" value="definition" />
+          <attvalue for="4" value="l54946" />
+        </attvalues>
+      </edge>
+      <edge id="11" source="ad12382" target="qd27792">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l831" />
+        </attvalues>
+      </edge>
+      <edge id="12" source="qd38937" target="qd94544">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l41722" />
+        </attvalues>
+      </edge>
+      <edge id="13" source="qd94544" target="ad29837">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l44756" />
+        </attvalues>
+      </edge>
+      <edge id="14" source="qd27792" target="qd4208">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l66229" />
+        </attvalues>
+      </edge>
+      <edge id="15" source="qd27792" target="ad37482">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l79898" />
+        </attvalues>
+      </edge>
+      <edge id="16" source="qd27792" target="ad23111">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l32994" />
+        </attvalues>
+      </edge>
+      <edge id="17" source="qd4208" target="ad16828">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l31327" />
+        </attvalues>
+      </edge>
+      <edge id="18" source="qd4208" target="ad51222">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l30175" />
+        </attvalues>
+      </edge>
+      <edge id="19" source="qd4208" target="ad57479">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l2620" />
+        </attvalues>
+      </edge>
+      <edge id="20" source="ad37482" target="qd74559">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l35377" />
+        </attvalues>
+      </edge>
+      <edge id="21" source="ad37482" target="qd79869">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l32765" />
+        </attvalues>
+      </edge>
+      <edge id="22" source="ad37482" target="qd20509">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l98267" />
+        </attvalues>
+      </edge>
+      <edge id="23" source="ad23111" target="qd74559">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l66410" />
+        </attvalues>
+      </edge>
+      <edge id="24" source="ad23111" target="qd80123">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l76969" />
+        </attvalues>
+      </edge>
+      <edge id="25" source="ad13948" target="qd65201">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l27816" />
+        </attvalues>
+      </edge>
+      <edge id="26" source="ad13948" target="qd58954">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l53185" />
+        </attvalues>
+      </edge>
+      <edge id="27" source="qd65201" target="qd93656">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l62157" />
+        </attvalues>
+      </edge>
+      <edge id="28" source="qd65201" target="qd65751">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l41909" />
+        </attvalues>
+      </edge>
+      <edge id="29" source="qd93656" target="ad87928">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l36699" />
+        </attvalues>
+      </edge>
+      <edge id="30" source="qd93656" target="ad53790">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l63166" />
+        </attvalues>
+      </edge>
+      <edge id="31" source="qd93656" target="ad60433">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l64222" />
+        </attvalues>
+      </edge>
+      <edge id="32" source="qd93656" target="ad47911">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l81077" />
+        </attvalues>
+      </edge>
+      <edge id="33" source="qd93656" target="qd35997">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l43175" />
+        </attvalues>
+      </edge>
+      <edge id="34" source="qd35997" target="ad66540">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l26408" />
+        </attvalues>
+      </edge>
+      <edge id="35" source="qd65751" target="qd69235">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l17971" />
+        </attvalues>
+      </edge>
+      <edge id="36" source="qd65751" target="qd7650">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l24426" />
+        </attvalues>
+      </edge>
+      <edge id="37" source="qd69235" target="ad57796">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l96000" />
+        </attvalues>
+      </edge>
+      <edge id="38" source="qd69235" target="ad22893">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l53942" />
+        </attvalues>
+      </edge>
+      <edge id="39" source="qd7650" target="ad67272">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l47665" />
+        </attvalues>
+      </edge>
+      <edge id="40" source="qd7650" target="ad77613">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l45669" />
+        </attvalues>
+      </edge>
+      <edge id="41" source="qd58954" target="qd53250">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l91645" />
+        </attvalues>
+      </edge>
+      <edge id="42" source="qd58954" target="qd74559">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l91972" />
+        </attvalues>
+      </edge>
+      <edge id="43" source="qd53250" target="ad71240">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l61058" />
+        </attvalues>
+      </edge>
+      <edge id="44" source="qd53250" target="ad99867">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l18910" />
+        </attvalues>
+      </edge>
+      <edge id="45" source="qd20509" target="ad57054">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l6500" />
+        </attvalues>
+      </edge>
+      <edge id="46" source="qd80123" target="ad97586">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l83570" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
