@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns:ns0="http://www.gexf.net/1.1draft/viz" version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="edge" mode="static">
+      <attribute id="3" title="id_lk" type="string" />
+      <attribute id="4" title="label" type="string" />
+    </attributes>
+    <attributes class="node" mode="static">
+      <attribute id="0" title="reference" type="string" />
+      <attribute id="1" title="feature" type="string" />
+      <attribute id="2" title="content" type="string" />
+    </attributes>
+    <nodes>
+      <node id="ad46711" label="按爱的不同状态来区别">
+        <ns0:color b="38" g="167" r="205" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad23772" label="亲情">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="qd40624" label="爱可以分成哪些不同类别?">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad82009" label="激情passion">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="qd20274" label="浪漫之爱的神经机制?">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad26561" label="按爱的对象来区别">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="qd51944" label="爱是什么？">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="" />
+          <attvalue for="1" value="Central question" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="ad72043" label="承诺/决心commitment">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad97330" label="Fisher et al 2006.">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad30643" label="亲密intimacy">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="qd73439" label="当热恋中人看到爱人照片时，相比看到熟人，fMRI有什么区别?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="1" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad35331" label="爱情">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="qd48547" label="如何通过神经科学研究爱?">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="1" value="Question" />
+        </attvalues>
+      </node>
+      <node id="ad18242" label="友情">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="1" value="Answer" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="ad46711" target="ad82009">
+        <attvalues>
+          <attvalue for="3" value="l58408" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="1" source="ad46711" target="ad72043">
+        <attvalues>
+          <attvalue for="3" value="l16840" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="2" source="ad46711" target="ad30643">
+        <attvalues>
+          <attvalue for="3" value="l50712" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="3" source="ad46711" target="qd40624">
+        <attvalues>
+          <attvalue for="3" value="l71583" />
+          <attvalue for="4" value="answer" />
+        </attvalues>
+      </edge>
+      <edge id="4" source="ad23772" target="ad26561">
+        <attvalues>
+          <attvalue for="3" value="l18768" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="5" source="qd40624" target="qd51944">
+        <attvalues>
+          <attvalue for="3" value="l27511" />
+          <attvalue for="4" value="specification" />
+        </attvalues>
+      </edge>
+      <edge id="6" source="qd40624" target="ad26561">
+        <attvalues>
+          <attvalue for="3" value="l54418" />
+          <attvalue for="4" value="answer" />
+        </attvalues>
+      </edge>
+      <edge id="7" source="qd20274" target="qd48547">
+        <attvalues>
+          <attvalue for="3" value="l45961" />
+          <attvalue for="4" value="specification" />
+        </attvalues>
+      </edge>
+      <edge id="8" source="qd20274" target="ad97330">
+        <attvalues>
+          <attvalue for="3" value="l58959" />
+          <attvalue for="4" value="study" />
+        </attvalues>
+      </edge>
+      <edge id="9" source="ad26561" target="ad18242">
+        <attvalues>
+          <attvalue for="3" value="l59671" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="10" source="ad26561" target="ad35331">
+        <attvalues>
+          <attvalue for="3" value="l28055" />
+          <attvalue for="4" value="category" />
+        </attvalues>
+      </edge>
+      <edge id="11" source="qd51944" target="qd48547">
+        <attvalues>
+          <attvalue for="3" value="l67962" />
+          <attvalue for="4" value="specification" />
+        </attvalues>
+      </edge>
+      <edge id="12" source="ad97330" target="qd73439">
+        <attvalues>
+          <attvalue for="3" value="l58585" />
+          <attvalue for="4" value="operational-definition" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

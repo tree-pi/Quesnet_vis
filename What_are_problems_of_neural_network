@@ -1,0 +1,5 @@
+What_are_problems_of_neural_network?
+	_answer_ It is not combined with bayesian and not incorporating priors which should accelerate learning.
+		_follow-up_ How to incorporate bayesian priors into NN?
+			_answer_ Using different regularizers. "Using L2 regularizer for training each layer's weight is already can be interpreted as i.i.d gaussian prior; Add an covariance matrix in the regularizer can be interpreted as multivariate gaussisan prior; and other kernels like garbors/gaussian derivatives can also be used as regularizers." [Feynman and Lake 2019]
+	_answer_ Data

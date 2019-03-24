@@ -1,0 +1,20 @@
+爱是什么？
+	_specification_ 爱可以分成哪些不同类别?
+		_answer_ 按爱的对象来区别.
+			_category_ 亲情
+			_category_ 爱情
+			_category_ 友情
+		_answer_ 按爱的不同状态来区别. "triangular theory of love"
+			_category_ 激情passion
+			_category_ 亲密intimacy
+			_category_ 承诺/决心commitment
+	_specification_ 如何通过神经科学研究爱?
+		_specification_ 浪漫之爱的神经机制?
+			_study_ Fisher et al 2006.
+				_operational-definition_ 当热恋中人看到爱人照片时，相比看到熟人，fMRI有什么区别?
+##
+	_definition_ 不同类型的爱是否有共有的定义?
+	_why_ 人为什么需要爱?
+	_why_ 人为什么恐惧爱?
+		
+		

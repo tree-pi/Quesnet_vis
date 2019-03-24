@@ -8,17 +8,12 @@ What is curiosity?
 		_follow-up_ What is the operationalized definition?
 			_answer_ Melbourne Curiosity Inventory (MCI). "20-item trait and state curiosity subscales."[Naylor 1981]
 			_answer_ State-Trait Personality Inventory (STPI). "10-item trait and state curiosity subscales; includes trait and state scales for other characteristics (i.e., anxiety, anger, & depression)"[Spielberger 1979]
+
 	_answer_ a motivator of exploratory behavior. [Grossnickle,2016]
 		_definition_ What is "exploratory behavior"?
 			_follow-up_ What is the operationalized definition?
 				_answer_ Choosing the door without knowing what is inside. A task adapted from Harter and Zigler (1974). [Gilmore and Cuskelly, 2011]
-		_follow-up_ What constitutes the motivation for information?
-			_specification_ What is the internal computation for motivation?
-				_answer_ Positive prediction error. ""[Kaplan et al, 2007]
-				_answer_ Learning progress. ""[]
-				_answer_ Surprise. ""[]
-			_answer_ Interest-type curiosity. "The desire to gain new information for the purpose of enjoyment or interest."[Litman 2005]
-			_answer_ Deprivation-type curiosity. "The desire to gain new information to reduce the unknown or feelings of ignorance"[Litman 2005]
+		
 
 	_answer_ a need for information. [Grossnickle,2016]
 		_follow-up_ What kind of new information is seeken? <categorization>
@@ -36,15 +31,18 @@ What is curiosity?
 				_specification_ What is the number of connection between information?
 					_answer_ Closely connected knowledge (hunter). []
 					_answer_ Loosely connectedd knowledge (busy bees). []
-		_follow-up_ What is the purpose of curiosity?
-			_specification_ Is it to increase or decrease arousal?
-				_answer_ Diverse curiosity. "The motive to increase arousal and reduce boredom by seeking uncertainty and new experiences" [Arnone and Grabowsky 1992; Kashdan et al. 2009]
-				_answer_ Specific curiosity. "The motive to reduce uncertainty through directed exploration of stimuli"[Arnone and Grabowsky 1992; Spielberger and Starr 1994]
-			_specification_ Is it for gathering interesting information or to reduce unknown?
-				_answer_ Interest-type curiosity. "The desire to gain new information for the purpose of enjoyment or interest."[Litman 2005]
+		_follow-up_ What constitutes the motivation for information?
+			_specification_ What is the internal computation for curiosity?
+				_answer_ Positive prediction error. ""[Kaplan et al, 2007]
+				_answer_ Learning progress. ""[]
+				_answer_ Surprise. ""[]
+				_answer_ The speed of knowledge value increase. "The derivative of knowledge value over exposure. Assuming 1) confidence increases with exposure until saturation -- a learning curve; 2) knowledge value is propositional to how often the subject occurs times confidence about the subject." [Dubey et al 2017]
+					_follow-up_ How does this theory explain the previous studies?
+						_answer_ If exposure is passive and correlates with subject occurence frequency, then "goldilock" since too few exposure means not enough but too much exposure means already well-learned; if exposure is active and independent of occurence frequency, then should always look at the new things. [Dubey et al 2017]
+			_specification_ What is the taxonomy of motivation?
+				_answer_ Interest-type curiosity VS Deprivation-type curiosity. "The desire to gain new information for the purpose of enjoyment or interest, or the desire to gain new information to reduce the unknown or feelings of ignorance"[Litman 2005]
 					_follow-up_ Why is some information interesting? 
 					_follow-up_ What is the operationalized definition?
-						_answer_ Epistemic curiosity scale. [Litman 2008]
-				_answer_ Deprivation-type curiosity. "The desire to gain new information to reduce the unknown or feelings of ignorance"[Litman 2005]
-					_follow-up_ What is the operationalized definition?
-						_answer_ Curiosity as a Feeling of Deprivation Scale (CFD scale). [Litman and Jimerson 2004]
+						_answer_ For "I-type": Epistemic curiosity scale. [Litman 2008]
+						_answer_ For "D-type": Curiosity as a Feeling of Deprivation Scale (CFD scale). [Litman and Jimerson 2004]
+				_answer_ Diverse curiosity VS Specific curiosity. "The motive to increase arousal and reduce boredom by seeking uncertainty and new experiences; or the motive to reduce uncertainty through directed exploration of stimuli" [Arnone and Grabowsky 1992; Kashdan et al. 2009; Spielberger and Starr 1994]
