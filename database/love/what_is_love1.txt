@@ -1,0 +1,39 @@
+﻿爱是什么？
+	_hypothesis_ 爱不带来物质回报，不功利。
+		_specification_ 如何定义功利？为了性而爱呢？
+		_operationalize_ 你可以付出，但别人不知道是你，你是否愿意付出？
+			_specification_ 是否付出是为了对方，还是只是享受付出的过程？如何区别？
+				_answer_ 我给父母打电话，是分享我的事还是听他们的唠叨，感受不同.
+	_hypothesis_ 爱是一种愉悦感.
+	_hypothesis_ 如果其他人可以替代这个人，带来很多类似的东西，那就不是爱（爱的是外部激励）.
+		_follow-up_ 外部动机是否一直在被内化？
+		_argument_ 普世的爱，不对特定的人有关，难道不是爱吗？
+		_specification_ 浪漫之爱的神经过程是什么？
+		_operationalize_ 测试什么？
+		_hypothesis_ 跟踪爱情中的人，看主观”爱的感觉“的量表，同时找脑信号correlation.
+			_criticize_ 不能给出causal relation.
+			_study_ Fisher 2010.
+				_argument_ 分手后会有不同的感受.有人很痛苦，有人还感受甜蜜，有人.
+			_study_ Aron et al 2005.
+				_predict_ 哪里应该会有激活？
+					_hypothesis_ 会有激素调节；会有记忆脑区的区别（然而应该怎么区别？不确定）
+					_answer_ 奖赏回路活跃
+						_argument_ 如果一个人的爱不求回报，还会有奖赏回路的激活吗？
+						_follow-up_ 但是如果刚开始，是否有这个奖赏？还是逐渐形成的？
+						_follow-up_ 与生活其他的奖赏有什么关系？比如当你从工作中获得很多奖赏了，就不容易产生那么多的爱了？
+							_hypothesis_ 只是说爱和友情的区别是奖赏回路，但是爱和工作还有别的差异，比如社会性，比如温柔的感觉.
+		_hypothesis_ 爱和被爱，有什么区别？
+		_specification_ 爱需要记忆支持吗，还是纯粹的一种生理状态？
+		_specification_ crush在什么年纪出现？为什么在那个时候出现？
+			_hypothesis_ 荷尔蒙不足够，还需要记忆和认知的基础.
+		_study_ Young and Wang, 2004
+			_argument_ 跟爱情没有关系，无法理解人的
+			_follow-up_ 当这个激素消失后，会有什么行为变化？
+		_hypothesis_ 刺激大脑，主观汇报，是否感受到爱？
+			_specification_ 汇报对某个人的爱，还是爱是一种整体的爱？
+	
+##
+ 人做所有事是否都是为了自己的愉悦？ 
+ 爱为什么会有专一性？
+  _hypothesis_ 为了进化优势.
+ 根本上，我们是否总希望把概念区分开来？
