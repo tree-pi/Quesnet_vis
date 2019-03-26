@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns:ns0="http://www.gexf.net/1.1draft/viz" version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="edge" mode="static">
+      <attribute id="3" title="label" type="string" />
+      <attribute id="4" title="id_lk" type="string" />
+    </attributes>
+    <attributes class="node" mode="static">
+      <attribute id="0" title="feature" type="string" />
+      <attribute id="1" title="reference" type="string" />
+      <attribute id="2" title="content" type="string" />
+    </attributes>
+    <nodes>
+      <node id="s9333" label="普世的爱，不对特定的人有关，难道不是爱吗?">
+        <ns0:color b="38" g="37" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s73548" label="不知道该刺激哪里；现有刺激的技术可能不成熟.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s59215" label="爱不带来物质回报，不功利.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q32792" label="与生活其他的奖赏有什么关系?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s46545" label="动物无法主观汇报爱情，所以动物研究永远无法理解人的爱情（只可以帮助理解择偶）.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q30335" label="如何定义“功利”?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s26799" label="如果可以用其他人代替这个人，那就不是爱（而是爱的这个人带给你的某些东西，比如“付出”的感觉）.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s39874" label="会有激素调节.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s41613" label="需要分离生理变化（性征发育、激素）的影响.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q2760" label="当这个激素消失后，会有什么行为变化?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="a65439" label="看爱人照片和朋友照片，通过fMRI看脑激活有何不同">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="Aron et al 2005" />
+          <attvalue for="2" value=" " />
+        </attvalues>
+      </node>
+      <node id="q72859" label="但是如果爱情刚刚开始，是否有这个奖赏?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="q51146" label="外部动机是否一直在被内化?比如背单词，原本是为了获得奖励，但渐渐喜欢上了背单词本身.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s89190" label="爱是一种内部感受（愉悦感）.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q79402" label="如果一个人的爱不求回报，还会有奖赏回路的激活吗?">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s69427" label="这到底是爱还是被爱的感觉?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s4570" label="如果可以用其它很多类似的东西替代，那就不是爱（爱的是外部激励）.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s64207" label="刺激大脑，主观汇报，是否感受到爱?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q1758" label="与伴侣持久的长期之爱，神经过程是什么?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="a76815" label="找刚刚分手但还依然爱着的苦逼人来参与实验，看爱人照片和朋友照片">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="Fisher 2010" />
+          <attvalue for="2" value=" " />
+        </attvalues>
+      </node>
+      <node id="a4434" label="能阻止田鼠对固定伴侣的偏好">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="Young and Wang, 2004" />
+          <attvalue for="2" value=" " />
+        </attvalues>
+      </node>
+      <node id="q21616" label="爱是什么?">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Central question" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="s48345" label="大脑哪里应该会有激活?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q47469" label="分手后的神经过程是什么?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s55448" label="呈现爱人的图片或其他信息，看大脑如何被激活.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s84346" label="只是说爱和友情的区别是奖赏回路，但是爱和工作还有别的差异，比如社会性，比如温柔的感觉.">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s57058" label="跟踪爱情中的人，看主观”爱的感觉“的量表，同时找脑信号correlation.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s18458" label="分手后会有不同的感受.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s27534" label="爱是基于已有的经验和记忆，对某种特定的人产生了反应.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s65061" label="应该比较爱人的照片和其它触发奖赏回路的刺激（比如美食照片），激发的反应差别在哪里.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q17990" label="汇报对某个人的爱，还是一种整体感觉而不针对与某个人?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s90346" label="不能给出causal relation.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q50517" label="是否付出是为了对方，还是只是享受付出的过程，如何区别这两者?">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="s82086" label="找到特别人群（比如使用了hormone blocker的人），研究他们的爱有何不同.">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s9191" label="你可以付出，但别人不知道是你，你是否愿意付出?">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s15094" label="我给父母打电话，是分享我的事（为了自己）还是听他们的唠叨（为了他们），感受不同.">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="s11520" label="注射催产素和加压素，看是否改变草原田鼠的择偶习惯.">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+          <attvalue for="1" value="Young and Wang, 2004" />
+          <attvalue for="2" value="注射催产素和加压素，看是否改变草原田鼠的择偶习惯. " />
+        </attvalues>
+      </node>
+      <node id="s62727" label="会有记忆脑区的区别（然而应该怎么区别?不确定）.">
+        <ns0:color b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Statement" />
+        </attvalues>
+      </node>
+      <node id="q10351" label="浪漫之爱的神经过程是什么?">
+        <ns0:color b="38" g="137" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Question" />
+        </attvalues>
+      </node>
+      <node id="a4870" label="诸多与奖赏回路相关的脑区活跃">
+        <ns0:color b="32" g="129" r="199" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+          <attvalue for="1" value="Aron et al 2005" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="s9333" target="s26799">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l66211" />
+        </attvalues>
+      </edge>
+      <edge id="1" source="s73548" target="s64207">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l71725" />
+        </attvalues>
+      </edge>
+      <edge id="2" source="s59215" target="s9191">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l97713" />
+        </attvalues>
+      </edge>
+      <edge id="3" source="s59215" target="q30335">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l13111" />
+        </attvalues>
+      </edge>
+      <edge id="4" source="s59215" target="s15094">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l39915" />
+        </attvalues>
+      </edge>
+      <edge id="5" source="s59215" target="q21616">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l78860" />
+        </attvalues>
+      </edge>
+      <edge id="6" source="q32792" target="a4870">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l94063" />
+        </attvalues>
+      </edge>
+      <edge id="7" source="q32792" target="s84346">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l47528" />
+        </attvalues>
+      </edge>
+      <edge id="8" source="s46545" target="s11520">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l2612" />
+        </attvalues>
+      </edge>
+      <edge id="9" source="s26799" target="q50517">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l75352" />
+        </attvalues>
+      </edge>
+      <edge id="10" source="s39874" target="s48345">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l4904" />
+        </attvalues>
+      </edge>
+      <edge id="11" source="s41613" target="s82086">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l75182" />
+        </attvalues>
+      </edge>
+      <edge id="12" source="s41613" target="s27534">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l81850" />
+        </attvalues>
+      </edge>
+      <edge id="13" source="q2760" target="a4434">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l98787" />
+        </attvalues>
+      </edge>
+      <edge id="14" source="a65439" target="s48345">
+        <attvalues>
+          <attvalue for="3" value="prediction" />
+          <attvalue for="4" value="l11875" />
+        </attvalues>
+      </edge>
+      <edge id="15" source="a65439" target="s69427">
+        <attvalues>
+          <attvalue for="3" value="criticize" />
+          <attvalue for="4" value="l72163" />
+        </attvalues>
+      </edge>
+      <edge id="16" source="a65439" target="a4870">
+        <attvalues>
+          <attvalue for="3" value="finding" />
+          <attvalue for="4" value="l11429" />
+        </attvalues>
+      </edge>
+      <edge id="17" source="a65439" target="s65061">
+        <attvalues>
+          <attvalue for="3" value="criticize" />
+          <attvalue for="4" value="l10530" />
+        </attvalues>
+      </edge>
+      <edge id="18" source="a65439" target="s55448">
+        <attvalues>
+          <attvalue for="3" value="operational-def" />
+          <attvalue for="4" value="l27429" />
+        </attvalues>
+      </edge>
+      <edge id="19" source="q72859" target="a4870">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l13784" />
+        </attvalues>
+      </edge>
+      <edge id="20" source="q51146" target="s15094">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l11175" />
+        </attvalues>
+      </edge>
+      <edge id="21" source="s89190" target="q21616">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l7883" />
+        </attvalues>
+      </edge>
+      <edge id="22" source="q79402" target="a4870">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l12250" />
+        </attvalues>
+      </edge>
+      <edge id="23" source="s69427" target="q47469">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l57391" />
+        </attvalues>
+      </edge>
+      <edge id="24" source="s4570" target="q21616">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l23934" />
+        </attvalues>
+      </edge>
+      <edge id="25" source="s64207" target="q10351">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l64666" />
+        </attvalues>
+      </edge>
+      <edge id="26" source="s64207" target="q17990">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l56826" />
+        </attvalues>
+      </edge>
+      <edge id="27" source="q1758" target="s11520">
+        <attvalues>
+          <attvalue for="3" value="operatinalize" />
+          <attvalue for="4" value="l1032" />
+        </attvalues>
+      </edge>
+      <edge id="28" source="q1758" target="q21616">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l14950" />
+        </attvalues>
+      </edge>
+      <edge id="29" source="a76815" target="q47469">
+        <attvalues>
+          <attvalue for="3" value="operational-def" />
+          <attvalue for="4" value="l502" />
+        </attvalues>
+      </edge>
+      <edge id="30" source="a76815" target="s18458">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l34412" />
+        </attvalues>
+      </edge>
+      <edge id="31" source="a4434" target="s11520">
+        <attvalues>
+          <attvalue for="3" value="finding" />
+          <attvalue for="4" value="l45818" />
+        </attvalues>
+      </edge>
+      <edge id="32" source="q21616" target="q10351">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l19449" />
+        </attvalues>
+      </edge>
+      <edge id="33" source="q21616" target="s27534">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l907" />
+        </attvalues>
+      </edge>
+      <edge id="34" source="s48345" target="s62727">
+        <attvalues>
+          <attvalue for="3" value="hypothesis" />
+          <attvalue for="4" value="l90585" />
+        </attvalues>
+      </edge>
+      <edge id="35" source="s55448" target="q10351">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l41188" />
+        </attvalues>
+      </edge>
+      <edge id="36" source="s57058" target="q10351">
+        <attvalues>
+          <attvalue for="3" value="proposal" />
+          <attvalue for="4" value="l29594" />
+        </attvalues>
+      </edge>
+      <edge id="37" source="s57058" target="s90346">
+        <attvalues>
+          <attvalue for="3" value="criticism" />
+          <attvalue for="4" value="l30623" />
+        </attvalues>
+      </edge>
+      <edge id="38" source="q50517" target="s9191">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l10177" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
