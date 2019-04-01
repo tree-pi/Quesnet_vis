@@ -1,0 +1,37 @@
+How to select process parameters in metal 3D printing?
+	_specification_ What is the categories of the process parameters?
+		_answer_ Laser related parameter
+			_specification_ Laser power
+			_specification_ Laser scannning speed 
+			_specification_ Laser scanning pattern
+			_specification_ Laser inclined angle
+		_answer_ Material related parameter
+			_specification_ Material type
+			_specification_ Material volume speed 
+		_answer_ Component related parameter?
+			_specification_ Component geometry 
+	_category_ What is the metal 3D printing technology?
+		_answer_ selective laser melting (powder bed based) or laser metal deposition (powder flown based)
+			_follow-up_ What the difference of parameter selection?
+				_answer_ LMD has higher laser power and material volume speed
+	_objective_ How to evaluate the better process parameters?
+		_answer_ To reduce distortion, defects and porosity of the component.
+			_follow-up_ Is there a more simple evaluation criteria?
+				_answer_ reduce residual stress concentration (mechanical)
+				_answer_ improve temperature distribution homogeneity (thermal)
+	_method_ What are the existing process parameter selection methods?
+		_answer_ via conducting experiments
+			_limitation_ time and labor consumption, limited adaptivity 
+		_answer_ via modelling and simulation 
+			_category_ experimental based data analysis 
+			_category_ numerical methods 
+				_specification_ laser powder interaction model (powder input)
+					_answer_ Laser related parameter
+					_answer_ Material related parameter
+				_specification_ melt pool model (melt and solidify within melt pool)
+					_input_ Laser related parameter?
+					_input_ Material related parameter?
+				_specification_ temperautre field and microstructure model (melt and solidify in the whole component)
+					_input_ Laser related parameter?
+					_input_ Material related parameter?
+					_input_ Componnet related parameter?
