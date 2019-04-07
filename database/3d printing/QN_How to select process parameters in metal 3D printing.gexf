@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes class="edge" mode="static">
+      <attribute id="3" title="label" type="string" />
+      <attribute id="4" title="id_lk" type="string" />
+    </attributes>
+    <attributes class="node" mode="static">
+      <attribute id="0" title="feature" type="string" />
+      <attribute id="1" title="content" type="string" />
+      <attribute id="2" title="reference" type="string" />
+    </attributes>
+    <meta>
+      <creator>NetworkX 2.2</creator>
+      <lastmodified>01/04/2019</lastmodified>
+    </meta>
+    <nodes>
+      <node id="qd34814" label="How to select process parameters in metal 3D printing?">
+        <viz:color a="0" b="38" g="37" r="205" />
+        <attvalues>
+          <attvalue for="0" value="Central question" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="" />
+        </attvalues>
+      </node>
+      <node id="ad15883" label="What is the categories of the process parameters?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad49494" label="Laser related paramete">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad26275" label="Laser power">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad48376" label="Laser scannning speed ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad71669" label="Laser scanning pattern">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad16363" label="Laser inclined angle">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad14801" label="Material related paramete">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad27515" label="Material type">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad20947" label="Material volume speed ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad59279" label="Component related parameter">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad54208" label="Component geometry ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad15787" label="What is the metal 3D printing technology?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad68820" label="selective laser melting (powder bed based) or laser metal deposition (powder flown based">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad62880" label="What the difference of parameter selection?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad91448" label="LMD has higher laser power and material volume spee">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad32436" label="How to evaluate the better process parameters?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad98856" label="To reduce distortion, defects and porosity of the component">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad61342" label="Is there a more simple evaluation criteria?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad43206" label="reduce residual stress concentration (mechanical">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad44627" label="improve temperature distribution homogeneity (thermal">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad53996" label="What are the existing process parameter selection methods?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad72488" label="via conducting experiment">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad10561" label="time and labor consumption, limited adaptivity ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad92888" label="via modelling and simulation">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad21162" label="experimental based data analysis ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad19927" label="numerical methods ">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad75022" label="laser powder interaction model (powder input)">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad46720" label="melt pool model (melt and solidify within melt pool)">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad77682" label="Laser related parameter?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad20001" label="Material related parameter?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad99424" label="temperautre field and microstructure model (melt and solidify in the whole component)">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+      <node id="ad36505" label="Componnet related parameter?">
+        <viz:color a="0" b="249" g="202" r="144" />
+        <attvalues>
+          <attvalue for="0" value="Answer" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="qd34814" target="ad15883">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l2932" />
+        </attvalues>
+      </edge>
+      <edge id="1" source="qd34814" target="ad15787">
+        <attvalues>
+          <attvalue for="3" value="category" />
+          <attvalue for="4" value="l2812" />
+        </attvalues>
+      </edge>
+      <edge id="2" source="qd34814" target="ad32436">
+        <attvalues>
+          <attvalue for="3" value="objective" />
+          <attvalue for="4" value="l64777" />
+        </attvalues>
+      </edge>
+      <edge id="3" source="qd34814" target="ad53996">
+        <attvalues>
+          <attvalue for="3" value="method" />
+          <attvalue for="4" value="l6232" />
+        </attvalues>
+      </edge>
+      <edge id="4" source="ad15883" target="ad49494">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l14192" />
+        </attvalues>
+      </edge>
+      <edge id="5" source="ad15883" target="ad14801">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l794" />
+        </attvalues>
+      </edge>
+      <edge id="6" source="ad15883" target="ad59279">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l38692" />
+        </attvalues>
+      </edge>
+      <edge id="7" source="ad49494" target="ad26275">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l84165" />
+        </attvalues>
+      </edge>
+      <edge id="8" source="ad49494" target="ad48376">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l20953" />
+        </attvalues>
+      </edge>
+      <edge id="9" source="ad49494" target="ad71669">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l70802" />
+        </attvalues>
+      </edge>
+      <edge id="10" source="ad49494" target="ad16363">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l58402" />
+        </attvalues>
+      </edge>
+      <edge id="11" source="ad49494" target="ad75022">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l75275" />
+        </attvalues>
+      </edge>
+      <edge id="12" source="ad14801" target="ad27515">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l91193" />
+        </attvalues>
+      </edge>
+      <edge id="13" source="ad14801" target="ad20947">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l38016" />
+        </attvalues>
+      </edge>
+      <edge id="14" source="ad14801" target="ad75022">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l2686" />
+        </attvalues>
+      </edge>
+      <edge id="15" source="ad59279" target="ad54208">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l52621" />
+        </attvalues>
+      </edge>
+      <edge id="16" source="ad15787" target="ad68820">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l90146" />
+        </attvalues>
+      </edge>
+      <edge id="17" source="ad68820" target="ad62880">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l51477" />
+        </attvalues>
+      </edge>
+      <edge id="18" source="ad62880" target="ad91448">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l78307" />
+        </attvalues>
+      </edge>
+      <edge id="19" source="ad32436" target="ad98856">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l54317" />
+        </attvalues>
+      </edge>
+      <edge id="20" source="ad98856" target="ad61342">
+        <attvalues>
+          <attvalue for="3" value="follow-up" />
+          <attvalue for="4" value="l26008" />
+        </attvalues>
+      </edge>
+      <edge id="21" source="ad61342" target="ad43206">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l49201" />
+        </attvalues>
+      </edge>
+      <edge id="22" source="ad61342" target="ad44627">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l8344" />
+        </attvalues>
+      </edge>
+      <edge id="23" source="ad53996" target="ad72488">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l88551" />
+        </attvalues>
+      </edge>
+      <edge id="24" source="ad53996" target="ad92888">
+        <attvalues>
+          <attvalue for="3" value="answer" />
+          <attvalue for="4" value="l20201" />
+        </attvalues>
+      </edge>
+      <edge id="25" source="ad72488" target="ad10561">
+        <attvalues>
+          <attvalue for="3" value="limitation" />
+          <attvalue for="4" value="l81000" />
+        </attvalues>
+      </edge>
+      <edge id="26" source="ad92888" target="ad21162">
+        <attvalues>
+          <attvalue for="3" value="category" />
+          <attvalue for="4" value="l43743" />
+        </attvalues>
+      </edge>
+      <edge id="27" source="ad92888" target="ad19927">
+        <attvalues>
+          <attvalue for="3" value="category" />
+          <attvalue for="4" value="l56055" />
+        </attvalues>
+      </edge>
+      <edge id="28" source="ad19927" target="ad75022">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l60265" />
+        </attvalues>
+      </edge>
+      <edge id="29" source="ad19927" target="ad46720">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l41968" />
+        </attvalues>
+      </edge>
+      <edge id="30" source="ad19927" target="ad99424">
+        <attvalues>
+          <attvalue for="3" value="specification" />
+          <attvalue for="4" value="l74965" />
+        </attvalues>
+      </edge>
+      <edge id="31" source="ad46720" target="ad77682">
+        <attvalues>
+          <attvalue for="3" value="input" />
+          <attvalue for="4" value="l98660" />
+        </attvalues>
+      </edge>
+      <edge id="32" source="ad46720" target="ad20001">
+        <attvalues>
+          <attvalue for="3" value="input" />
+          <attvalue for="4" value="l29337" />
+        </attvalues>
+      </edge>
+      <edge id="33" source="ad99424" target="ad99424">
+        <attvalues>
+          <attvalue for="3" value="input" />
+          <attvalue for="4" value="l54488" />
+        </attvalues>
+      </edge>
+      <edge id="34" source="ad99424" target="ad36505">
+        <attvalues>
+          <attvalue for="3" value="input" />
+          <attvalue for="4" value="l45822" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
