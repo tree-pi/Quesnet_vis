@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "content": "", "feature": "Central question", "font": {"color": "white"}, "id": "What is the categories of the process parameters?", "label": "What is the categories of the process parameters?", "reference": "", "shape": "dot", "size": 20}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser related paramete", "label": "Laser related paramete", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser power", "label": "Laser power", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scannning speed ", "label": "Laser scannning speed ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scanning pattern", "label": "Laser scanning pattern", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser inclined angle", "label": "Laser inclined angle", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material related paramete", "label": "Material related paramete", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material type", "label": "Material type", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material volume speed ", "label": "Material volume speed ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Component related parameter", "label": "Component related parameter", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Component geometry ", "label": "Component geometry ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "", "label": "", "reference": [], "shape": "dot", "size": 12}]);
+        edges = new vis.DataSet([{"from": "What is the categories of the process parameters?", "label": "answer", "to": "Laser related paramete"}, {"from": "Laser related paramete", "label": "specification", "to": "Laser power"}, {"from": "Laser related paramete", "label": "specification", "to": "Laser scannning speed "}, {"from": "Laser related paramete", "label": "specification", "to": "Laser scanning pattern"}, {"from": "Laser related paramete", "label": "specification", "to": "Laser inclined angle"}, {"from": "What is the categories of the process parameters?", "label": "answer", "to": "Material related paramete"}, {"from": "Material related paramete", "label": "specification", "to": "Material type"}, {"from": "Material related paramete", "label": "specification", "to": "Material volume speed "}, {"from": "What is the categories of the process parameters?", "label": "answer", "to": "Component related parameter"}, {"from": "Component related parameter", "label": "specification", "to": "Component geometry "}, {"from": "What is the categories of the process parameters?", "label": "", "to": ""}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": true
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -8000,
+            "springConstant": 0.001,
+            "springLength": 100
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

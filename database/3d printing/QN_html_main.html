@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "content": "", "feature": "Central question", "font": {"color": "white"}, "id": "What is 3D printing (additive manufacturing, AM)?", "label": "What is 3D printing (additive manufacturing, AM)?", "reference": "", "shape": "dot", "size": 20}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "What is the material of the 3D printing?", "label": "What is the material of the 3D printing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "plastic", "label": "plastic", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "meta", "label": "meta", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "what is the metal 3D printing?", "label": "what is the metal 3D printing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "selective laser melting (powder bed based) or laser metal deposition (powder flown based", "label": "selective laser melting (powder bed based) or laser metal deposition (powder flown based", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "What the difference of parameter selection?", "label": "What the difference of parameter selection?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "LMD has higher laser power and material volume speed", "label": "LMD has higher laser power and material volume speed", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "cerami", "label": "cerami", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "cel", "label": "cel", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Why is it additive manufacturing?", "label": "Why is it additive manufacturing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Does there exist subtructive manufacturing?", "label": "Does there exist subtructive manufacturing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Traditional milling, drilling are subtructive manufacturin", "label": "Traditional milling, drilling are subtructive manufacturin", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "What is the scheme of the additive manufacturing?", "label": "What is the scheme of the additive manufacturing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "To build the component layer by laye", "label": "To build the component layer by laye", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "How to make the building plan of the additive manufacturing?", "label": "How to make the building plan of the additive manufacturing?", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "How to select process parameters of the metal AM?", "label": "How to select process parameters of the metal AM?", "reference": [], "shape": "dot", "size": 12}, {"color": "orange", "font": {"color": "white"}, "id": "what is the categories of the process parameters", "label": "what is the categories of the process parameters", "shape": "dot", "size": 15}, {"color": "orange", "font": {"color": "white"}, "id": "What are the existing process parameter selection methods", "label": "What are the existing process parameter selection methods", "shape": "dot", "size": 15}, {"color": "orange", "font": {"color": "white"}, "id": "How to evaluate the better process parameters", "label": "How to evaluate the better process parameters", "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "What is 3D printing (additive manufacturing, AM)?", "label": "question", "to": "What is the material of the 3D printing?"}, {"from": "What is the material of the 3D printing?", "label": "answer", "to": "plastic"}, {"from": "What is the material of the 3D printing?", "label": "answer", "to": "meta"}, {"from": "meta", "label": "question", "to": "what is the metal 3D printing?"}, {"from": "what is the metal 3D printing?", "label": "answer", "to": "selective laser melting (powder bed based) or laser metal deposition (powder flown based"}, {"from": "what is the metal 3D printing?", "label": "follow-up", "to": "What the difference of parameter selection?"}, {"from": "What the difference of parameter selection?", "label": "answer", "to": "LMD has higher laser power and material volume speed"}, {"from": "What is the material of the 3D printing?", "label": "answer", "to": "cerami"}, {"from": "What is the material of the 3D printing?", "label": "answer", "to": "cel"}, {"from": "What is 3D printing (additive manufacturing, AM)?", "label": "question", "to": "Why is it additive manufacturing?"}, {"from": "Why is it additive manufacturing?", "label": "follow-up", "to": "Does there exist subtructive manufacturing?"}, {"from": "Does there exist subtructive manufacturing?", "label": "answer", "to": "Traditional milling, drilling are subtructive manufacturin"}, {"from": "Why is it additive manufacturing?", "label": "question", "to": "What is the scheme of the additive manufacturing?"}, {"from": "What is the scheme of the additive manufacturing?", "label": "answer", "to": "To build the component layer by laye"}, {"from": "What is 3D printing (additive manufacturing, AM)?", "label": "question", "to": "How to make the building plan of the additive manufacturing?"}, {"from": "How to make the building plan of the additive manufacturing?", "label": "follow-up", "to": "How to select process parameters of the metal AM?"}, {"from": "How to select process parameters of the metal AM?", "label": "follow-up", "to": "what is the categories of the process parameters"}, {"from": "what is the categories of the process parameters", "label": "follow-up", "to": "What are the existing process parameter selection methods"}, {"from": "What are the existing process parameter selection methods", "label": "follow-up", "to": "How to evaluate the better process parameters"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": true
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -8000,
+            "springConstant": 0.001,
+            "springLength": 100
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
