@@ -1,0 +1,50 @@
+How to select process parameters in metal 3D printing?
+	_category_ What are the different categories of the process parameters?
+		_answer...
+		... Laser related parameter
+			_specification...
+			... Laser power
+			... Laser scannning speed 
+			... Laser scanning pattern
+			... Laser inclined angle
+			_end
+		... Material related parameter
+			_specification...
+			... Material type
+			... Material volume speed 
+			_end
+		... Component related parameter?
+			_specification_ Component geometry 
+		_end
+	_category_ What are the different categories of metal 3D printing method?
+		_answer...
+		... selective laser melting (powder bed based)
+		... laser metal deposition (powder flown based)
+		_end
+			_follow-up_ What is the difference of parameter selection between these methods?
+				_answer_ LMD has higher laser power and material volume speed.
+	_objective_ How to evaluate the better process parameters?
+		_answer_ To reduce distortion, defects and porosity of the component.
+			_follow-up_ Is there a simpler evaluation criteria?
+				_answer...
+				... reduce residual stress concentration (mechanical).
+				... improve temperature distribution homogeneity (thermal).
+				_end
+	_method_ What are the existing process parameter selection methods?
+		_answer...
+		... via conducting experiments
+			_limitation_ time and labor consumption, limited adaptivity 
+		... via modelling and simulation 
+			_category_ experimental based data analysis 
+			_category_ numerical methods 
+				_specification_ laser powder interaction model (powder input)
+					_answer_ Laser related parameter
+					_answer_ Material related parameter
+				_specification_ melt pool model (melt and solidify within melt pool)
+					_input_ Laser related parameter?
+					_input_ Material related parameter?
+				_specification_ temperautre field and microstructure model (melt and solidify in the whole component)
+					_input_ Laser related parameter?
+					_input_ Material related parameter?
+					_input_ Componnet related parameter?
+		_end
