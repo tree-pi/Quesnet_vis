@@ -1,0 +1,21 @@
+What is 3D printing (additive manufacturing, AM)?
+	_question_ What is the material of the 3D printing?
+		_answer_ plastic.
+		_answer_ metal.
+			_question_ what is the metal 3D printing?
+				_answer_ selective laser melting (SLM, powder bed based) or laser metal deposition (LMD, powder flown based).
+				_follow-up_ What the difference of parameter selection between the SLM and LMD?
+					_answer_ LMD has higher laser power and material volume speed. 
+		_answer_ ceramic.
+		_answer_ cell.
+	_question_ Why is it additive manufacturing?
+		_follow-up_ Does there exist subtructive manufacturing?
+			_answer_ Traditional milling, drilling are subtructive manufacturing.
+		_question_ What is the scheme of the additive manufacturing?
+			_answer_ To build the component layer by layer.
+	_question_ How to make the building plan of the additive manufacturing?
+		_follow-up_ How to select process parameters of the metal AM?
+			_answer_ The amount of the process parameters need to be listed.
+			_follow-up_ What is the categories of the process parameters?
+				_follow-up_ What are the existing process parameter selection methods?
+					_follow-up_ How to evaluate the better process parameters?

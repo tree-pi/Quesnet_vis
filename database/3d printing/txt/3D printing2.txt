@@ -1,0 +1,12 @@
+What is the categories of the process parameters?
+	_answer_ Laser related parameter
+		_specification_ Laser power
+		_specification_ Laser scannning speed 
+		_specification_ Laser scanning pattern
+		_specification_ Laser inclined angle
+	_answer_ Material related parameter
+		_specification_ Material type
+		_specification_ Material volume speed 
+	_answer_ Component related parameter?
+		_specification_ Component geometry 
+	
