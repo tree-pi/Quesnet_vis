@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "content": [], "feature": "selected node", "font": {"color": "white"}, "id": "Laser related parameter", "label": "Laser related parameter", "reference": [], "shape": "dot", "size": 20}, {"color": "yellow", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser power.", "label": "Laser power.", "reference": [], "shape": "dot", "size": 15}, {"color": "yellow", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "melt pool model (melt and solidify within melt pool).", "label": "melt pool model (melt and solidify within melt pool).", "reference": [], "shape": "dot", "size": 15}, {"color": "yellow", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser inclined angle.", "label": "Laser inclined angle.", "reference": [], "shape": "dot", "size": 15}, {"color": "yellow", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "What is the categories of the process parameters?", "label": "What is the categories of the process parameters?", "reference": [], "shape": "dot", "size": 15}, {"color": "yellow", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "temperautre field and microstructure model (melt and solidify in the whole component).", "label": "temperautre field and microstructure model (melt and solidify in the whole component).", "reference": [], "shape": "dot", "size": 15}, {"color": "green", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scanning pattern.", "label": "Laser scanning pattern.", "reference": [], "shape": "dot", "size": 15}, {"color": "green", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scannning speed.", "label": "Laser scannning speed.", "reference": [], "shape": "dot", "size": 15}, {"color": "green", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "laser powder interaction model (powder input).", "label": "laser powder interaction model (powder input).", "reference": [], "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "Laser power.", "label": "specification", "to": "Laser related parameter"}, {"from": "melt pool model (melt and solidify within melt pool).", "label": "answer", "to": "Laser related parameter"}, {"from": "Laser inclined angle.", "label": "specification", "to": "Laser related parameter"}, {"from": "What is the categories of the process parameters?", "label": "answer", "to": "Laser related parameter"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component).", "label": "answer", "to": "Laser related parameter"}, {"from": "Laser related parameter", "label": "specification", "to": "Laser scanning pattern."}, {"from": "Laser related parameter", "label": "specification", "to": "Laser scannning speed."}, {"from": "Laser related parameter", "label": "answer", "to": "laser powder interaction model (powder input)."}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": true
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -10000,
+            "springConstant": 0.001,
+            "springLength": 200
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

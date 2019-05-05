@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser power.", "label": "Laser power.", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material type.", "label": "Material type.", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "numerical methods.", "label": "numerical methods.", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "melt pool model (melt and solidify within melt pool).", "label": "melt pool model (melt and solidify within melt pool).", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser inclined angle.", "label": "Laser inclined angle.", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "To build the component layer by layer", "label": "To build the component layer by layer", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "plastic", "label": "plastic", "reference": [], "shape": "dot", "size": 12}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material related parameter", "label": "Material related parameter", "reference": [], "shape": "dot", "size": 12}, {"color": "green", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "What is the categories of the process parameters?", "label": "What is the categories of the process parameters?", "reference": [], "shape": "dot", "size": 12}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "Is there a more simple evaluation criteria?", "label": "Is there a more simple evaluation criteria?", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "via modelling and simulation", "label": "via modelling and simulation", "reference": [], "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Central question", "font": {"color": "white"}, "id": "What are the existing process parameter selection methods?", "label": "What are the existing process parameter selection methods?", "reference": "", "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "reduce residual stress concentration (mechanical)", "label": "reduce residual stress concentration (mechanical)", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "temperautre field and microstructure model (melt and solidify in the whole component).", "label": "temperautre field and microstructure model (melt and solidify in the whole component).", "reference": [], "shape": "dot", "size": 20}, {"color": "green", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "How to evaluate the better process parameters?", "label": "How to evaluate the better process parameters?", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "selective laser melting (SLM, powder bed based) or laser metal deposition (LMD, powder flown based)", "label": "selective laser melting (SLM, powder bed based) or laser metal deposition (LMD, powder flown based)", "reference": [], "shape": "dot", "size": 20}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "What is the scheme of the additive manufacturing?", "label": "What is the scheme of the additive manufacturing?", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Component geometry.", "label": "Component geometry.", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "The amount of the process parameters need to be listed", "label": "The amount of the process parameters need to be listed", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Componnet related parameter", "label": "Componnet related parameter", "reference": [], "shape": "dot", "size": 15}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "How to make the building plan of the additive manufacturing?", "label": "How to make the building plan of the additive manufacturing?", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "LMD has higher laser power and material volume speed", "label": "LMD has higher laser power and material volume speed", "reference": [], "shape": "dot", "size": 15}, {"color": "green", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "What the difference of parameter selection between the SLM and LMD?", "label": "What the difference of parameter selection between the SLM and LMD?", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "To reduce distortion, defects and porosity of the component", "label": "To reduce distortion, defects and porosity of the component", "reference": [], "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Central question", "font": {"color": "white"}, "id": "What is 3D printing (additive manufacturing, AM)?", "label": "What is 3D printing (additive manufacturing, AM)?", "reference": "", "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "ceramic", "label": "ceramic", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "time and labor consumption, limited adaptivity.", "label": "time and labor consumption, limited adaptivity.", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "experimental based data analysis.", "label": "experimental based data analysis.", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser related parameter", "label": "Laser related parameter", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Traditional milling, drilling are subtructive manufacturing", "label": "Traditional milling, drilling are subtructive manufacturing", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scannning speed.", "label": "Laser scannning speed.", "reference": [], "shape": "dot", "size": 20}, {"color": "green", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "Does there exist subtructive manufacturing?", "label": "Does there exist subtructive manufacturing?", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "cell", "label": "cell", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "metal", "label": "metal", "reference": [], "shape": "dot", "size": 20}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "improve temperature distribution homogeneity (thermal)", "label": "improve temperature distribution homogeneity (thermal)", "reference": [], "shape": "dot", "size": 20}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "Why is it additive manufacturing?", "label": "Why is it additive manufacturing?", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material volume speed.", "label": "Material volume speed.", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "via conducting experiments", "label": "via conducting experiments", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser scanning pattern.", "label": "Laser scanning pattern.", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Component related parameter", "label": "Component related parameter", "reference": [], "shape": "dot", "size": 15}, {"color": "blue", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "laser powder interaction model (powder input).", "label": "laser powder interaction model (powder input).", "reference": [], "shape": "dot", "size": 15}, {"color": "green", "content": [], "feature": "Follow-up", "font": {"color": "white"}, "id": "How to select process parameters of the metal AM?", "label": "How to select process parameters of the metal AM?", "reference": [], "shape": "dot", "size": 15}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "what is the metal 3D printing?", "label": "what is the metal 3D printing?", "reference": [], "shape": "dot", "size": 15}, {"color": "orange", "content": [], "feature": "Question", "font": {"color": "white"}, "id": "What is the material of the 3D printing?", "label": "What is the material of the 3D printing?", "reference": [], "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "Laser power.", "label": "specification", "to": "Laser related parameter"}, {"from": "Material type.", "label": "specification", "to": "Material related parameter"}, {"from": "numerical methods.", "label": "category", "to": "via modelling and simulation"}, {"from": "numerical methods.", "label": "specification", "to": "melt pool model (melt and solidify within melt pool)."}, {"from": "numerical methods.", "label": "specification", "to": "laser powder interaction model (powder input)."}, {"from": "numerical methods.", "label": "specification", "to": "temperautre field and microstructure model (melt and solidify in the whole component)."}, {"from": "melt pool model (melt and solidify within melt pool).", "label": "answer", "to": "Laser related parameter"}, {"from": "melt pool model (melt and solidify within melt pool).", "label": "answer", "to": "Material related parameter"}, {"from": "Laser inclined angle.", "label": "specification", "to": "Laser related parameter"}, {"from": "To build the component layer by layer", "label": "answer", "to": "What is the scheme of the additive manufacturing?"}, {"from": "plastic", "label": "answer", "to": "What is the material of the 3D printing?"}, {"from": "Material related parameter", "label": "answer", "to": "laser powder interaction model (powder input)."}, {"from": "Material related parameter", "label": "answer", "to": "temperautre field and microstructure model (melt and solidify in the whole component)."}, {"from": "Material related parameter", "label": "specification", "to": "Material volume speed."}, {"from": "Material related parameter", "label": "answer", "to": "What is the categories of the process parameters?"}, {"from": "What is the categories of the process parameters?", "label": "follow-up", "to": "How to select process parameters of the metal AM?"}, {"from": "What is the categories of the process parameters?", "label": "answer", "to": "Component related parameter"}, {"from": "What is the categories of the process parameters?", "label": "answer", "to": "Laser related parameter"}, {"from": "What is the categories of the process parameters?", "label": "follow-up", "to": "What are the existing process parameter selection methods?"}, {"from": "Is there a more simple evaluation criteria?", "label": "answer", "to": "reduce residual stress concentration (mechanical)"}, {"from": "Is there a more simple evaluation criteria?", "label": "question", "to": "To reduce distortion, defects and porosity of the component"}, {"from": "Is there a more simple evaluation criteria?", "label": "answer", "to": "improve temperature distribution homogeneity (thermal)"}, {"from": "via modelling and simulation", "label": "answer", "to": "What are the existing process parameter selection methods?"}, {"from": "via modelling and simulation", "label": "category", "to": "experimental based data analysis."}, {"from": "What are the existing process parameter selection methods?", "label": "answer", "to": "via conducting experiments"}, {"from": "What are the existing process parameter selection methods?", "label": "follow-up", "to": "How to evaluate the better process parameters?"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component).", "label": "answer", "to": "Laser related parameter"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component).", "label": "answer", "to": "Componnet related parameter"}, {"from": "How to evaluate the better process parameters?", "label": "answer", "to": "To reduce distortion, defects and porosity of the component"}, {"from": "selective laser melting (SLM, powder bed based) or laser metal deposition (LMD, powder flown based)", "label": "answer", "to": "what is the metal 3D printing?"}, {"from": "What is the scheme of the additive manufacturing?", "label": "question", "to": "Why is it additive manufacturing?"}, {"from": "Component geometry.", "label": "specification", "to": "Component related parameter"}, {"from": "The amount of the process parameters need to be listed", "label": "answer", "to": "How to select process parameters of the metal AM?"}, {"from": "How to make the building plan of the additive manufacturing?", "label": "follow-up", "to": "How to select process parameters of the metal AM?"}, {"from": "How to make the building plan of the additive manufacturing?", "label": "question", "to": "What is 3D printing (additive manufacturing, AM)?"}, {"from": "LMD has higher laser power and material volume speed", "label": "answer", "to": "What the difference of parameter selection between the SLM and LMD?"}, {"from": "What the difference of parameter selection between the SLM and LMD?", "label": "follow-up", "to": "what is the metal 3D printing?"}, {"from": "What is 3D printing (additive manufacturing, AM)?", "label": "question", "to": "Why is it additive manufacturing?"}, {"from": "What is 3D printing (additive manufacturing, AM)?", "label": "question", "to": "What is the material of the 3D printing?"}, {"from": "ceramic", "label": "answer", "to": "What is the material of the 3D printing?"}, {"from": "time and labor consumption, limited adaptivity.", "label": "limitation", "to": "via conducting experiments"}, {"from": "Laser related parameter", "label": "specification", "to": "Laser scanning pattern."}, {"from": "Laser related parameter", "label": "specification", "to": "Laser scannning speed."}, {"from": "Laser related parameter", "label": "answer", "to": "laser powder interaction model (powder input)."}, {"from": "Traditional milling, drilling are subtructive manufacturing", "label": "answer", "to": "Does there exist subtructive manufacturing?"}, {"from": "Does there exist subtructive manufacturing?", "label": "follow-up", "to": "Why is it additive manufacturing?"}, {"from": "cell", "label": "answer", "to": "What is the material of the 3D printing?"}, {"from": "metal", "label": "question", "to": "what is the metal 3D printing?"}, {"from": "metal", "label": "answer", "to": "What is the material of the 3D printing?"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": true
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -8000,
+            "springConstant": 0.001,
+            "springLength": 100
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
