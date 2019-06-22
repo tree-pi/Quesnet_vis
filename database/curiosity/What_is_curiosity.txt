@@ -16,6 +16,32 @@ What is curiosity?
 		
 
 	_answer_ a need for information. [Grossnickle,2016]
+		_distinguishment_ Further distinguishement between need for information in different scenarios?
+			_answer_ Instrumental information sampling and non-instrumental information search. "People may need information to reduce uncertainty relevant to a familiar task(information sampling), or investigate to discover new tasks (information search)" [Gottlieb and Oudeyer 2018]
+				_follow-up_ What animals are capable of information sampling?
+					_answer_  crabs (Zeil, 1998), bees (Gould, 1986; Dyer, 1991) ants (Wehner et al., 2002), and moths (Vergassola et al., 2007), C. elegans(Calhoun et al., 2014).
+				_follow-up_ What are the task paradigms for information sampling?
+				_follow-up_ What are the task paradigms for non-instrumental information search?
+				_follow-up_ Do animals prefer information even if it is non-instrumental (aka useless)?
+					_answer_ Yes.
+						_evidence... 
+						... monkeys prefer a cue that discloses the reward outcome even though they can do nothing to change the outcome.[Bromberg­Martin et al. 2009]
+						... "some rats exhibit so-called sign tracking behaviours, in which they orient themselves towards a light that predicts a reward rather than to the magazine that delivers the reward".[Flagel & Robinson,2017, cited by Gottlieb and Oudeyer 2018]
+						_follow-up_ How is this preference shown on the neural level?
+							_answer_ reward/motivation system (orbitofrontal cortex and midbrain dopamine cells) encodes this preference.[Bromberg­-Martin et al., 2009]
+								_challenge_ How is reward signal ("feeling") different from the decision signal (preference and execution)?
+						_follow-up_ Computationally, why are animals motivated to gain non-instrumental information?
+							_hypothesis...
+							... preference to be engaged with positive things.
+							... desire to early resolution of uncertainty.
+							_end
+								_contrast_ What are the different predictions from these two hypothesis.
+									_answer_ The "positivity preference" will sample more positive/pleasurable but not the the most informative uncertainty reduction info.
+								_challenge_ are these motivation, or are these merely strategy for reducing uncertainty?
+									_external_ In causal inference people do employ two major types of strategy: positive testing or information gain, which matches these two hypothesis. [Coenen et al., 2015]
+				_follow-up_ Why do human seek epistemic knowledge that has nothing to do with material reward?
+					_
+
 		_follow-up_ What kind of new information is seeken? <categorization>
 			_specification_ What is the domain of information?
 				_answer_ Physical curiosity. "The exploration and manipulation of oneself and surroundings" [Dewey 1910]

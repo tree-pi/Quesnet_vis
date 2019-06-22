@@ -1,0 +1,51 @@
+What are the behaviors demosntrating curiosity?
+	_answer...
+	... Animals' spontaneous orienting to novel stimuli ("what-is-it" reflex). [Pavlov, 1927]
+	... monkeys prefer a cue that discloses the reward outcome even though they can do nothing to change the outcome.[Bromberg­Martin et al. 2009, cited by Gottlieb and Oudeyer 2018] 
+		_follow-up_ How valuable is the information exactly?
+			_answer_ The value of information about a reward is about 25% of the value of the reward itself. [Blanchard et al., 2015]
+		_follow-up_ How is this preference shown on the neural level?
+			_answer_ reward/motivation system (orbitofrontal cortex and midbrain dopamine cells) encodes this preference.[Bromberg­-Martin et al., 2009]
+	... "some rats exhibit so-called sign tracking behaviours, in which they orient themselves towards a light that predicts a reward rather than to the magazine that delivers the reward".[Flagel & Robinson,2017, cited by Gottlieb and Oudeyer 2018]
+	... Infants fixate to intermediate complexity stimuli for longer. [Kidd et al 2012]
+	... People prefer choosing options with novel cue which doesn't encode reward information. [Wittmann et al., 2008]
+		_follow-up_ What is the algorithm expressing this preference?
+			_answer_ novelty bonus.[Gittins and Jones, 1974]
+	... People self-report curiosity for trivia answers. [Gruber et al 2014]
+		_follow-up_ What variables correlate with the curiosity level?
+			_answer... 
+			... U-shape relation with confidence.[Kang et al., 2009]
+				_follow-up_ What theory will better describe this correlation?
+					_answer_ Learning gap theory. [Loewenstein, 1994]
+			... Positive correlation with memory, even of irrelevant information.[Kang et al., 2009]
+			...end
+		_follow-up_ How is this rating shown on the neural level?
+			_answer_ Higher curiosity ratings are associated with increased functional MRI activation in midbrain reward structures, including the caudate nucleus and the sub- stantia nigra–ventral tegmental areas. [ summarized by Gottlieb and Oudeyer 2018]
+	... People self-report curiosity for blurred pictures. [Jepma et al 2012]
+		_follow-up_ How is this rating shown on the neural level?
+			_answer... 
+			... the induction of perceptual curiosity, through the presentation of ambiguous visual input, activated the anterior insula and anterior cingulate cortex (ACC), brain regions sensitive to conflict and arousal.[Jepma et al 2012]
+			... the relief of perceptual curiosity, through visual disambiguation, activated regions of the striatum that have been related to reward processing. [Jepma et al 2012]
+			... the relief of perceptual curiosity was associated with hippocampal activation and enhanced incidental memory[Jepma et al 2012]
+			...end		
+	... Animals are willing to explore the environment and play without purpose.
+		_specification... Human explore different tasks in specific orders.
+			... major phase transitions in infant development of vocalizations and tool use. [Moulin­Frier et al 2014; Forestier et al 2017]
+			... human prefer playing games of intermediate difficulty and gradually increase the preferred difficulty. [Baranes et al 2014]
+			... Kids prefer playing with toys where the causal mechanism is unclear. [Schulz and Bonawitz, 2007; Cook et al., 2011]
+			... Kids prefer playing with toys contradictiory to their physics knowledge. [Bonawitz et al., 2012]
+			...end
+			_follow-up_ What computational model will describe the exploration strategy?
+				_answer_ learning progress model for humanoid robots. [Baranes & Oudeye, 2013]
+					_check_ What aspects of human curiosity can be captured by this model?							
+					_check_ What spects of human curiosity cannot be captured by this model?
+				_answer_ learning maximization with consideration of task occurence. [Dubey & Griffith]
+	...end
+	
+What are the machine algorithms with a curiosity component?
+	_answer...
+	... learning progress model for humanoid robots. [Baranes & Oudeye, 2013]
+	... biased towards exploring high semantic information content. [Girdhar & Dudek 2016]
+	... maximizing expected compression. [Luciw et al 2011]
+	... predicting action consequence with a self-supervised inverse dynamics model.[Pathak et al. 2017]
+	...end

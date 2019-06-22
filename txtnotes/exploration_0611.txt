@@ -1,0 +1,10 @@
+Deep exploration model
+- Based on mental simulation for the future to decide if do exploration now.
+- Two kinds of exploration: Directed exploration which based on the current info; Random exploration just adding more noise (bigger slope aka flatter in the exploration probability curve).
+	- similar distinguishment: Narrow, low-temperature search and Broad, high-temperature.
+- Sample deeper into the future exploration, more directed exploration (more based on current best option).
+	- but is there an optimal step of simulation?
+
+
+Criticism: This exploration is not learning anything about the world but rather optimizing the reward.
+

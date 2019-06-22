@@ -3,6 +3,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 <!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
 <script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
 
@@ -22,20 +27,46 @@
 </style>
 
 </head>
+<body class="subpage">  
+    <section id="One" class="wrapper style3">
 
-<body>
-    <div> 
-        <h2>爱是什么?</h2>
-        <h3>来自:纽约文化沙龙讨论《爱在大脑中》 </h3>
-        Reference:
+        <!-- Header -->
+            <header id="header" class="alt">
+            <div class="logo"><a href="index.html">Question Network Project </a></div>
+            <a href="#menu">Menu</a>
+            </header>
+        
+        <!-- Nav -->
+            <nav id="menu">
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <!--<li><a href="projects.html">Projects</a></li>   -->             
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+        <div class="inner">
+            <header class="align-center">
+                 <h2>爱是什么?</h2>
+                <h3>来自:纽约文化沙龙讨论《爱在大脑中》 </h3>
+        
+            </header>
+            
+        </div>
+    </section>
+
+
+ <section id="Two" class="wrapper style2">
+    <div class="inner">
+    Reference:
         <li>
         </li>
     </div>
+</section>
 
-    <div>
-        <a href="How_to_generate.html" class="button alt">如何生成这个问题网络？</a>
-    </div>
-<div id = "mynetwork">
+
+<section id="mynetwork" class="wrapper style1">
 
 <script type="text/javascript">
 
@@ -120,6 +151,6 @@
     drawGraph();
 
 </script>
-</div>
+</section>
 </body>
 </html>

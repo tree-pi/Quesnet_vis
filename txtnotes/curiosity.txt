@@ -1,0 +1,3 @@
+What does the intructor change how much the kid explores the toy? [Bonawitz, Shafto et al 2011]
+	- condition: "This is MY toy, see this" VS "I found this toy in the cupboard. wow, see this!"
+	- "authority demonstrate" limits kid's exploration.

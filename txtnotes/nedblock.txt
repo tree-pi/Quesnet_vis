@@ -1,0 +1,33 @@
+Different philosophical views: 
+1) "cognitive theories"
+1.1)consciousness as "higher order thought about perception" 
+
+how to measure consciousness?
+self report; 
+specific response to stimuli. Eg. leisioned monkey prefer to say "i don't know" for blind sight; solitary wasp can't even do conditioning -- an example of exceedingly good perception machine but nothing else.
+scanning the vegetated patients and let them think about sth.
+
+1.2) global work space theory: the function of consciousness is to offer a work space for move, decision, etc.
+
+2) "more than cognition" theories:
+exp: use tones to elicit more working memory. => people remember more than they can report
+
+Ned's theory: the feedback loop is critical.
+Overall fundamental belief: reducdtive materiallism. so just looking for the material basis is neccesary.
+
+david chalmers: dualism. or pan-psycholism. use thought experiments, like "mary the future scientist who see 'blue' the first time -- something beyond science"
+exp2: replacing a person's neurons with mechanical neurons, one by one, until a total mechanical zombie.
+--
+are AI conscious?
+- Turing test is not enough, very easy to pass. Best program: wimsical system, with mispellings and jokes.
+
+--
+Are we defining consciousness differently through history? Ancient people believed they 
+"Extended mind"
+
+--
+how do you criticize neuroscience study?
+- just read more neuro study
+
+how do philosophers find research questions?
+- read and find positions; read science papers

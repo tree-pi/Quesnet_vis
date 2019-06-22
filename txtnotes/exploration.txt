@@ -1,1 +1,22 @@
-Gupta et al. 2018 - Meta-Reinforcement Learning of Structured Exploration Strategies
+
+How to explore more efficiently?
+	_proposal...
+	... Explore differently in different tasks with prior knowledge about the task. "Most current exploration methods for deep RL use task-agnostic objectives, such as information gain or bonuses based on state visitation. However, many practical applications of RL involve learning more than a single task, and prior tasks can be used to inform how exploration should be performed in new tasks." [Gupta et al. 2018 - Meta-Reinforcement Learning of Structured Exploration Strategies]
+		_specification_ What is the algorithm?
+			_answer_ model agnostic exploration with structured noise.
+
+How do human decide what to explore?
+	_proposal...
+	... Higher uncertainty preferred. [Manohar et al., 2013; ]
+	... Adjusting sensory feature weights (leverages) to compensate decision variability [Krishnamurthy et al., 2017; Li et al, PLOS Comput. Biol 2013; Spitzer et al Nat Hum Behav, 2017]
+	... Deep exploration with future sampling.
+	_end
+		_challenge_ What would be the cognitive efforts for sampling and how to balance that out? [Gottlieb and Oudeyer,2018 ]
+		_follow-up_ Can this preference for uncertain cue explained by its instrumental utility? 
+			_Differentiation_ If a cue has high uncertainty but not relevant for task reward, should you still explore it?
+				_answer_ Monkey brain does encode uncertainty of even "useless" cues. " LIP neurons encode the reliability of visual cues independently of the rewards expected from acting based on these cues".[Foley et al., Proc. Natl Acad. Sci.2017]
+					_objection_ This is about encoding but not the actual exploration behavior?
+
+	_follow-up_ How is the exploration decision made on the neural level?
+		_answer_ saccade-related activity in the FEF differs for exploratory and exploitative saccades. [Ebitz, R. B., Albarran, E. & Moore, T. Exploration disrupts choice­predictive signals and alters dynamics in prefrontal cortex. Neuron 97, 450–461 (2018)]
+			_follow-up_ What does this activity tell about the algorithm being used?

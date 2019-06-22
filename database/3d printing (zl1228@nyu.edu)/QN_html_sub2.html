@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "content": "", "feature": "Central question", "font": {"color": "white"}, "id": "What are the existing process parameter selection methods?", "label": "What are the existing process parameter selection methods?", "reference": "", "shape": "dot", "size": 20}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "via conducting experiment", "label": "via conducting experiment", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "time and labor consumption, limited adaptivity ", "label": "time and labor consumption, limited adaptivity ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "via modelling and simulation", "label": "via modelling and simulation", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "experimental based data analysis ", "label": "experimental based data analysis ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "numerical methods ", "label": "numerical methods ", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "laser powder interaction model (powder input)", "label": "laser powder interaction model (powder input)", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser related paramete", "label": "Laser related paramete", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material related paramete", "label": "Material related paramete", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "melt pool model (melt and solidify within melt pool)", "label": "melt pool model (melt and solidify within melt pool)", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Laser related parameter", "label": "Laser related parameter", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Material related parameter", "label": "Material related parameter", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "temperautre field and microstructure model (melt and solidify in the whole component)", "label": "temperautre field and microstructure model (melt and solidify in the whole component)", "reference": [], "shape": "dot", "size": 12}, {"color": "red", "content": [], "feature": "Answer", "font": {"color": "white"}, "id": "Componnet related parameter", "label": "Componnet related parameter", "reference": [], "shape": "dot", "size": 12}]);
+        edges = new vis.DataSet([{"from": "What are the existing process parameter selection methods?", "label": "answer", "to": "via conducting experiment"}, {"from": "via conducting experiment", "label": "limitation", "to": "time and labor consumption, limited adaptivity "}, {"from": "What are the existing process parameter selection methods?", "label": "answer", "to": "via modelling and simulation"}, {"from": "via modelling and simulation", "label": "category", "to": "experimental based data analysis "}, {"from": "via modelling and simulation", "label": "category", "to": "numerical methods "}, {"from": "numerical methods ", "label": "specification", "to": "laser powder interaction model (powder input)"}, {"from": "laser powder interaction model (powder input)", "label": "answer", "to": "Laser related paramete"}, {"from": "laser powder interaction model (powder input)", "label": "answer", "to": "Material related paramete"}, {"from": "numerical methods ", "label": "specification", "to": "melt pool model (melt and solidify within melt pool)"}, {"from": "melt pool model (melt and solidify within melt pool)", "label": "answer", "to": "Laser related parameter"}, {"from": "melt pool model (melt and solidify within melt pool)", "label": "answer", "to": "Material related parameter"}, {"from": "numerical methods ", "label": "specification", "to": "temperautre field and microstructure model (melt and solidify in the whole component)"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component)", "label": "answer", "to": "Laser related parameter"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component)", "label": "answer", "to": "Material related parameter"}, {"from": "temperautre field and microstructure model (melt and solidify in the whole component)", "label": "answer", "to": "Componnet related parameter"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": true
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -8000,
+            "springConstant": 0.001,
+            "springLength": 100
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

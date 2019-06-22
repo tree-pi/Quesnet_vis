@@ -1,0 +1,26 @@
+How is the identity defined?
+	_answer_ Symbolically, it is the two things on each side of the "=" sign.
+		_my-follow-up_ What are the criteria to decide that an equal sign is used correctly? Is it the equality of numbers? Plus units or dimension analysis? 
+			_my-answer_ In math the criteria is only about quantity; in physics it is quantity plus dimension; for vectors it is the relative but not absolute position between start and end. But it is never the "same" -- they can still have different meanings, different ways to measure, etc.
+		_follow-up_ But when we say a=b, are we saying "a is the same as b"? Or what is the same, what is different?
+			_answer_ The reference of the sign is the same. The sense of the sign/ "The mode of presentation" designation?) can be different.
+				_my-confusion_ Is referent an object? Seems like the author thinks so but it is highly dependent on the context to my opinion -- if it is defined on the basis of the equal sign (or more broadly, any exchangable relationship). 
+				_my-objection_ The author thinks the referent is a true/real/holistic concept and the sign and sense are only parts of it...I don't think it's possible to say "=" in this way since it will never be able to know the complete truth of something. To put it the other way, here the author assumes the distinction between an "objective world" which generates references, and a linguistically constructed world which generates senses -- but I'm objective to that distinction since there's no objective world independent of the language, knowledge and tools we use.
+					_follow-up_ how do you interpret "a=b" if there's no reference?
+						_answer_ there is (1) the senses of a and b that needs to be specified (how we make sense of a symbol -- usually through communicatable conventions, achieved by either pointing, same measurements, shared evidence, etc.) and (2) the convention of "=" which defines what specific quality are you talking about to be the same (and of course, how do you judge what is "same")
+					_follow-up_ how do you define the identity of an object?
+						_answer_ through mulitple different "="s. E.g., tiger.color = yellow with black stripes, tiger.face = big cat.
+					_follow-up_ how can you support your claim that "there's no objective world", besides as an axiom of how we learn? E.g., is there any logical problem with that claim?
+						_answer... 
+						... The very fact that you need a symbol to represent a referent shows how language is necessary -- or, tell me, how do you refer to a referent without using language? Or **how is that sign connecting the human sense and the holy universe objects possible**? 
+						... Besides logical contradiction, is there any other way to tell that a referent exists? Does an atom exist since it's just combination of protons and electrons?
+				_follow-up_ What is the relation between sense and reference?
+					_answer_ Some senses can never fit into an existing reference (and we know that from formal logics).
+				_follow-up_ What is the relation between subjective concept and sense and referent?
+					_answer_ Concept can be emotional. Concept can be always changing between people and between times.
+					_follow-up_ Is a sense always the same to the people using the same set of signs? 
+						_my-answer_ I don't see how that is different from the concept...maybe besides how can a concept trigger more mental connections (emotions, reactions, etc.) beyond the context of that sign. Or, sense is concept bounded within a sentence.
+						_answer_ Sort of...acknowleging that people share common senses throughout generations. Well, which also means there's no absolute uniform sense across ALL people. It is possible to people to share a same sense, but impossible to share same concept.
+							_my-comment_ Isn't it always better to clarify the boundary of who is hoding certain sense? It is still wildly subjective to me...also, would be helpful if you clarify how is a sense agreed upon.
+
+
