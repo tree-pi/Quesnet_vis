@@ -5,7 +5,7 @@ What is 3D printing (additive manufacturing, AM)?
 			_question_ what is the metal 3D printing?
 				_answer_ selective laser melting (SLM, powder bed based) or laser metal deposition (LMD, powder flown based).
 				_follow-up_ What the difference of parameter selection between the SLM and LMD?
-					_answer_ LMD has higher laser power and material volume speed. 
+					_answer_ LMD has higher laser power and material volume speed.
 		_answer_ ceramic.
 		_answer_ cell.
 	_question_ Why is it additive manufacturing?

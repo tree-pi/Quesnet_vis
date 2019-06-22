@@ -1,5 +1,5 @@
 How to evaluate the better process parameters?
 	_answer_ To reduce distortion, defects and porosity of the component.
 		_question_ Is there a more simple evaluation criteria?
-			_answer_ reduce residual stress concentration (mechanical)
-			_answer_ improve temperature distribution homogeneity (thermal)
+			_answer_ reduce residual stress concentration (mechanical).
+			_answer_ improve temperature distribution homogeneity (thermal).

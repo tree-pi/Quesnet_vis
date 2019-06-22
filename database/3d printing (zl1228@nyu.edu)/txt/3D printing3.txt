@@ -1,16 +1,16 @@
 What are the existing process parameter selection methods?
-	_answer_ via conducting experiments
-		_limitation_ time and labor consumption, limited adaptivity 
-	_answer_ via modelling and simulation 
-		_category_ experimental based data analysis 
-		_category_ numerical methods 
-			_specification_ laser powder interaction model (powder input)
-				_answer_ Laser related parameter?
-				_answer_ Material related parameter?
-			_specification_ melt pool model (melt and solidify within melt pool)
-				_answer_ Laser related parameter?
-				_answer_ Material related parameter?
-			_specification_ temperautre field and microstructure model (melt and solidify in the whole component)
-				_answer_ Laser related parameter?
-				_answer_ Material related parameter?
-				_answer_ Componnet related parameter?
+	_answer_ via conducting experiments.
+		_limitation_ time and labor consumption, limited adaptivity.
+	_answer_ via modelling and simulation.
+		_category_ experimental based data analysis.
+		_category_ numerical methods.
+			_specification_ laser powder interaction model (powder input).
+				_answer_ Laser related parameter.
+				_answer_ Material related parameter.
+			_specification_ melt pool model (melt and solidify within melt pool).
+				_answer_ Laser related parameter.
+				_answer_ Material related parameter.
+			_specification_ temperautre field and microstructure model (melt and solidify in the whole component).
+				_answer_ Laser related parameter.
+				_answer_ Material related parameter.
+				_answer_ Componnet related parameter.
