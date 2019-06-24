@@ -1,19 +1,24 @@
 #[E]Self-Supervised Exploration via Disagreement
 What is the algorithm?
 	_answer_ RL with intrinsic reward derived from world model ensemble's prediction variance. (not using model confidence itself bc deep NNs usually overfit). 
-		_ What is the reward?
+		_specification...
+		... What is the reward?
 			_a_ Variance across the prediction from all models in the ensemble.
-		_ What is the policy optimization algorithm?
-			_a_ Using direct gradients to maximize internal reward given the current world model (not 
-			TD!!). Using epsilon greedy in continuous action space as in #[P](Lillicrap et al., 2016) and straight-through estimator #[P](Bengio et al., 2013) in discrete action space.
-			_ How to optimize for multi-step reward horizon?	
-				_comment_ Could apply the policy optimizer recursively at every future step of simulation. Furthermore could make the world model good at predicting multiple future steps with LSTM. This paper not addressing those.
-		_ How to train the world model?
-			_a_ Minimize the prediction error given the previous action via direct gradient.  
-			_specify_ What is ensemble?
-				_a_ A set of models with different initialization and a subset of full training data. 5 models in this paper.
-			_specify_ What is the feature space?
-				_a_  Random feature space in all video games and navigation, classification features in MNIST and ImageNet-pretrained ResNet-18 features in real world robot experiments.
+		... What is the training process?
+			_specification...
+			... What is the policy optimization algorithm?
+				_a_ Using direct gradients to maximize internal reward given the current world model (not 
+				TD!!). Using epsilon greedy in continuous action space as in #[P](Lillicrap et al., 2016) and straight-through estimator #[P](Bengio et al., 2013) in discrete action space.
+					_ How to optimize for multi-step reward horizon?	
+						_comment_ Could apply the policy optimizer recursively at every future step of simulation. Furthermore could make the world model good at predicting multiple future steps with LSTM. This paper not addressing those.
+			... How to train the world model?
+				_a_ Minimize the prediction error given the previous action via direct gradient.  
+				_specify_ What is ensemble?
+					_a_ A set of models with different initialization and a subset of full training data. 5 models in this paper.
+				_specify_ What is the feature space?
+					_a_  Random feature space in all video games and navigation, classification features in MNIST and ImageNet-pretrained ResNet-18 features in real world robot experiments.
+			end_
+		
 
 
 		

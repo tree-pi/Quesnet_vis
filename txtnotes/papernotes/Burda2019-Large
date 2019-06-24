@@ -1,0 +1,48 @@
+#[E]Large-Scale Study of Curiosity-Driven Learning
+Why	need intrinsic motivation?
+	_a_ In real world there's no such dense feedback as in carefully designed reinforcement learning tasks.
+		_@me_ What is the example -- robot?
+			_ Infants seem to do goal-less exploration to learn skills useful for the future #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.
+			_@me_ Can intrinsic reward algorithms behave better or similarly good in those environments?
+
+What is the algorithm?
+	_a_ Prediction error of the agent's action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven.   
+		_ What is the world model (forward dynamics predictor)?
+			_a_ Probability distribution of the embedding of next state given the current state and action. 
+				_ How to embed the state?
+					_a...
+					... raw stimuli space (pixel space here).
+					... Random CNN features. "we take our embedding network, a convolutional network, and fix it after random initialization."
+					... Variational Autoencoders.
+					... Inverse Dynamics Features. "The inverse dynamics task is to predict the action at given the previous and next states s_t and s_{t+1}. Features are learned using a common neural network φ...The intuition is that the features learned should correspond to aspects of the environment that are under the agent’s immediate control"
+					end_
+		_ What is the discounting horizon?
+			_a_ Infinite, bootstrapped using the value function. Because the end of episode is not defined to avoid giving away the signal of external reward.
+
+
+What are the tasks?
+	_a_ 54 environments including video games, physics engine simulations, and virtual 3D navigation tasks.
+		_ How to define the end of the game, if it is not treated as an external reward signal?
+			_a_ Remove the signal that the game is done and treat death just as another state transition. 
+
+
+How good is the performance?
+	_ How to evaluate?
+		_a_ Better external reward gained.
+			_ What kind of tasks will the purely internal driven agent also learn to gain more external rewards?
+				_a_ Most Atari games. If the external reward is unrelated with exploration then the algorithm may collect less external reward than a random algorithm."when the agent runs out of lives, the bricks are reset to a uniform structure again that has been seen by the agent many times before and is hence very predictable, so the agent tries to stay alive to be curious by avoiding reset by death."
+			_ What is the effect of the different feature learning variants (embeddings) on these behaviors?
+				_a_ The raw pixel space performs consistently worst. Random features (RF) perform quite well across Atari tasks and sometimes better than using learned features. IDF-curious agent collects more game reward than a random agent in 75% of the Atari games, an RF-curious agent does better in 70%. Further, IDF does better than RF in 55% of the games. Overall, random features and inverse dynamics features worked well in general.
+					_ Why do random features perform so well?
+						_a_ It is more stable than learned features. Also in atari games where the states look simple, it is efficient to preserve useful features.
+							_follow-up_ Can IDF get more stable and perform better?
+								_a_ Yes, by adding more parallel trainings in a batch, the asymtop in Super Mario Bro also improves.
+			_ In what situation will the algorithm conceptually doom to fail?
+				_a_ When the agent can generate stochasticity itself. "Noisy TV thought experiment where the agent can control the TV to switch to random channels. Proven to be irresistable attraction and the external reward remains low."
+		_a_ Generalization ability.
+			_ What is the generalization task?
+				_a_ pretrain in level 1 of Super Mario then test on other levels.
+			_ Is the transferred model better than a model training from scratch in the new environment?
+				_a_ Yes if the new environment is not too different from the old one.
+
+

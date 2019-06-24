@@ -1,4 +1,28 @@
 # Quesnet_vis
+## Note-taking rules
+### general rules
+quesition label is a short phrase, "label", which appears in the node. The question label should end with "?" while the answer label with ".". The followed detailed explaination won't appear as label.
+
+#### Entities
+To conveniently retrieve entities, mark with #[].
+- [P] for paper. 
+- [ATR] for author. 
+- [E] for any other entity.
+
+If the entities is one word (for paper, compounded by the rule as *paper specifier*), just one word following ]. Otherwise, use () to bracket this entity name.
+
+
+### paper quesnets
+#### title (paper specifier)
+First author name + year + '\_' + first word in title
+
+E.g. Pathak2019_Self-Supervised
+
+Note, same format applies to mentioning of a paper in other descriptions, started with "#". 
+
+
+
+
 ## Network data structure
 ### Node:
 "id": randomly assigned; long enough to make sure there's no replication
@@ -24,5 +48,4 @@
 
 ### Link:
 example:
-
 {"id": "l928371", "start":"q23144958", "end": "a21402924","label":"answer","properties":{}}

@@ -1,0 +1,57 @@
+Introducing an RL algorithm called #[E](VIME,Variational Information Maximizing Exploration).
+
+What type of task is this algorithm specialized at?
+	_a_ high dimensional continuous state action space.
+	_ What are the other algorithms used in continuous state-action tasks previously?
+		_a_ Simple heuristics such as ε-greedy,Boltzmann exploration or adding Gaussian noise for action selection. Bayesian RL and PAC-MDP methods offer formal gaurantees of exploration-exploitation trade-off but only apply to discrete states. 
+			_ What is the problem of the previous algorithms?
+				_a_ Random walks are ignorant of current learning status thus requires very long training time (e.g. exponential to state number).
+
+
+What is this algorithm #[E]VIME?
+	_specification...
+	... What is the state model (world model)?
+		_a_ P(s_{t+1}|s_t,a_t;/Theta). Bayesian neural network (BNN). 
+			_@me_ What is Bayesian neural network?
+	... What is the reward?
+		_a_ intrinsic reward: expected KL between belief posterior distribution P(/Theta) given all possible next states and the current belief distribution. Weighted by an "exploration urge" term to add into the external reward. In practice, using parametric distribution q(/theta|/phi) computed from BNN.
+	... What is the policy?
+		_a@me_ unclear...a policy neural network? "standard method"?
+	... What is the training process?
+		_specification_ How to train the world model?
+			_a_ using variational lower bound to update the posterior q(/theta; /phi_{n+1}).
+		_specification_ How to train the policy?
+			_a_ #[E](TRPO,Trust region policy optimization). #[E]REINFORCE and #[E]ERWR are also used. In principle any standard RL algorithm can be used.
+	end_
+
+	_ What are the other algorithms also using curioisty-driven rewards?
+		_a...
+		... #[P]Stadie2015_Incentivizing uses the l^2 prediction error as the intrinsic reward.
+		... #[P]Oh2015_Action-conditional approximates visitation counting in a learned state embedding using Gaussian kernels.
+		... #[P]Osband2016_Deep uses Thompson sampling to train multiple value functions with bootstrapping.
+		end_
+
+	_ How does #[E]VIME relate with other curiosity-driven algorithms?
+		_a_ The principle can be traced back to the concepts of curiosity and surprise.
+		_a_ Also, can be interpreted as measuring compression improvement.
+
+
+What is the task?
+	_a_ #[E](rllab benchmark code base) and complementary tasks, including CartPole (S ⊆ R4, A ⊆ R1), CartPoleSwingup (S ⊆ R4, A ⊆ R1), DoublePendulum (S ⊆ R6, A ⊆ R1), MountainCar (S ⊆ R3, A ⊆ R1), locomotion tasks HalfCheetah (S ⊆ R20, A ⊆ R6), Walker2D (S ⊆ R20, A ⊆ R6), and the hierarchical task SwimmerGather (S ⊆ R33, A ⊆ R2).
+		_ What are features of these tasks?
+			_a... SwimmerGather is difficult because the agent has to learn the locomotion primitives to swim before it can gather any reward.
+			...end
+
+How good is the performance?
+	_ What to compare with?
+		_a...
+		... using Gaussian control noise with TRPO.
+		... using the l^2 BNN prediction error as an intrinsic reward, as a continuation of #[P]Stadie2015_Incentivizing. 
+		end_
+			_ What is the performance difference from other algorithms?
+				_a_ Successful or faster learning than the other exploration noises except in the Cartpole 
+	_ What are the effects of the parameters?
+		_a_ For the exploration factor η, too high will lower the external reward you can get; for lower values, there is a wide range of good performance.
+			_@me_ Why in the purely curiosity driven works in like #[ATR]Pathak the external reward is not sacrificed...or is it? They didn't compare!
+
+
