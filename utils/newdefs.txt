@@ -1,0 +1,3 @@
+06/25,2019
+Definition changes from the paper network:
+Node, ”type“ is either question or answer; feature is more complicated.

@@ -1,0 +1,20 @@
+#[E](work from Wai Keen Vong, Emin Orhan and Brenden Lake, presented in oculus group meeting)
+What is the motivation?
+	_ What is the kid task?
+
+What is the task?
+	_ Is it similar to caption generation? 
+
+What is the model?
+	_ What are other works using similar models?
+	_ What is the prior knowledge (pre-training experience) of this model?
+
+What is the performance?
+	_ What is the behavior that we hope the model to show?
+		_a_ The mutual exclusion bias shown by kids. "If a new word is encountered when a new item is present in the situation, then you tend to match this new word to the new item."
+	_ What is the recognition accuracy?
+		_ Comparing different scene parameter?
+		_ Validation accuracy?
+	_ What does the attention map look like?
+		_specification_ What if the word instruction (text labels) doesn't match?
+

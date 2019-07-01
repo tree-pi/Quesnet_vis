@@ -1,9 +1,9 @@
 #[E]Large-Scale Study of Curiosity-Driven Learning
 Why	need intrinsic motivation?
 	_a_ In real world there's no such dense feedback as in carefully designed reinforcement learning tasks.
-		_@me_ What is the example -- robot?
+		_@me What is the example -- robot?
 			_ Infants seem to do goal-less exploration to learn skills useful for the future #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.
-			_@me_ Can intrinsic reward algorithms behave better or similarly good in those environments?
+			_@me Can intrinsic reward algorithms behave better or similarly good in those environments?
 
 What is the algorithm?
 	_a_ Prediction error of the agent's action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven.   
