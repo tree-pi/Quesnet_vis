@@ -39,8 +39,7 @@ What is this algorithm #[E]VIME?
 What is the task?
 	_a_ #[E](rllab benchmark code base) and complementary tasks, including CartPole (S ⊆ R4, A ⊆ R1), CartPoleSwingup (S ⊆ R4, A ⊆ R1), DoublePendulum (S ⊆ R6, A ⊆ R1), MountainCar (S ⊆ R3, A ⊆ R1), locomotion tasks HalfCheetah (S ⊆ R20, A ⊆ R6), Walker2D (S ⊆ R20, A ⊆ R6), and the hierarchical task SwimmerGather (S ⊆ R33, A ⊆ R2).
 		_ What are features of these tasks?
-			_a... SwimmerGather is difficult because the agent has to learn the locomotion primitives to swim before it can gather any reward.
-			...end
+			_a_ SwimmerGather is difficult because the agent has to learn the locomotion primitives to swim before it can gather any reward.
 
 How good is the performance?
 	_ What to compare with?

@@ -44,5 +44,3 @@ How good is the performance?
 				_a_ pretrain in level 1 of Super Mario then test on other levels.
 			_ Is the transferred model better than a model training from scratch in the new environment?
 				_a_ Yes if the new environment is not too different from the old one.
-
-
