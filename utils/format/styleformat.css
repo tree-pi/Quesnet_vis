@@ -1,0 +1,23 @@
+
+/* the css format is designed for the networkformat */
+	
+#mynetwork {
+      width: 1000px;
+      height: 800px;
+      border: 1px solid lightgray;
+}
+
+div.nodeContent {
+      position: relative;
+      border: 1px solid lightgray;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+}
+
+body{
+	background-color: lightgray;
+}
+  
