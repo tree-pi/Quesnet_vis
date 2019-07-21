@@ -1,0 +1,10 @@
+What is a phenomenon worth exploring?
+	_ What is the hypothesis?
+		_ What are the previous studies supporting this hypothesis?
+		_operationalize...
+		... What is the task?
+		... What are the conditions?
+		end_
+		_ What is the result?
+			_ How to evaluate?
+			_ What are the alternative explanations?

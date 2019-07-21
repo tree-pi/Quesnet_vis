@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the hypothesis?", "label": "What is the hypothesis?", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "white"}, "id": "Trapped by selective attention.", "label": "Trapped by selective attention.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "white"}, "id": "Bee hive harvesting task followed by test phase.", "label": "Bee hive harvesting task followed by test phase.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "white"}, "id": "Trapped by similarity.", "label": "Trapped by similarity.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "white"}, "id": "stable false beliefs despite extensive experience.", "label": "stable false beliefs despite extensive experience.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the different types?", "label": "What are the different types?", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "Do people show this behavior?", "label": "Do people show this behavior?", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "white"}, "id": "Trapped by noise.", "label": "Trapped by noise.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "People will fall into learning trap if no full information is provided.", "label": "People will fall into learning trap if no full information is provided.", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the task?", "label": "What is the task?", "reference": "Ep99697", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "white"}, "id": "What is learning trap?", "label": "What is learning trap?", "reference": "Ep99697", "shape": "dot", "size": 20}]);
+        edges = new vis.DataSet([{"from": "What is the hypothesis?", "label": "hypothesis", "to": "People will fall into learning trap if no full information is provided."}, {"from": "What is the hypothesis?", "label": "", "to": "Do people show this behavior?"}, {"from": "Trapped by selective attention.", "label": "answer", "to": "What are the different types?"}, {"from": "Bee hive harvesting task followed by test phase.", "label": "answer", "to": "What is the task?"}, {"from": "Trapped by similarity.", "label": "answer", "to": "What are the different types?"}, {"from": "stable false beliefs despite extensive experience.", "label": "answer", "to": "What is learning trap?"}, {"from": "stable false beliefs despite extensive experience.", "label": "", "to": "What are the different types?"}, {"from": "What are the different types?", "label": "answer", "to": "Trapped by noise."}, {"from": "Do people show this behavior?", "label": "", "to": "What is learning trap?"}, {"from": "Do people show this behavior?", "label": "", "to": "What is the task?"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

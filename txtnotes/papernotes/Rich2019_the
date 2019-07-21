@@ -1,0 +1,80 @@
+#[E] The Limits of Learning: Exploration, Generalization, and the Development of Learning Traps
+
+What is learning trap?
+	_a_ stable false beliefs despite extensive experience.
+		_ What are the different types?
+			_a...
+			... Trapped by noise.
+			... Trapped by similarity.
+			... Trapped by selective attention.
+			end_
+				_ Is there a unifying account?
+					_a_ Trapped by simplicity. "an agent comes to believe the environment has a simpler structure than it truly does, which prevents it from exploring further to come to a more complex, more correct belief."
+						_ What computer simulation can replicate this phenomena?
+							_ What is the algorithm?
+								_a_ Categorization learning model #[E]ALCOVE modified for reinforcement learning. 
+									_ What are the advantages of #[E]ALCOVE?
+										_a...
+										... Easily modified for the RL task.
+										... Shares deep connection with previous models used to study different types of learning trap.
+										end_ 
+									_specification...
+									... What is the reward?
+										_a_ given by the external environment.
+									... What is the policy?
+										_a_ soft max depending on the output node activation.
+									... What is the training process?
+										_a_ only for the action chosen will receive reward. Then update according to ALCOVE. 
+									... What are the model parameters?
+										_a_ atttention learning rate 0.1, etc.
+									end_
+							_ What is the hypothesis?
+								_hypothesis...
+								... The partial feedback is neccesary for forming the learning trap.
+									_operationalize_ What is the indenpendent variable?
+										_a_ Manipulate the reward feedback to be either contingent information (only the selected action receives feedback), random information (50% trials receive feedback independent of choice) or full info (all actions' feedback are given).
+								... The selective attention is neccesary for forming the learning trap.
+									_operationalize_ What is the indenpendent variable?
+										_a_ Remove the attention in ALCOVE, all others equal.
+								... The constructivist coding (updating the unchosen options) may intensify the learning trap.
+									_operationalize_ What is the independent variable?
+										_a_ Assigning negataive feedbacks for all the unapproached prospects.
+								end_
+
+							_ What is the task?
+								_a_  A multi-bandit task with each state having 4 dimensions of binary feaures. The agent aim to maximize reward.
+
+							_ What is the behavior?
+								_operationalize_ How to evaluate?
+									_a_ The proportion of simulations perfectly following either the correct two-dimensional rule or single dimensional rule in the test set.
+										_ What is the result?
+											_a_ Contingent feedback with attention ends up having 1/4 of all simulations in the learning trap (only make decision depending on 1 dimension). The constructivist coding results in 50% learning trap and very few successful learning.
+								
+	_ Do people show this behavior?
+		_ What is the task?
+			_a_ Bee hive harvesting task followed by test phase.
+		_ What is the hypothesis?
+			_hypothesis_ People will fall into learning trap if no full information is provided.
+				_operationalize_ What is the independent variable?
+					_a_ In contingent condition, no feedback is provided if a hive is not harvested; in full-information condition, all hives' feedback are provided.
+				_ What is the result?
+					_specify...
+					... How to evaluate?
+						_a_ The proportion of simulations mostly following either the correct two-dimensional rule or single dimensional rule.
+					... How to compare conditions?
+						_a_ Bayesian parameter estimation approach (Bayesian equivalents of standard two-sample t and z tests).
+							_ How is the Bayesian model fited?
+								_a_ Bayesian inference using Hamiltonian Monte Carlo sampling with Stan.
+					end_
+						_a_ In contingent condition, about 40% participants ends up in the learning trap and about 20% in perfect learning; in full information condition, the tendency into learning trap is far lower.
+							_ Do two conditions show significant difference?
+								_a_ yes.	
+							_ How good do the models fit?
+								_a_ The constructivist coding model fits best.
+							_ What intervention may stop this behavior?
+								_ What are the hypothesis?
+									_hypothesis...
+									... Individuating each example.
+									... occlude some dimensions.
+									... Increase noise.
+									end_  

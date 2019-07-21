@@ -1,0 +1,26 @@
+How does teaching affect exploration and discovery of children?
+	_hypothesis_ Teaching the specific function of a toy will restrict children's exploration on other functions.
+		_ What is the theoretical interpretation of this hypothesis?	
+			_a_ Teaching produces an inductive bias that constrains children’s hypothesis space. "a teacher’s failure to provide evidence for additional functions provides evidence for their absence."
+	_ Who are the participants?
+		_a_ preschoolers(mean age: 58 months) in an urban science museum.
+	_ operationalize...
+	... What is the independent variable?
+		_a_ Either the teacher demonstration is in Pedagogical or one of three Non-Pedagogical conditions: Interrupted, Naive, and Baseline. "Interrupted con dition was exactly like the Pedagogical condition, except that the experimenter interrupted herself immediately after the demonstration, indicating incomplete demonstration; Naive demonstration shows the same function as an accidental discovery; Baseline doesn't show any specific function."
+			
+	... What is the dependent variable?
+		_a_  children’s total time playing, the number of unique actions children performed, the proportion of children’s play time spent only on the demonstrated function, and the total number of target functions discovered in the course of free play.
+			_ How to do the multiple-condition analysis?
+				_a_ linear regression with the weight 3 for Pedagogical, and -1 for the other three Non-Pedagogical conditions.
+					_@me still don't get it, how come the F score?
+	_ What is the result?
+		_a_ In the Pedagogical situation, less total time (p<0.05), fewer kinds of action, greater propoertion in the demonstrated function, less new functions discovered (p<0.05).
+			_ What are some non-direct teaching resulting in the same effect?
+				_hypothesis_ If the observer(L2) knows the learner being directly taught(L1) has the same prior as her, she should update her own belief similarly as L1.
+					_operationalize_ how to manipulate the observer's belief about the learner's knowledge state?
+						_a_ (Experiment 2) Whether the indirect teaching is with another child or an adult. 
+					_ What is the result?
+						_a_ Besides total time playing, all the other metrics show higher restriction in "direct"(Pedagogical) and "indirect child" conditions combined than in the "indirect adult" and "Intentional" conditions combined.
+							_@me Why not directly compare "indirect child" and "indirect adult" condition? Otherwise the effect may be just due to the other two conditions?
+							_ Why does the demonstration on adults don't induce the same effect?
+						

@@ -1,0 +1,47 @@
+How do infants decide "what to learn" in the real world without guidance?
+	_hypothesis_ They tend to learn about things that violate their prior expectations (core knowledge).
+		_ What are the previous studies supporting this hypothesis?
+			_a_ We know that kids respond to surprising events (physical, numerical, social, etc.) differently, like looking longer and other physiological changes(facial expression, pupil dialation, cerebral blood flow, brain electrical activity). Yet it remains unknown what purpose these response serve.
+		_specify_ Does the violation trigger an overall high arousal state for learning in general or only the specific object involved in the violation?
+			_hypothesis...
+			... Infants become more interested in the object involved in violation and want to learn more about this object (exp1&2).
+				_operationalize...
+				... What is the independent measure?
+					_a_ Whether the object is involved in an event violating or consistent with the expectations.
+						_specify_ What are the expectations and violations?
+							_a_ Core knowledge, including object solidity (exp1), object continuity (exp1) and support (exp?).
+				... What is the dependent measure?
+					_a_ How successfully does the infant learn the "auditory-visual mapping" of the object.
+						_specify_ How to quantify?
+							_a_ Learning score regarding looking time proportion between the target and distractor when the perviously exposed auditory stimuli is played. "For each infant we calculated a learning score by determining the proportion of time that infants looked at the target object (relative to the new distractor object) during the baseline, then subtracting this value from the proportion of time they looked at the target object during the mapping test, when the taught sound played."
+				end_
+				_ What is the result?
+					_a_ Infants showed no evidence of learning after "knowledge-consistent events" but showed significant learning after violations.
+						_ What are the alternative explanations?
+							_specify_ Do they just pay more attention to the more familiar object?
+								_a_ No. The auditory-visual mapping is critical because if a novel sound is played there will not be significant looking time difference (exp2).	
+			... Infants feel more arousal and are ready to learn anything (exp3)."the enhanced learning was just due to general arousal or novelty."
+				_opereationalize_ If the mapping learning concerns between a new object instead of the one in violation, will the learning enhancement still show?
+				_ What is the result?
+					_a_ No learning enhancement for the object not involved in violation.
+						_@me Don't this contradict to the previous studies in adult where "curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The
+			end_
+		_specify_ What do kids want to learn if they can choose?
+			_hypothesis...
+			... Infants would like to play more with the object violated expectation (exp4).
+				_operationalize_ What is the dependent measure?
+					_a_ Explore preference score: how much time during the free play session do infants intereact (look or touch) with the target object substract the distractor.
+						_@me How to time that? If manually, is the observer blind to condition?
+				_ What is the result? 
+					_a_ Explore preference score is significantly higher in violation condition.
+				
+
+			... Infants seek evidence to resolve the conflict (exp5).
+				_operationalize_ What is the dependent measure?
+					_a_ The time spent on testing behaviors specific to certain knowledge. "We analyzed two common exploratory behaviors...banging an object (relevant to testing object solidity) and dropping an object onto the table or floor (relevant to testing object support). "
+						_ What if the different behavior takes different time? E.g., banging takes shorter time than dropping.
+							_a_ Z-score the action frequency.
+				_ What is the result? 
+					_a_ Indeed the solitary violation events induce more banging behavior than dropping and the support violation events the other way, only for the target not the distractor. "infants performed differential actions only after Knowledge-Violation events and only on the objects that had committed the violation. "
+			end_
+

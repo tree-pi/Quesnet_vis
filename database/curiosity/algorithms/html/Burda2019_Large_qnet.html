@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #fafafa;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "content": "", "feature": "Root question", "font": {"color": "black"}, "id": "How good is the performance?", "label": "How good is the performance?", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "blue", "content": "\"when the agent runs out of lives, the bricks are reset to a uniform structure again that has been seen by the agent many times before and is hence very predictable, so the agent tries to stay alive to be curious by avoiding reset by death.\"", "feature": "Answer", "font": {"color": "black"}, "id": "Most Atari games. If the external reward is unrelated with exploration then the algorithm may collect less external reward than a random algorithm.", "label": "Most Atari games. If the external reward is unrelated with exploration then the algorithm may collect less external reward than a random algorithm.", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "In what situation will the algorithm conceptually doom to fail?", "label": "In what situation will the algorithm conceptually doom to fail?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Can intrinsic reward algorithms behave better or similarly good in those environments?", "label": "Can intrinsic reward algorithms behave better or similarly good in those environments?", "reference": "me", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Can IDF get more stable and perform better?", "label": "Can IDF get more stable and perform better?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How to evaluate?", "label": "How to evaluate?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "black"}, "id": "What are the tasks?", "label": "What are the tasks?", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Infants seem to do goal-less exploration to learn skills useful for the future #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.", "label": "Infants seem to do goal-less exploration to learn skills useful for the future #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What kind of tasks will the purely internal driven agent also learn to gain more external rewards?", "label": "What kind of tasks will the purely internal driven agent also learn to gain more external rewards?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the generalization task?", "label": "What is the generalization task?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "black"}, "id": "What is the algorithm?", "label": "What is the algorithm?", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Remove the signal that the game is done and treat death just as another state transition.", "label": "Remove the signal that the game is done and treat death just as another state transition.", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "pretrain in level 1 of Super Mario then test on other levels.", "label": "pretrain in level 1 of Super Mario then test on other levels.", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How to embed the state?", "label": "How to embed the state?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Is the transferred model better than a model training from scratch in the new environment?", "label": "Is the transferred model better than a model training from scratch in the new environment?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Probability distribution of the embedding of next state given the current state and action.", "label": "Probability distribution of the embedding of next state given the current state and action.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Better external reward gained.", "label": "Better external reward gained.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Why do random features perform so well?", "label": "Why do random features perform so well?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "The raw pixel space performs consistently worst. Random features (RF) perform quite well across Atari tasks and sometimes better than using learned features. IDF-curious agent collects more game reward than a random agent in 75% of the Atari games, an RF-curious agent does better in 70%. Further, IDF does better than RF in 55% of the games. Overall, random features and inverse dynamics features worked well in general.", "label": "The raw pixel space performs consistently worst. Random features (RF) perform quite well across Atari tasks and sometimes better than using learned features. IDF-curious agent collects more game reward than a random agent in 75% of the Atari games, an RF-curious agent does better in 70%. Further, IDF does better than RF in 55% of the games. Overall, random features and inverse dynamics features worked well in general.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "In real world there\u0027s no such dense feedback as in carefully designed reinforcement learning tasks.", "label": "In real world there\u0027s no such dense feedback as in carefully designed reinforcement learning tasks.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the discounting horizon?", "label": "What is the discounting horizon?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the example -- robot?", "label": "What is the example -- robot?", "reference": "me", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "54 environments including video games, physics engine simulations, and virtual 3D navigation tasks.", "label": "54 environments including video games, physics engine simulations, and virtual 3D navigation tasks.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Infinite, bootstrapped using the value function. Because the end of episode is not defined to avoid giving away the signal of external reward.", "label": "Infinite, bootstrapped using the value function. Because the end of episode is not defined to avoid giving away the signal of external reward.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "\"we take our embedding network, a convolutional network, and fix it after random initialization.\"", "feature": "Answer", "font": {"color": "black"}, "id": "Random CNN features. ", "label": "Random CNN features. ", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "black"}, "id": "Why\tneed intrinsic motivation?", "label": "Why\tneed intrinsic motivation?", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Yes, by adding more parallel trainings in a batch, the asymtop in Super Mario Bro also improves.", "label": "Yes, by adding more parallel trainings in a batch, the asymtop in Super Mario Bro also improves.", "reference": "Ep90542", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How to define the end of the game, if it is not treated as an external reward signal?", "label": "How to define the end of the game, if it is not treated as an external reward signal?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the effect of the different feature learning variants (embeddings) on these behaviors?", "label": "What is the effect of the different feature learning variants (embeddings) on these behaviors?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "raw stimuli space (pixel space here).", "label": "raw stimuli space (pixel space here).", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Generalization ability.", "label": "Generalization ability.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Variational Autoencoders.", "label": "Variational Autoencoders.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the world model (forward dynamics predictor)?", "label": "What is the world model (forward dynamics predictor)?", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "\"The inverse dynamics task is to predict the action at given the previous and next states s_t and s_{t+1}. Features are learned using a common neural network \u03c6...The intuition is that the features learned should correspond to aspects of the environment that are under the agent\u2019s immediate control\"", "feature": "Answer", "font": {"color": "black"}, "id": "Inverse Dynamics Features. ", "label": "Inverse Dynamics Features. ", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Prediction error of the agent\u0027s action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven.", "label": "Prediction error of the agent\u0027s action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "It is more stable than learned features. Also in atari games where the states look simple, it is efficient to preserve useful features.", "label": "It is more stable than learned features. Also in atari games where the states look simple, it is efficient to preserve useful features.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "", "feature": "Answer", "font": {"color": "black"}, "id": "Yes if the new environment is not too different from the old one.", "label": "Yes if the new environment is not too different from the old one.", "reference": "Ep90542", "shape": "dot", "size": 15}, {"color": "blue", "content": "\"Noisy TV thought experiment where the agent can control the TV to switch to random channels. Proven to be irresistable attraction and the external reward remains low.\"", "feature": "Answer", "font": {"color": "black"}, "id": "When the agent can generate stochasticity itself. ", "label": "When the agent can generate stochasticity itself. ", "reference": "Ep90542", "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "How good is the performance?", "label": "", "to": "How to evaluate?"}, {"from": "Most Atari games. If the external reward is unrelated with exploration then the algorithm may collect less external reward than a random algorithm.", "label": "answer", "to": "What kind of tasks will the purely internal driven agent also learn to gain more external rewards?"}, {"from": "In what situation will the algorithm conceptually doom to fail?", "label": "answer", "to": "When the agent can generate stochasticity itself. "}, {"from": "In what situation will the algorithm conceptually doom to fail?", "label": "", "to": "Better external reward gained."}, {"from": "Can intrinsic reward algorithms behave better or similarly good in those environments?", "label": "", "to": "What is the example -- robot?"}, {"from": "Can IDF get more stable and perform better?", "label": "answer", "to": "Yes, by adding more parallel trainings in a batch, the asymtop in Super Mario Bro also improves."}, {"from": "Can IDF get more stable and perform better?", "label": "follow-up", "to": "It is more stable than learned features. Also in atari games where the states look simple, it is efficient to preserve useful features."}, {"from": "How to evaluate?", "label": "answer", "to": "Generalization ability."}, {"from": "How to evaluate?", "label": "answer", "to": "Better external reward gained."}, {"from": "What are the tasks?", "label": "answer", "to": "54 environments including video games, physics engine simulations, and virtual 3D navigation tasks."}, {"from": "Infants seem to do goal-less exploration to learn skills useful for the future #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.", "label": "", "to": "What is the example -- robot?"}, {"from": "What kind of tasks will the purely internal driven agent also learn to gain more external rewards?", "label": "", "to": "Better external reward gained."}, {"from": "What is the generalization task?", "label": "", "to": "Generalization ability."}, {"from": "What is the generalization task?", "label": "answer", "to": "pretrain in level 1 of Super Mario then test on other levels."}, {"from": "What is the algorithm?", "label": "answer", "to": "Prediction error of the agent\u0027s action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven."}, {"from": "Remove the signal that the game is done and treat death just as another state transition.", "label": "answer", "to": "How to define the end of the game, if it is not treated as an external reward signal?"}, {"from": "How to embed the state?", "label": "answer", "to": "Inverse Dynamics Features. "}, {"from": "How to embed the state?", "label": "", "to": "Probability distribution of the embedding of next state given the current state and action."}, {"from": "How to embed the state?", "label": "answer", "to": "raw stimuli space (pixel space here)."}, {"from": "How to embed the state?", "label": "answer", "to": "Random CNN features. "}, {"from": "How to embed the state?", "label": "answer", "to": "Variational Autoencoders."}, {"from": "Is the transferred model better than a model training from scratch in the new environment?", "label": "", "to": "Generalization ability."}, {"from": "Is the transferred model better than a model training from scratch in the new environment?", "label": "answer", "to": "Yes if the new environment is not too different from the old one."}, {"from": "Probability distribution of the embedding of next state given the current state and action.", "label": "answer", "to": "What is the world model (forward dynamics predictor)?"}, {"from": "Better external reward gained.", "label": "", "to": "What is the effect of the different feature learning variants (embeddings) on these behaviors?"}, {"from": "Why do random features perform so well?", "label": "answer", "to": "It is more stable than learned features. Also in atari games where the states look simple, it is efficient to preserve useful features."}, {"from": "Why do random features perform so well?", "label": "", "to": "The raw pixel space performs consistently worst. Random features (RF) perform quite well across Atari tasks and sometimes better than using learned features. IDF-curious agent collects more game reward than a random agent in 75% of the Atari games, an RF-curious agent does better in 70%. Further, IDF does better than RF in 55% of the games. Overall, random features and inverse dynamics features worked well in general."}, {"from": "The raw pixel space performs consistently worst. Random features (RF) perform quite well across Atari tasks and sometimes better than using learned features. IDF-curious agent collects more game reward than a random agent in 75% of the Atari games, an RF-curious agent does better in 70%. Further, IDF does better than RF in 55% of the games. Overall, random features and inverse dynamics features worked well in general.", "label": "answer", "to": "What is the effect of the different feature learning variants (embeddings) on these behaviors?"}, {"from": "In real world there\u0027s no such dense feedback as in carefully designed reinforcement learning tasks.", "label": "", "to": "What is the example -- robot?"}, {"from": "In real world there\u0027s no such dense feedback as in carefully designed reinforcement learning tasks.", "label": "answer", "to": "Why\tneed intrinsic motivation?"}, {"from": "What is the discounting horizon?", "label": "answer", "to": "Infinite, bootstrapped using the value function. Because the end of episode is not defined to avoid giving away the signal of external reward."}, {"from": "What is the discounting horizon?", "label": "", "to": "Prediction error of the agent\u0027s action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven."}, {"from": "54 environments including video games, physics engine simulations, and virtual 3D navigation tasks.", "label": "", "to": "How to define the end of the game, if it is not treated as an external reward signal?"}, {"from": "What is the world model (forward dynamics predictor)?", "label": "", "to": "Prediction error of the agent\u0027s action (not the world!) as intrinsic reward, as in #[P]Pathak2017_Curiosity-driven."}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

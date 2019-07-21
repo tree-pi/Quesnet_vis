@@ -1,0 +1,15 @@
+What is a phenomenon worth exploring?
+	_What are the possible computational models?
+		_ What is the algorithm?
+	_ Which model better explains human behavior?
+		_ What is the hypothesis?
+			_operationalize...
+			... What is the task?
+			... What are the conditions?
+			end_
+			_ What is the result?
+				_ How to evaluate?
+					_specify...
+					... What are the qualitative evaluation?
+					... What are the quantitative evaluation?
+					end_

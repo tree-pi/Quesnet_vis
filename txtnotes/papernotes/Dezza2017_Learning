@@ -1,0 +1,47 @@
+#[E] Learning the value of information and reward over time when solving exploration-exploitation problems
+
+
+How to solve the exploration-exploitation dilemma?
+	_ What are the possible solutions?
+		_a...
+		... random exploration. "a decision-maker who learns to maximize a numerical reward signal1 may nevertheless make choices associated with lower reward value (exploration) due to a noisy response-generation process"
+			_ What is the algorithm?
+				_a_ Standard RL with delta learning rule.
+					_specify_ What is the policy?
+						_a_ softmax choice function. 
+		... directed exploration. i.e. uncertainty-driven exploration.
+			_ What is the algorithm?
+				_a_ Knowledge RT(kRL). All the same with sRL except adding information into reward.
+					_specify_ What is the reward? 
+						_a_ Negative reward for the given choice.
+							_ What will the model be when the information is nonlinear to the number of choosing?
+								_a_ the gamma kRL or gkRL model with an exponential parameter on the accumulated information (total number of choosing).
+		end_
+			_ Which model better explains human behavior?
+				_hypothesis_ Not only the reward but also information should be considered to direct exploration.
+					_operationalize...
+					... What is the task?
+						_a_ Similar to Wilson et al. but with three options. 
+						_ What are the phases?
+							_a_ Forced choice (computer exposure of decks) tasks followed by free choices.
+					... What are the conditions?
+						_a_ In the forced choice phase, the exposure of different decks can be unequal or equal.
+					
+						end_
+					end_
+					_ What is the result?
+						_ How to evaluate?
+							_specify...
+							... What are the qualitative evaluation?
+								_a_ In the first trial after the forced choice phase, probability of explore the never informed option versus exploit the most rewarded option, given the rewards are the same.
+
+							... What are the quantitative evaluation?
+								_a_ BIC model comparison for trial-by-trial data.
+							end_
+								_a...
+								... The proportion of choosing exploration is much higher than exploitation or random which supports the kRL.
+								... The BIC of kRL is lower than sRL indicating better fit, yet gkRL is even better when considering all free trials.
+								end_
+
+
+

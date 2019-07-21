@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #fafafa;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How is the performance when the model changes?", "label": "How is the performance when the model changes?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How is the performance when the environment changes?", "label": "How is the performance when the environment changes?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How good is the performance?", "label": "How good is the performance?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the policy?", "label": "What is the policy?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the reward?", "label": "What is the reward?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How to evaluate?", "label": "How to evaluate?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What are the limitations from previous solutions?", "label": "What are the limitations from previous solutions?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "How is this algorithm different from previous algorithms?", "label": "How is this algorithm different from previous algorithms?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Why choosing this task?", "label": "Why choosing this task?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the algorithm we propose?", "label": "What is the algorithm we propose?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What to compare with?", "label": "What to compare with?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "Can it generalize to other tasks?", "label": "Can it generalize to other tasks?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the training process?", "label": "What is the training process?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "black"}, "id": "What is the task that is difficult to solve?", "label": "What is the task that is difficult to solve?", "reference": "Ep26381", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What are the critical parameters?", "label": "What are the critical parameters?", "reference": "Ep26381", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "black"}, "id": "What is the task?", "label": "What is the task?", "reference": "Ep26381", "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "How is the performance when the model changes?", "label": "", "to": "What to compare with?"}, {"from": "How is the performance when the environment changes?", "label": "", "to": "What to compare with?"}, {"from": "How good is the performance?", "label": "", "to": "How to evaluate?"}, {"from": "How good is the performance?", "label": "", "to": "What to compare with?"}, {"from": "How good is the performance?", "label": "", "to": "What is the task that is difficult to solve?"}, {"from": "How good is the performance?", "label": "", "to": "What are the critical parameters?"}, {"from": "What is the policy?", "label": "specification", "to": "What is the algorithm we propose?"}, {"from": "What is the policy?", "label": "", "to": "How is this algorithm different from previous algorithms?"}, {"from": "What is the reward?", "label": "specification", "to": "What is the algorithm we propose?"}, {"from": "What are the limitations from previous solutions?", "label": "", "to": "What is the task that is difficult to solve?"}, {"from": "Why choosing this task?", "label": "", "to": "What is the task?"}, {"from": "What is the algorithm we propose?", "label": "specification", "to": "What is the training process?"}, {"from": "What is the algorithm we propose?", "label": "", "to": "What is the task that is difficult to solve?"}, {"from": "Can it generalize to other tasks?", "label": "", "to": "What is the task that is difficult to solve?"}, {"from": "What is the task that is difficult to solve?", "label": "", "to": "What is the task?"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+What is the task that is difficult to solve?
+	_ What are the limitations from previous solutions?
+	_ What is the algorithm we propose?
+		_specification...
+		... What is the reward?
+		... What is the training process?
+		... What is the policy?
+		end_
+			_ How is this algorithm different from previous algorithms?
+	_ What is the task?
+		_ Why choosing this task?
+	_ How good is the performance?
+		_ What to compare with?
+			_ How is the performance when the environment changes?
+			_ How is the performance when the model changes?
+		_ How to evaluate?
+		_ What are the critical parameters?
+	_ Can it generalize to other tasks?

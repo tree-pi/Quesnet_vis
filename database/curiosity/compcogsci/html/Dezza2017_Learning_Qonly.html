@@ -1,0 +1,109 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the phases?", "label": "What are the phases?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "Which model better explains human behavior?", "label": "Which model better explains human behavior?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the possible solutions?", "label": "What are the possible solutions?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the result?", "label": "What is the result?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the task?", "label": "What is the task?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the reward?", "label": "What is the reward?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What will the model be when the information is nonlinear to the number of choosing?", "label": "What will the model be when the information is nonlinear to the number of choosing?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the algorithm?", "label": "What is the algorithm?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "red", "content": "", "feature": "Root question", "font": {"color": "white"}, "id": "How to the exploration-exploitation dilemma?", "label": "How to the exploration-exploitation dilemma?", "reference": "Ep9231", "shape": "dot", "size": 20}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What is the policy?", "label": "What is the policy?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the conditions?", "label": "What are the conditions?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "How to evaluate?", "label": "How to evaluate?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the quantitative evaluation?", "label": "What are the quantitative evaluation?", "reference": "Ep9231", "shape": "dot", "size": 15}, {"color": "orange", "content": "", "feature": "Question", "font": {"color": "white"}, "id": "What are the qualitative evaluation?", "label": "What are the qualitative evaluation?", "reference": "Ep9231", "shape": "dot", "size": 15}]);
+        edges = new vis.DataSet([{"from": "What are the phases?", "label": "", "to": "What is the task?"}, {"from": "Which model better explains human behavior?", "label": "", "to": "What is the result?"}, {"from": "Which model better explains human behavior?", "label": "operationalize", "to": "What is the task?"}, {"from": "Which model better explains human behavior?", "label": "", "to": "What are the possible solutions?"}, {"from": "Which model better explains human behavior?", "label": "operationalize", "to": "What are the conditions?"}, {"from": "What are the possible solutions?", "label": "", "to": "What is the algorithm?"}, {"from": "What are the possible solutions?", "label": "", "to": "How to the exploration-exploitation dilemma?"}, {"from": "What is the result?", "label": "", "to": "How to evaluate?"}, {"from": "What is the reward?", "label": "", "to": "What will the model be when the information is nonlinear to the number of choosing?"}, {"from": "What is the reward?", "label": "specification", "to": "What is the algorithm?"}, {"from": "What is the algorithm?", "label": "specification", "to": "What is the policy?"}, {"from": "How to evaluate?", "label": "specification", "to": "What are the quantitative evaluation?"}, {"from": "How to evaluate?", "label": "specification", "to": "What are the qualitative evaluation?"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
