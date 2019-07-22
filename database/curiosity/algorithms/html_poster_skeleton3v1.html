@@ -1,0 +1,128 @@
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{"id": "q23475", "label": "What is the task that is difficult to solve?", "type": "Root question", "color": "tomato", "size": 10, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q48222", "label": "What are the\nlimitations from previous\nsolutions?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q49928", "label": "What is the\nalgorithm we propose?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q81586", "label": "What is the\nreward?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q98892", "label": "What is the\ntraining process?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q56866", "label": "What is the\npolicy?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q77092", "label": "How is this\nalgorithm different from\nprevious algorithms?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q5559", "label": "What is the\ntask?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q16453", "label": "Why choosing this\ntask?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q66175", "label": "How good is\nthe performance?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q23290", "label": "What to compare\nwith?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q92887", "label": "How is the\nperformance when the\nenvironment changes?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q25928", "label": "How is the\nperformance when the\nmodel changes?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q51120", "label": "How to evaluate?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q69546", "label": "What are the\ncritical parameters?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}, {"id": "q67193", "label": "Can it generalize\nto other tasks?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep26381", "content": ""}])
+
+var edges = new vis.DataSet([{"from": "q23475", "to": "q48222", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23475", "to": "q49928", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q49928", "to": "q81586", "label": "specification", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q49928", "to": "q98892", "label": "specification", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q49928", "to": "q56866", "label": "specification", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q56866", "to": "q77092", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23475", "to": "q5559", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q5559", "to": "q16453", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23475", "to": "q66175", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q66175", "to": "q23290", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23290", "to": "q92887", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23290", "to": "q25928", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q66175", "to": "q51120", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q66175", "to": "q69546", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q23475", "to": "q67193", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	layout: {
+            hierarchical: {
+                sortMethod: "directed",
+				levelSeparation: 100,
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>
