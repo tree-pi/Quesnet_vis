@@ -1,0 +1,379 @@
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How to the exploration-exploitation dilemma?', 'id': 'q83949', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\npossible solutions?\n', 'id': 'q94753', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'random exploration.\n', 'id': 'a69524', 'size': 6, 'type': 'Answer', 'content': '"a decision-maker who learns to maximize a numerical reward signal1 may nevertheless make choices associated with lower reward value (exploration) due to a noisy response-generation process"', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q42095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Standard RL with\ndelta learning rule.\n', 'id': 'a95721', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\npolicy?\n', 'id': 'q79296', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'softmax choice function.\n', 'id': 'a26415', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'directed exploration. i.e.\nuncertainty-driven exploration.\n', 'id': 'a12314', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q11025', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Knowledge RT(kRL). All\nthe same with\nsRL except adding\ninformation into reward.\n', 'id': 'a40938', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nreward?\n', 'id': 'q7774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Negative reward for\nthe given choice.\n', 'id': 'a34284', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What will the\nmodel be when\nthe information is\nnonlinear to the\nnumber of choosing?\n', 'id': 'q79733', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'the gamma kRL\nor gkRL model\nwith an exponential\nparameter on the\naccumulated information (total\nnumber of choosing).\n', 'id': 'a97244', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Which model better\nexplains human behavior?\n', 'id': 'q72783', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Not only the\nreward but also\ninformation should be\nconsidered to direct\nexploration.\n', 'id': 'a6134', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ntask?\n', 'id': 'q21370', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Similar to Wilson\net al. but\nwith three options.\n', 'id': 'a43811', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nphases?\n', 'id': 'q85701', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Forced choice (computer\nexposure of decks)\ntasks followed by\nfree choices.\n', 'id': 'a45848', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nconditions?\n', 'id': 'q56599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the forced\nchoice phase, the\nexposure of different\ndecks can be\nunequal or equal.\n', 'id': 'a85674', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q5467', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q44418', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nqualitative evaluation?\n', 'id': 'q34496', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the first\ntrial after the\nforced choice phase,\nprobability of explore\nthe never informed\noption versus exploit\nthe most rewarded\noption, given the\nrewards are the\nsame.\n', 'id': 'a57828', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nquantitative evaluation?\n', 'id': 'q10134', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'BIC model comparison\nfor trial-by-trial data.\n', 'id': 'a8159', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The proportion of\nchoosing exploration is\nmuch higher than\nexploitation or random\nwhich supports the\nkRL.\n', 'id': 'a71408', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The BIC of\nkRL is lower\nthan sRL indicating\nbetter fit, yet\ngkRL is even\nbetter when considering\nall free trials.\n', 'id': 'a27940', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q83949', 'arrows': 'to', 'to': 'q94753'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'arrows': 'to', 'to': 'a69524'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a69524', 'arrows': 'to', 'to': 'q42095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q42095', 'arrows': 'to', 'to': 'a95721'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a95721', 'arrows': 'to', 'to': 'q79296'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79296', 'arrows': 'to', 'to': 'a26415'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'arrows': 'to', 'to': 'a12314'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'arrows': 'to', 'to': 'q11025'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q11025', 'arrows': 'to', 'to': 'a40938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a40938', 'arrows': 'to', 'to': 'q7774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q7774', 'arrows': 'to', 'to': 'a34284'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a34284', 'arrows': 'to', 'to': 'q79733'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79733', 'arrows': 'to', 'to': 'a97244'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'arrows': 'to', 'to': 'q72783'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q72783', 'arrows': 'to', 'to': 'a6134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'arrows': 'to', 'to': 'q21370'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q21370', 'arrows': 'to', 'to': 'a43811'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q21370', 'arrows': 'to', 'to': 'q85701'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q85701', 'arrows': 'to', 'to': 'a45848'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'arrows': 'to', 'to': 'q56599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q56599', 'arrows': 'to', 'to': 'a85674'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a6134', 'arrows': 'to', 'to': 'q5467'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5467', 'arrows': 'to', 'to': 'q44418'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'arrows': 'to', 'to': 'q34496'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q34496', 'arrows': 'to', 'to': 'a57828'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'arrows': 'to', 'to': 'q10134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'arrows': 'to', 'to': 'a8159'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'arrows': 'to', 'to': 'a71408'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'arrows': 'to', 'to': 'a27940'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	layout: {
+            hierarchical: {
+                sortMethod: "directed",
+				levelSeparation: 100,
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How to the exploration-exploitation dilemma?', 'id': 'q83949', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\npossible solutions?\n', 'id': 'q94753', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'random exploration.\n', 'id': 'a69524', 'size': 6, 'type': 'Answer', 'content': '"a decision-maker who learns to maximize a numerical reward signal1 may nevertheless make choices associated with lower reward value (exploration) due to a noisy response-generation process"', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q42095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Standard RL with\ndelta learning rule.\n', 'id': 'a95721', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\npolicy?\n', 'id': 'q79296', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'softmax choice function.\n', 'id': 'a26415', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'directed exploration. i.e.\nuncertainty-driven exploration.\n', 'id': 'a12314', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q11025', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Knowledge RT(kRL). All\nthe same with\nsRL except adding\ninformation into reward.\n', 'id': 'a40938', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nreward?\n', 'id': 'q7774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Negative reward for\nthe given choice.\n', 'id': 'a34284', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What will the\nmodel be when\nthe information is\nnonlinear to the\nnumber of choosing?\n', 'id': 'q79733', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'the gamma kRL\nor gkRL model\nwith an exponential\nparameter on the\naccumulated information (total\nnumber of choosing).\n', 'id': 'a97244', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Which model better\nexplains human behavior?\n', 'id': 'q72783', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Not only the\nreward but also\ninformation should be\nconsidered to direct\nexploration.\n', 'id': 'a6134', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ntask?\n', 'id': 'q21370', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Similar to Wilson\net al. but\nwith three options.\n', 'id': 'a43811', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nphases?\n', 'id': 'q85701', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Forced choice (computer\nexposure of decks)\ntasks followed by\nfree choices.\n', 'id': 'a45848', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nconditions?\n', 'id': 'q56599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the forced\nchoice phase, the\nexposure of different\ndecks can be\nunequal or equal.\n', 'id': 'a85674', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q5467', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q44418', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nqualitative evaluation?\n', 'id': 'q34496', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the first\ntrial after the\nforced choice phase,\nprobability of explore\nthe never informed\noption versus exploit\nthe most rewarded\noption, given the\nrewards are the\nsame.\n', 'id': 'a57828', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nquantitative evaluation?\n', 'id': 'q10134', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'BIC model comparison\nfor trial-by-trial data.\n', 'id': 'a8159', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The proportion of\nchoosing exploration is\nmuch higher than\nexploitation or random\nwhich supports the\nkRL.\n', 'id': 'a71408', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The BIC of\nkRL is lower\nthan sRL indicating\nbetter fit, yet\ngkRL is even\nbetter when considering\nall free trials.\n', 'id': 'a27940', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q83949', 'length': 50, 'arrows': 'to', 'to': 'q94753'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'length': 50, 'arrows': 'to', 'to': 'a69524'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a69524', 'length': 50, 'arrows': 'to', 'to': 'q42095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q42095', 'length': 50, 'arrows': 'to', 'to': 'a95721'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a95721', 'length': 50, 'arrows': 'to', 'to': 'q79296'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79296', 'length': 50, 'arrows': 'to', 'to': 'a26415'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'length': 50, 'arrows': 'to', 'to': 'a12314'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'length': 50, 'arrows': 'to', 'to': 'q11025'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q11025', 'length': 50, 'arrows': 'to', 'to': 'a40938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a40938', 'length': 50, 'arrows': 'to', 'to': 'q7774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q7774', 'length': 50, 'arrows': 'to', 'to': 'a34284'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a34284', 'length': 50, 'arrows': 'to', 'to': 'q79733'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79733', 'length': 50, 'arrows': 'to', 'to': 'a97244'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'length': 50, 'arrows': 'to', 'to': 'q72783'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q72783', 'length': 50, 'arrows': 'to', 'to': 'a6134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'length': 50, 'arrows': 'to', 'to': 'q21370'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q21370', 'length': 50, 'arrows': 'to', 'to': 'a43811'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q21370', 'length': 50, 'arrows': 'to', 'to': 'q85701'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q85701', 'length': 50, 'arrows': 'to', 'to': 'a45848'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'length': 50, 'arrows': 'to', 'to': 'q56599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q56599', 'length': 50, 'arrows': 'to', 'to': 'a85674'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a6134', 'length': 50, 'arrows': 'to', 'to': 'q5467'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5467', 'length': 50, 'arrows': 'to', 'to': 'q44418'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'length': 50, 'arrows': 'to', 'to': 'q34496'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q34496', 'length': 50, 'arrows': 'to', 'to': 'a57828'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'length': 50, 'arrows': 'to', 'to': 'q10134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 50, 'arrows': 'to', 'to': 'a8159'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 50, 'arrows': 'to', 'to': 'a71408'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 50, 'arrows': 'to', 'to': 'a27940'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	layout: {
+            hierarchical: {
+                sortMethod: "directed",
+				levelSeparation: 100,
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How to the exploration-exploitation dilemma?', 'id': 'q83949', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\npossible solutions?\n', 'id': 'q94753', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'random exploration.\n', 'id': 'a69524', 'size': 6, 'type': 'Answer', 'content': '"a decision-maker who learns to maximize a numerical reward signal1 may nevertheless make choices associated with lower reward value (exploration) due to a noisy response-generation process"', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q42095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Standard RL with\ndelta learning rule.\n', 'id': 'a95721', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\npolicy?\n', 'id': 'q79296', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'softmax choice function.\n', 'id': 'a26415', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'directed exploration. i.e.\nuncertainty-driven exploration.\n', 'id': 'a12314', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q11025', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Knowledge RT(kRL). All\nthe same with\nsRL except adding\ninformation into reward.\n', 'id': 'a40938', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nreward?\n', 'id': 'q7774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Negative reward for\nthe given choice.\n', 'id': 'a34284', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What will the\nmodel be when\nthe information is\nnonlinear to the\nnumber of choosing?\n', 'id': 'q79733', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'the gamma kRL\nor gkRL model\nwith an exponential\nparameter on the\naccumulated information (total\nnumber of choosing).\n', 'id': 'a97244', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Which model better\nexplains human behavior?\n', 'id': 'q72783', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Not only the\nreward but also\ninformation should be\nconsidered to direct\nexploration.\n', 'id': 'a6134', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ntask?\n', 'id': 'q21370', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Similar to Wilson\net al. but\nwith three options.\n', 'id': 'a43811', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nphases?\n', 'id': 'q85701', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Forced choice (computer\nexposure of decks)\ntasks followed by\nfree choices.\n', 'id': 'a45848', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nconditions?\n', 'id': 'q56599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the forced\nchoice phase, the\nexposure of different\ndecks can be\nunequal or equal.\n', 'id': 'a85674', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q5467', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q44418', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nqualitative evaluation?\n', 'id': 'q34496', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'In the first\ntrial after the\nforced choice phase,\nprobability of explore\nthe never informed\noption versus exploit\nthe most rewarded\noption, given the\nrewards are the\nsame.\n', 'id': 'a57828', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nquantitative evaluation?\n', 'id': 'q10134', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'BIC model comparison\nfor trial-by-trial data.\n', 'id': 'a8159', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The proportion of\nchoosing exploration is\nmuch higher than\nexploitation or random\nwhich supports the\nkRL.\n', 'id': 'a71408', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The BIC of\nkRL is lower\nthan sRL indicating\nbetter fit, yet\ngkRL is even\nbetter when considering\nall free trials.\n', 'id': 'a27940', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep9231'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q83949', 'length': 5, 'arrows': 'to', 'to': 'q94753'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'length': 5, 'arrows': 'to', 'to': 'a69524'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a69524', 'length': 5, 'arrows': 'to', 'to': 'q42095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q42095', 'length': 5, 'arrows': 'to', 'to': 'a95721'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a95721', 'length': 5, 'arrows': 'to', 'to': 'q79296'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79296', 'length': 5, 'arrows': 'to', 'to': 'a26415'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q94753', 'length': 5, 'arrows': 'to', 'to': 'a12314'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'length': 5, 'arrows': 'to', 'to': 'q11025'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q11025', 'length': 5, 'arrows': 'to', 'to': 'a40938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'a40938', 'length': 5, 'arrows': 'to', 'to': 'q7774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q7774', 'length': 5, 'arrows': 'to', 'to': 'a34284'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a34284', 'length': 5, 'arrows': 'to', 'to': 'q79733'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79733', 'length': 5, 'arrows': 'to', 'to': 'a97244'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a12314', 'length': 5, 'arrows': 'to', 'to': 'q72783'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q72783', 'length': 5, 'arrows': 'to', 'to': 'a6134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'length': 5, 'arrows': 'to', 'to': 'q21370'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q21370', 'length': 5, 'arrows': 'to', 'to': 'a43811'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q21370', 'length': 5, 'arrows': 'to', 'to': 'q85701'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q85701', 'length': 5, 'arrows': 'to', 'to': 'a45848'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'a6134', 'length': 5, 'arrows': 'to', 'to': 'q56599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q56599', 'length': 5, 'arrows': 'to', 'to': 'a85674'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a6134', 'length': 5, 'arrows': 'to', 'to': 'q5467'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5467', 'length': 5, 'arrows': 'to', 'to': 'q44418'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'length': 5, 'arrows': 'to', 'to': 'q34496'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q34496', 'length': 5, 'arrows': 'to', 'to': 'a57828'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q44418', 'length': 5, 'arrows': 'to', 'to': 'q10134'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 5, 'arrows': 'to', 'to': 'a8159'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 5, 'arrows': 'to', 'to': 'a71408'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q10134', 'length': 5, 'arrows': 'to', 'to': 'a27940'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	layout: {
+            hierarchical: {
+                sortMethod: "directed",
+				levelSeparation: 100,
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>

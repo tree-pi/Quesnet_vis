@@ -1,0 +1,131 @@
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How to learn in the complex environment without dense rewards?', 'id': 'q81406', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Why is this\ntask important?\n', 'id': 'q80416', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nexample -- robot?\n', 'id': 'q96666', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants seem to\ndo goal-less exploration\nto learn skills\nuseful for the\nfuture #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.\n', 'id': 'q43476', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can intrinsic reward\nalgorithms behave better\nor similarly good\nin those environments?\n', 'id': 'q22900', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q5188', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nworld model (forward\ndynamics predictor)?\n', 'id': 'q96266', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to embed\nthe state?\n', 'id': 'q61342', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndiscounting horizon?\n', 'id': 'q96973', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\ntasks?\n', 'id': 'q93840', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to define\nthe end of\nthe game, if\nit is not\ntreated as an\nexternal reward signal?\n', 'id': 'q32270', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How good is\nthe performance?\n', 'id': 'q16818', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q44149', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What kind of\ntasks will the\npurely internal driven\nagent also learn\nto gain more\nexternal rewards?\n', 'id': 'q41671', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\neffect of the\ndifferent feature learning\nvariants (embeddings) on\nthese behaviors?\n', 'id': 'q65446', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Why do random\nfeatures perform so\nwell?\n', 'id': 'q49568', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can IDF get\nmore stable and\nperform better?\n', 'id': 'q68113', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'In what situation\nwill the algorithm\nconceptually doom to\nfail?\n', 'id': 'q56240', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ngeneralization task?\n', 'id': 'q53397', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Is the transferred\nmodel better than\na model training\nfrom scratch in\nthe new environment?\n', 'id': 'q21356', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>

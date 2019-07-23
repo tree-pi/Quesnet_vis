@@ -1,0 +1,1431 @@
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide ', 'id': 'q38206', 'size': 10, 'type': 'Root question', 'content': '"what to learn" in the real world without guidance?', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q97129', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q69307', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q55232', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q85584', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q69962', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q298', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q53047', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q62352', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q65003', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q75402', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q57559', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q5381', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q49037', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q11015', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q14423', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q14013', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q75646', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q62147', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q44085', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q58550', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep11708'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    enabled: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide ', 'id': 'q90790', 'size': 10, 'type': 'Root question', 'content': '"what to learn" in the real world without guidance?', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q59938', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q49882', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q79146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q45487', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q92315', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q92286', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q25817', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q63629', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q31989', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q30000', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q80126', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q45768', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q78817', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q95501', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q42016', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q7612', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q26100', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q99502', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q89996', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q78461', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q99328', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    enabled: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants\ndecide\n', 'id': 'q90790', 'size': 10, 'type': 'Root question', 'content': '"what to learn" in the real world without guidance?', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q59938', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q49882', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q79146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q45487', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q92315', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q92286', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q25817', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q63629', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q31989', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q30000', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q80126', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q45768', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q78817', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q95501', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q42016', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q7612', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q26100', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q99502', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q89996', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q78461', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q99328', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep84606'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    enabled: false
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants\ndecide what to\nlearn in the\nreal world without\nguidance?\n', 'id': 'q78299', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q75774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q95914', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q34122', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q29294', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q47065', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q62330', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q32979', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q95609', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q82871', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q23049', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q64435', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q37480', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q19112', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q64355', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q47865', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q30197', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q43710', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q69616', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q44138', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q17146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q86459', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78299', 'length': 5, 'arrows': 'to', 'to': 'q75774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q95914'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q34122'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q29294'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q29294', 'length': 5, 'arrows': 'to', 'to': 'q47065'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q62330'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62330', 'length': 5, 'arrows': 'to', 'to': 'q32979'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q95609'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q95609', 'length': 5, 'arrows': 'to', 'to': 'q82871'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82871', 'length': 5, 'arrows': 'to', 'to': 'q23049'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q64435'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q37480'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q19112'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q19112', 'length': 5, 'arrows': 'to', 'to': 'q64355'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q47865'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q30197'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30197', 'length': 5, 'arrows': 'to', 'to': 'q43710'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q69616'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q44138'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44138', 'length': 5, 'arrows': 'to', 'to': 'q17146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q86459'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants\ndecide what to\nlearn in the\nreal world without\nguidance?\n', 'id': 'q78299', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q75774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q95914', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q34122', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q29294', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q47065', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q62330', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q32979', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q95609', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q82871', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q23049', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q64435', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q37480', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q19112', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q64355', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q47865', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q30197', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q43710', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q69616', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q44138', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q17146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q86459', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78299', 'length': 5, 'arrows': 'to', 'to': 'q75774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q95914'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q34122'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q29294'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q29294', 'length': 5, 'arrows': 'to', 'to': 'q47065'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q62330'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62330', 'length': 5, 'arrows': 'to', 'to': 'q32979'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q95609'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q95609', 'length': 5, 'arrows': 'to', 'to': 'q82871'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82871', 'length': 5, 'arrows': 'to', 'to': 'q23049'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q64435'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q37480'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q19112'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q19112', 'length': 5, 'arrows': 'to', 'to': 'q64355'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q47865'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q30197'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30197', 'length': 5, 'arrows': 'to', 'to': 'q43710'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q69616'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q44138'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44138', 'length': 5, 'arrows': 'to', 'to': 'q17146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q86459'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q78299', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q75774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nprevious studies supporting\nthis hypothesis?\n', 'id': 'q95914', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation\ntrigger an overall\nhigh arousal state\nfor learning in\ngeneral or only\nthe specific object\ninvolved in the\nviolation?\n', 'id': 'q34122', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nindependent measure?\n', 'id': 'q29294', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nexpectations and violations?\n', 'id': 'q47065', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q62330', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q32979', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q95609', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nalternative explanations?\n', 'id': 'q82871', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just\npay more attention\nto the more\nfamiliar object?\n', 'id': 'q23049', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more\narousal and are\nready to learn\nanything (exp3).\n', 'id': 'q64435', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping\nlearning concerns between\na new object\ninstead of the\none in violation,\nwill the learning\nenhancement still show?\n', 'id': 'q37480', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q19112', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict\nto the previous\nstudies in adult\nwhere\n", 'id': 'q64355', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'id': 'q47865', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q30197', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time\nthat? If manually,\nis the observer\nblind to condition?\n', 'id': 'q43710', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q69616', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndependent measure?\n', 'id': 'q44138', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the\ndifferent behavior takes\ndifferent time? E.g.,\nbanging takes shorter\ntime than dropping.\n', 'id': 'q17146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q86459', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78299', 'length': 5, 'arrows': 'to', 'to': 'q75774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q95914'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q34122'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q29294'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q29294', 'length': 5, 'arrows': 'to', 'to': 'q47065'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q62330'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62330', 'length': 5, 'arrows': 'to', 'to': 'q32979'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q95609'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q95609', 'length': 5, 'arrows': 'to', 'to': 'q82871'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82871', 'length': 5, 'arrows': 'to', 'to': 'q23049'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q64435'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q37480'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q19112'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q19112', 'length': 5, 'arrows': 'to', 'to': 'q64355'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q47865'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q30197'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30197', 'length': 5, 'arrows': 'to', 'to': 'q43710'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q69616'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q44138'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44138', 'length': 5, 'arrows': 'to', 'to': 'q17146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q86459'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q78299', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the hypothesis?\n', 'id': 'q75774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the previous studies\nsupporting this hypothesis?\n', 'id': 'q95914', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation trigger an\noverall high arousal state for\nlearning in general or only\nthe specific object involved in\nthe violation?\n', 'id': 'q34122', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the independent measure?\n', 'id': 'q29294', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the expectations and\nviolations?\n', 'id': 'q47065', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent measure?\n', 'id': 'q62330', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q32979', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q95609', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the alternative explanations?\n', 'id': 'q82871', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just pay more\nattention to the more familiar\nobject?\n', 'id': 'q23049', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more arousal and\nare ready to learn anything\n(exp3).\n', 'id': 'q64435', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping learning concerns\nbetween a new object instead\nof the one in violation,\nwill the learning enhancement still\nshow?\n', 'id': 'q37480', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q19112', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict to the\nprevious studies in adult where\n", 'id': 'q64355', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids want to\nlearn if they can choose?\n', 'id': 'q47865', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent measure?\n', 'id': 'q30197', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time that? If\nmanually, is the observer blind\nto condition?\n', 'id': 'q43710', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q69616', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent measure?\n', 'id': 'q44138', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the different behavior\ntakes different time? E.g., banging\ntakes shorter time than dropping.\n', 'id': 'q17146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q86459', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78299', 'length': 5, 'arrows': 'to', 'to': 'q75774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q95914'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q34122'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q29294'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q29294', 'length': 5, 'arrows': 'to', 'to': 'q47065'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q62330'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62330', 'length': 5, 'arrows': 'to', 'to': 'q32979'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q95609'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q95609', 'length': 5, 'arrows': 'to', 'to': 'q82871'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82871', 'length': 5, 'arrows': 'to', 'to': 'q23049'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q64435'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q37480'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q19112'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q19112', 'length': 5, 'arrows': 'to', 'to': 'q64355'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q47865'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q30197'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30197', 'length': 5, 'arrows': 'to', 'to': 'q43710'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q69616'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q44138'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44138', 'length': 5, 'arrows': 'to', 'to': 'q17146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q86459'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q78299', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the hypothesis?\n', 'id': 'q75774', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the previous\nstudies supporting this hypothesis?\n', 'id': 'q95914', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation trigger\nan overall high arousal\nstate for learning in\ngeneral or only the\nspecific object involved in\nthe violation?\n', 'id': 'q34122', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the independent\nmeasure?\n', 'id': 'q29294', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the expectations\nand violations?\n', 'id': 'q47065', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q62330', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q32979', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q95609', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the alternative\nexplanations?\n', 'id': 'q82871', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just pay\nmore attention to the\nmore familiar object?\n', 'id': 'q23049', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more arousal\nand are ready to\nlearn anything (exp3).\n', 'id': 'q64435', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping learning\nconcerns between a new\nobject instead of the\none in violation, will\nthe learning enhancement still\nshow?\n', 'id': 'q37480', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q19112', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict to\nthe previous studies in\nadult where\n", 'id': 'q64355', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids want\nto learn if they\ncan choose?\n', 'id': 'q47865', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q30197', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time that?\nIf manually, is the\nobserver blind to condition?\n', 'id': 'q43710', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q69616', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q44138', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the different\nbehavior takes different time?\nE.g., banging takes shorter\ntime than dropping.\n', 'id': 'q17146', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q86459', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep16757'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q97129'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q69307'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q55232'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q55232', 'length': 5, 'arrows': 'to', 'to': 'q85584'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q69962'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q69962', 'length': 5, 'arrows': 'to', 'to': 'q298'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q53047'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q53047', 'length': 5, 'arrows': 'to', 'to': 'q62352'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62352', 'length': 5, 'arrows': 'to', 'to': 'q65003'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q69307', 'length': 5, 'arrows': 'to', 'to': 'q75402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q57559'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75402', 'length': 5, 'arrows': 'to', 'to': 'q5381'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q5381', 'length': 5, 'arrows': 'to', 'to': 'q49037'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q38206', 'length': 5, 'arrows': 'to', 'to': 'q11015'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q14423'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q14423', 'length': 5, 'arrows': 'to', 'to': 'q14013'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q75646'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q62147'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q62147', 'length': 5, 'arrows': 'to', 'to': 'q44085'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q11015', 'length': 5, 'arrows': 'to', 'to': 'q58550'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q90790', 'length': 5, 'arrows': 'to', 'to': 'q59938'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q49882'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q79146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q45487'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q45487', 'length': 5, 'arrows': 'to', 'to': 'q92315'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q92286'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q92286', 'length': 5, 'arrows': 'to', 'to': 'q25817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q63629'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q63629', 'length': 5, 'arrows': 'to', 'to': 'q31989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q31989', 'length': 5, 'arrows': 'to', 'to': 'q30000'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q79146', 'length': 5, 'arrows': 'to', 'to': 'q80126'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q45768'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q80126', 'length': 5, 'arrows': 'to', 'to': 'q78817'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78817', 'length': 5, 'arrows': 'to', 'to': 'q95501'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q59938', 'length': 5, 'arrows': 'to', 'to': 'q42016'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q7612'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q7612', 'length': 5, 'arrows': 'to', 'to': 'q26100'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99502'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q89996'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q89996', 'length': 5, 'arrows': 'to', 'to': 'q78461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q42016', 'length': 5, 'arrows': 'to', 'to': 'q99328'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q78299', 'length': 5, 'arrows': 'to', 'to': 'q75774'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q95914'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q34122'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q29294'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q29294', 'length': 5, 'arrows': 'to', 'to': 'q47065'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q62330'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62330', 'length': 5, 'arrows': 'to', 'to': 'q32979'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q95609'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q95609', 'length': 5, 'arrows': 'to', 'to': 'q82871'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82871', 'length': 5, 'arrows': 'to', 'to': 'q23049'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q34122', 'length': 5, 'arrows': 'to', 'to': 'q64435'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q37480'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q64435', 'length': 5, 'arrows': 'to', 'to': 'q19112'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q19112', 'length': 5, 'arrows': 'to', 'to': 'q64355'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q75774', 'length': 5, 'arrows': 'to', 'to': 'q47865'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q30197'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30197', 'length': 5, 'arrows': 'to', 'to': 'q43710'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q69616'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q44138'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q44138', 'length': 5, 'arrows': 'to', 'to': 'q17146'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q47865', 'length': 5, 'arrows': 'to', 'to': 'q86459'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q69627', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the hypothesis?\n', 'id': 'q99302', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the previous\nstudies supporting this hypothesis?\n', 'id': 'q12939', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation trigger\nan overall high arousal\nstate for learning in\ngeneral or only the\nspecific object involved in\nthe violation?\n', 'id': 'q36095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the independent\nmeasure?\n', 'id': 'q97383', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the expectations\nand violations?\n', 'id': 'q18458', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q47312', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q84677', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q72313', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the alternative\nexplanations?\n', 'id': 'q62380', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just pay\nmore attention to the\nmore familiar object?\n', 'id': 'q91505', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more arousal\nand are ready to\nlearn anything (exp3).\n', 'id': 'q96222', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping learning\nconcerns between a new\nobject instead of the\none in violation, will\nthe learning enhancement still\nshow?\n', 'id': 'q50233', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q1021', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict to\nthe previous studies in\nadult where\n", 'id': 'q75288', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids want\nto learn if they\ncan choose?\n', 'id': 'q41692', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q6876', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time that?\nIf manually, is the\nobserver blind to condition?\n', 'id': 'q7985', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q41215', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q66599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the different\nbehavior takes different time?\nE.g., banging takes shorter\ntime than dropping.\n', 'id': 'q16402', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q76581', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69627', 'length': 5, 'arrows': 'to', 'to': 'q99302'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q12939'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q36095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q97383'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q97383', 'length': 5, 'arrows': 'to', 'to': 'q18458'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q47312'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q47312', 'length': 5, 'arrows': 'to', 'to': 'q84677'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q72313'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q72313', 'length': 5, 'arrows': 'to', 'to': 'q62380'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62380', 'length': 5, 'arrows': 'to', 'to': 'q91505'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q96222'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q50233'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q1021'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q1021', 'length': 5, 'arrows': 'to', 'to': 'q75288'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q41692'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah52905', 'length': 5, 'arrows': 'to', 'to': 'q6876'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q6876', 'length': 5, 'arrows': 'to', 'to': 'q7985'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah52905', 'length': 5, 'arrows': 'to', 'to': 'q41215'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah84517', 'length': 5, 'arrows': 'to', 'to': 'q66599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q66599', 'length': 5, 'arrows': 'to', 'to': 'q16402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah84517', 'length': 5, 'arrows': 'to', 'to': 'q76581'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q69627', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the hypothesis?\n', 'id': 'q99302', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the previous\nstudies supporting this hypothesis?\n', 'id': 'q12939', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation trigger\nan overall high arousal\nstate for learning in\ngeneral or only the\nspecific object involved in\nthe violation?\n', 'id': 'q36095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the independent\nmeasure?\n', 'id': 'q97383', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the expectations\nand violations?\n', 'id': 'q18458', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q47312', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q84677', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q72313', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the alternative\nexplanations?\n', 'id': 'q62380', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just pay\nmore attention to the\nmore familiar object?\n', 'id': 'q91505', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more arousal\nand are ready to\nlearn anything (exp3).\n', 'id': 'q96222', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping learning\nconcerns between a new\nobject instead of the\none in violation, will\nthe learning enhancement still\nshow?\n', 'id': 'q50233', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q1021', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict to\nthe previous studies in\nadult where\n", 'id': 'q75288', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids want\nto learn if they\ncan choose?\n', 'id': 'q41692', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q6876', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time that?\nIf manually, is the\nobserver blind to condition?\n', 'id': 'q7985', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q41215', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q66599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the different\nbehavior takes different time?\nE.g., banging takes shorter\ntime than dropping.\n', 'id': 'q16402', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q76581', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69627', 'length': 5, 'arrows': 'to', 'to': 'q99302'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q99302', 'length': 5, 'arrows': 'to', 'to': 'ah68903'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q12939'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q36095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'ah46083'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q97383'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q97383', 'length': 5, 'arrows': 'to', 'to': 'q18458'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q47312'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q47312', 'length': 5, 'arrows': 'to', 'to': 'q84677'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah46083', 'length': 5, 'arrows': 'to', 'to': 'q72313'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q72313', 'length': 5, 'arrows': 'to', 'to': 'q62380'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62380', 'length': 5, 'arrows': 'to', 'to': 'q91505'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q96222'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q50233'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q1021'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q1021', 'length': 5, 'arrows': 'to', 'to': 'q75288'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'ah68903', 'length': 5, 'arrows': 'to', 'to': 'q41692'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'ah52905'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah52905', 'length': 5, 'arrows': 'to', 'to': 'q6876'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q6876', 'length': 5, 'arrows': 'to', 'to': 'q7985'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah52905', 'length': 5, 'arrows': 'to', 'to': 'q41215'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'ah84517'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'ah84517', 'length': 5, 'arrows': 'to', 'to': 'q66599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q66599', 'length': 5, 'arrows': 'to', 'to': 'q16402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'ah84517', 'length': 5, 'arrows': 'to', 'to': 'q76581'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'id': 'q69627', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the hypothesis?\n', 'id': 'q99302', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the previous\nstudies supporting this hypothesis?\n', 'id': 'q12939', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Does the violation trigger\nan overall high arousal\nstate for learning in\ngeneral or only the\nspecific object involved in\nthe violation?\n', 'id': 'q36095', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the independent\nmeasure?\n', 'id': 'q97383', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the expectations\nand violations?\n', 'id': 'q18458', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q47312', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to quantify?\n', 'id': 'q84677', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q72313', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the alternative\nexplanations?\n', 'id': 'q62380', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Do they just pay\nmore attention to the\nmore familiar object?\n', 'id': 'q91505', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants feel more arousal\nand are ready to\nlearn anything (exp3).\n', 'id': 'q96222', 'size': 8, 'type': 'Question', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'If the mapping learning\nconcerns between a new\nobject instead of the\none in violation, will\nthe learning enhancement still\nshow?\n', 'id': 'q50233', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q1021', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': "Don't this contradict to\nthe previous studies in\nadult where\n", 'id': 'q75288', 'size': 8, 'type': 'Question', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What do kids want\nto learn if they\ncan choose?\n', 'id': 'q41692', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q6876', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to time that?\nIf manually, is the\nobserver blind to condition?\n', 'id': 'q7985', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q41215', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the dependent\nmeasure?\n', 'id': 'q66599', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What if the different\nbehavior takes different time?\nE.g., banging takes shorter\ntime than dropping.\n', 'id': 'q16402', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the result?\n', 'id': 'q76581', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep10672'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q69627', 'length': 5, 'arrows': 'to', 'to': 'q99302'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q99302', 'length': 5, 'arrows': 'to', 'to': 'ah68903'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q99302', 'length': 5, 'arrows': 'to', 'to': 'q12939'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q99302', 'length': 5, 'arrows': 'to', 'to': 'q36095'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'ah46083'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q97383'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q97383', 'length': 5, 'arrows': 'to', 'to': 'q18458'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q47312'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q47312', 'length': 5, 'arrows': 'to', 'to': 'q84677'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q72313'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q72313', 'length': 5, 'arrows': 'to', 'to': 'q62380'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q62380', 'length': 5, 'arrows': 'to', 'to': 'q91505'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q36095', 'length': 5, 'arrows': 'to', 'to': 'q96222'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'opereationalize', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q50233'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96222', 'length': 5, 'arrows': 'to', 'to': 'q1021'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q1021', 'length': 5, 'arrows': 'to', 'to': 'q75288'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q99302', 'length': 5, 'arrows': 'to', 'to': 'q41692'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'ah52905'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'q6876'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q6876', 'length': 5, 'arrows': 'to', 'to': 'q7985'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'q41215'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'hypothesis', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'ah84517'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'q66599'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q66599', 'length': 5, 'arrows': 'to', 'to': 'q16402'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q41692', 'length': 5, 'arrows': 'to', 'to': 'q76581'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>

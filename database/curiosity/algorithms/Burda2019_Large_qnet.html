@@ -1,0 +1,261 @@
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'Why\tneed intrinsic motivation?', 'id': 'q19934', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': "In real world\nthere's no such\ndense feedback as\nin carefully designed\nreinforcement learning tasks.\n", 'id': 'a48595', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nexample -- robot?\n', 'id': 'q28716', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants seem to\ndo goal-less exploration\nto learn skills\nuseful for the\nfuture #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.\n', 'id': 'q58117', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can intrinsic reward\nalgorithms behave better\nor similarly good\nin those environments?\n', 'id': 'q40683', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'What is the algorithm?', 'id': 'q6919', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': "Prediction error of\nthe agent's action\n(not the world!)\nas intrinsic reward,\nas in #[P]Pathak2017_Curiosity-driven.\n", 'id': 'a16242', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nworld model (forward\ndynamics predictor)?\n', 'id': 'q79009', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Probability distribution of\nthe embedding of\nnext state given\nthe current state\nand action.\n', 'id': 'a96119', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to embed\nthe state?\n', 'id': 'q12519', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'raw stimuli space\n(pixel space here).\n', 'id': 'a50625', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Random CNN features.\n', 'id': 'a74421', 'size': 6, 'type': 'Answer', 'content': '"we take our embedding network, a convolutional network, and fix it after random initialization."', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Variational Autoencoders.\n', 'id': 'a3033', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Inverse Dynamics Features.\n', 'id': 'a84735', 'size': 6, 'type': 'Answer', 'content': '"The inverse dynamics task is to predict the action at given the previous and next states s_t and s_{t+1}. Features are learned using a common neural network φ...The intuition is that the features learned should correspond to aspects of the environment that are under the agent’s immediate control"', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndiscounting horizon?\n', 'id': 'q38416', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Infinite, bootstrapped using\nthe value function.\nBecause the end\nof episode is\nnot defined to\navoid giving away\nthe signal of\nexternal reward.\n', 'id': 'a63288', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'What are the tasks?', 'id': 'q8462', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': '54 environments including\nvideo games, physics\nengine simulations, and\nvirtual 3D navigation\ntasks.\n', 'id': 'a31709', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to define\nthe end of\nthe game, if\nit is not\ntreated as an\nexternal reward signal?\n', 'id': 'q63684', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Remove the signal\nthat the game\nis done and\ntreat death just\nas another state\ntransition.\n', 'id': 'a63527', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How good is the performance?', 'id': 'q10513', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q60153', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Better external reward\ngained.\n', 'id': 'a20886', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What kind of\ntasks will the\npurely internal driven\nagent also learn\nto gain more\nexternal rewards?\n', 'id': 'q9506', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Most Atari games.\nIf the external\nreward is unrelated\nwith exploration then\nthe algorithm may\ncollect less external\nreward than a\nrandom algorithm.\n', 'id': 'a57756', 'size': 6, 'type': 'Answer', 'content': '"when the agent runs out of lives, the bricks are reset to a uniform structure again that has been seen by the agent many times before and is hence very predictable, so the agent tries to stay alive to be curious by avoiding reset by death."', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\neffect of the\ndifferent feature learning\nvariants (embeddings) on\nthese behaviors?\n', 'id': 'q43250', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The raw pixel\nspace performs consistently\nworst. Random features\n(RF) perform quite\nwell across Atari\ntasks and sometimes\nbetter than using\nlearned features. IDF-curious\nagent collects more\ngame reward than\na random agent\nin 75% of\nthe Atari games,\nan RF-curious agent\ndoes better in\n70%. Further, IDF\ndoes better than\nRF in 55%\nof the games.\nOverall, random features\nand inverse dynamics\nfeatures worked well\nin general.\n', 'id': 'a88150', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Why do random\nfeatures perform so\nwell?\n', 'id': 'q29264', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'It is more\nstable than learned\nfeatures. Also in\natari games where\nthe states look\nsimple, it is\nefficient to preserve\nuseful features.\n', 'id': 'a79955', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can IDF get\nmore stable and\nperform better?\n', 'id': 'q9990', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Yes, by adding\nmore parallel trainings\nin a batch,\nthe asymtop in\nSuper Mario Bro\nalso improves.\n', 'id': 'a51575', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'In what situation\nwill the algorithm\nconceptually doom to\nfail?\n', 'id': 'q34172', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'When the agent\ncan generate stochasticity\nitself.\n', 'id': 'a28019', 'size': 6, 'type': 'Answer', 'content': '"Noisy TV thought experiment where the agent can control the TV to switch to random channels. Proven to be irresistable attraction and the external reward remains low."', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Generalization ability.\n', 'id': 'a98540', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ngeneralization task?\n', 'id': 'q25075', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'pretrain in level\n1 of Super\nMario then test\non other levels.\n', 'id': 'a20782', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Is the transferred\nmodel better than\na model training\nfrom scratch in\nthe new environment?\n', 'id': 'q18238', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep90542'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Yes if the\nnew environment is\nnot too different\nfrom the old\none.\n', 'id': 'a52979', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep90542'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q19934', 'length': 5, 'arrows': 'to', 'to': 'a48595'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a48595', 'length': 5, 'arrows': 'to', 'to': 'q28716'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q28716', 'length': 5, 'arrows': 'to', 'to': 'q58117'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q28716', 'length': 5, 'arrows': 'to', 'to': 'q40683'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q6919', 'length': 5, 'arrows': 'to', 'to': 'a16242'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a16242', 'length': 5, 'arrows': 'to', 'to': 'q79009'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q79009', 'length': 5, 'arrows': 'to', 'to': 'a96119'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a96119', 'length': 5, 'arrows': 'to', 'to': 'q12519'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q12519', 'length': 5, 'arrows': 'to', 'to': 'a50625'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q12519', 'length': 5, 'arrows': 'to', 'to': 'a74421'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q12519', 'length': 5, 'arrows': 'to', 'to': 'a3033'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q12519', 'length': 5, 'arrows': 'to', 'to': 'a84735'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a16242', 'length': 5, 'arrows': 'to', 'to': 'q38416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q38416', 'length': 5, 'arrows': 'to', 'to': 'a63288'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q8462', 'length': 5, 'arrows': 'to', 'to': 'a31709'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a31709', 'length': 5, 'arrows': 'to', 'to': 'q63684'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q63684', 'length': 5, 'arrows': 'to', 'to': 'a63527'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q10513', 'length': 5, 'arrows': 'to', 'to': 'q60153'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q60153', 'length': 5, 'arrows': 'to', 'to': 'a20886'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a20886', 'length': 5, 'arrows': 'to', 'to': 'q9506'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q9506', 'length': 5, 'arrows': 'to', 'to': 'a57756'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a20886', 'length': 5, 'arrows': 'to', 'to': 'q43250'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q43250', 'length': 5, 'arrows': 'to', 'to': 'a88150'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a88150', 'length': 5, 'arrows': 'to', 'to': 'q29264'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q29264', 'length': 5, 'arrows': 'to', 'to': 'a79955'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'a79955', 'length': 5, 'arrows': 'to', 'to': 'q9990'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q9990', 'length': 5, 'arrows': 'to', 'to': 'a51575'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a20886', 'length': 5, 'arrows': 'to', 'to': 'q34172'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q34172', 'length': 5, 'arrows': 'to', 'to': 'a28019'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q60153', 'length': 5, 'arrows': 'to', 'to': 'a98540'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a98540', 'length': 5, 'arrows': 'to', 'to': 'q25075'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q25075', 'length': 5, 'arrows': 'to', 'to': 'a20782'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a98540', 'length': 5, 'arrows': 'to', 'to': 'q18238'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q18238', 'length': 5, 'arrows': 'to', 'to': 'a52979'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML><!doctype html>
+<HTML>
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+      width: 1000px;
+      height: 800px;
+    }
+
+	div.nodeContent {
+      position: relative;
+      width: 400px;
+      height: 780px;
+      margin-top: -802px;
+      margin-left: 1050px;
+      padding: 10px;
+	}
+
+	body{
+		background-color: white;
+	}
+  </style>
+  
+</HEAD>
+
+<BODY>
+<h2>Scientific Knowledge Organized Through Question Network</h2>
+
+<!-- display the networks  -->
+<div id="mynetwork">
+
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+
+</div>
+
+</div>
+
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Node Content:</h4>
+<p>
+This properties of the node will be listed here once clicked:
+</p>
+
+<p id="demo"></p>
+
+
+</div>
+
+<script type="text/javascript">
+// declaration 
+var network;
+
+var gephiImported;
+
+var nodeContent = document.getElementById('nodeContent');
+
+var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'How to learn in the complex environment without dense rewards?', 'id': 'q81406', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Why is this\ntask important?\n', 'id': 'q80416', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': "In real world\nthere's no such\ndense feedback as\nin carefully designed\nreinforcement learning tasks.\n", 'id': 'a5796', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nexample -- robot?\n', 'id': 'q96666', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Infants seem to\ndo goal-less exploration\nto learn skills\nuseful for the\nfuture #[P]Ryan2000_Intrinsic, #[P]Smith2005_The.\n', 'id': 'q43476', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can intrinsic reward\nalgorithms behave better\nor similarly good\nin those environments?\n', 'id': 'q22900', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'me'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q5188', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': "Prediction error of\nthe agent's action\n(not the world!)\nas intrinsic reward,\nas in #[P]Pathak2017_Curiosity-driven.\n", 'id': 'a48546', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nworld model (forward\ndynamics predictor)?\n', 'id': 'q96266', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Probability distribution of\nthe embedding of\nnext state given\nthe current state\nand action.\n', 'id': 'a17509', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to embed\nthe state?\n', 'id': 'q61342', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'raw stimuli space\n(pixel space here).\n', 'id': 'a64461', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Random CNN features.\n', 'id': 'a77786', 'size': 6, 'type': 'Answer', 'content': '"we take our embedding network, a convolutional network, and fix it after random initialization."', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Variational Autoencoders.\n', 'id': 'a59515', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Inverse Dynamics Features.\n', 'id': 'a73321', 'size': 6, 'type': 'Answer', 'content': '"The inverse dynamics task is to predict the action at given the previous and next states s_t and s_{t+1}. Features are learned using a common neural network φ...The intuition is that the features learned should correspond to aspects of the environment that are under the agent’s immediate control"', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ndiscounting horizon?\n', 'id': 'q96973', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Infinite, bootstrapped using\nthe value function.\nBecause the end\nof episode is\nnot defined to\navoid giving away\nthe signal of\nexternal reward.\n', 'id': 'a94798', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\ntasks?\n', 'id': 'q93840', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': '54 environments including\nvideo games, physics\nengine simulations, and\nvirtual 3D navigation\ntasks.\n', 'id': 'a82431', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to define\nthe end of\nthe game, if\nit is not\ntreated as an\nexternal reward signal?\n', 'id': 'q32270', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Remove the signal\nthat the game\nis done and\ntreat death just\nas another state\ntransition.\n', 'id': 'a72837', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How good is\nthe performance?\n', 'id': 'q16818', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q44149', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Better external reward\ngained.\n', 'id': 'a96284', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What kind of\ntasks will the\npurely internal driven\nagent also learn\nto gain more\nexternal rewards?\n', 'id': 'q41671', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Most Atari games.\nIf the external\nreward is unrelated\nwith exploration then\nthe algorithm may\ncollect less external\nreward than a\nrandom algorithm.\n', 'id': 'a80689', 'size': 6, 'type': 'Answer', 'content': '"when the agent runs out of lives, the bricks are reset to a uniform structure again that has been seen by the agent many times before and is hence very predictable, so the agent tries to stay alive to be curious by avoiding reset by death."', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\neffect of the\ndifferent feature learning\nvariants (embeddings) on\nthese behaviors?\n', 'id': 'q65446', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'The raw pixel\nspace performs consistently\nworst. Random features\n(RF) perform quite\nwell across Atari\ntasks and sometimes\nbetter than using\nlearned features. IDF-curious\nagent collects more\ngame reward than\na random agent\nin 75% of\nthe Atari games,\nan RF-curious agent\ndoes better in\n70%. Further, IDF\ndoes better than\nRF in 55%\nof the games.\nOverall, random features\nand inverse dynamics\nfeatures worked well\nin general.\n', 'id': 'a36338', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Why do random\nfeatures perform so\nwell?\n', 'id': 'q49568', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'It is more\nstable than learned\nfeatures. Also in\natari games where\nthe states look\nsimple, it is\nefficient to preserve\nuseful features.\n', 'id': 'a78656', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Can IDF get\nmore stable and\nperform better?\n', 'id': 'q68113', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Yes, by adding\nmore parallel trainings\nin a batch,\nthe asymtop in\nSuper Mario Bro\nalso improves.\n', 'id': 'a57784', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'In what situation\nwill the algorithm\nconceptually doom to\nfail?\n', 'id': 'q56240', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'When the agent\ncan generate stochasticity\nitself.\n', 'id': 'a37681', 'size': 6, 'type': 'Answer', 'content': '"Noisy TV thought experiment where the agent can control the TV to switch to random channels. Proven to be irresistable attraction and the external reward remains low."', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Generalization ability.\n', 'id': 'a3541', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ngeneralization task?\n', 'id': 'q53397', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'pretrain in level\n1 of Super\nMario then test\non other levels.\n', 'id': 'a27323', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Is the transferred\nmodel better than\na model training\nfrom scratch in\nthe new environment?\n', 'id': 'q21356', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep86157'}, {'color': 'blue', 'font': {'vadjust': '15'}, 'label': 'Yes if the\nnew environment is\nnot too different\nfrom the old\none.\n', 'id': 'a31207', 'size': 6, 'type': 'Answer', 'content': '', 'speaker': 'Ep86157'}])
+var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q80416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q80416', 'length': 5, 'arrows': 'to', 'to': 'a5796'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a5796', 'length': 5, 'arrows': 'to', 'to': 'q96666'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q43476'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q96666', 'length': 5, 'arrows': 'to', 'to': 'q22900'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q5188'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q5188', 'length': 5, 'arrows': 'to', 'to': 'a48546'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a48546', 'length': 5, 'arrows': 'to', 'to': 'q96266'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q96266', 'length': 5, 'arrows': 'to', 'to': 'a17509'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a17509', 'length': 5, 'arrows': 'to', 'to': 'q61342'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q61342', 'length': 5, 'arrows': 'to', 'to': 'a64461'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q61342', 'length': 5, 'arrows': 'to', 'to': 'a77786'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q61342', 'length': 5, 'arrows': 'to', 'to': 'a59515'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q61342', 'length': 5, 'arrows': 'to', 'to': 'a73321'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a48546', 'length': 5, 'arrows': 'to', 'to': 'q96973'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q96973', 'length': 5, 'arrows': 'to', 'to': 'a94798'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q93840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q93840', 'length': 5, 'arrows': 'to', 'to': 'a82431'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a82431', 'length': 5, 'arrows': 'to', 'to': 'q32270'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q32270', 'length': 5, 'arrows': 'to', 'to': 'a72837'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q81406', 'length': 5, 'arrows': 'to', 'to': 'q16818'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q16818', 'length': 5, 'arrows': 'to', 'to': 'q44149'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'a96284'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a96284', 'length': 5, 'arrows': 'to', 'to': 'q41671'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q41671', 'length': 5, 'arrows': 'to', 'to': 'a80689'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a96284', 'length': 5, 'arrows': 'to', 'to': 'q65446'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q65446', 'length': 5, 'arrows': 'to', 'to': 'a36338'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a36338', 'length': 5, 'arrows': 'to', 'to': 'q49568'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q49568', 'length': 5, 'arrows': 'to', 'to': 'a78656'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'follow-up', 'from': 'a78656', 'length': 5, 'arrows': 'to', 'to': 'q68113'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q68113', 'length': 5, 'arrows': 'to', 'to': 'a57784'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a96284', 'length': 5, 'arrows': 'to', 'to': 'q56240'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q56240', 'length': 5, 'arrows': 'to', 'to': 'a37681'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q44149', 'length': 5, 'arrows': 'to', 'to': 'a3541'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a3541', 'length': 5, 'arrows': 'to', 'to': 'q53397'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q53397', 'length': 5, 'arrows': 'to', 'to': 'a27323'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'a3541', 'length': 5, 'arrows': 'to', 'to': 'q21356'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'answer', 'from': 'q21356', 'length': 5, 'arrows': 'to', 'to': 'a31207'}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 10,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+
+	 layout: {
+            hierarchical: {
+                sortMethod: "directed",
+        levelSeparation: 80,
+        nodeSpacing: 50
+            }
+    },
+  physics:{
+    stabilization: false,
+
+  }
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>

@@ -7,7 +7,7 @@ What is the task that is difficult to solve?
 		... What is the training process?
 		... What is the policy?
 		end_
-			_ How is this algorithm different from previous algorithms?
+		_ How is this algorithm different from previous algorithms?
 	_ What is the task?
 		_ Why choosing this task?
 	_ How good is the performance?

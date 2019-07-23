@@ -1,6 +1,11 @@
 What is a phenomenon worth exploring?
-	_What are the possible computational models?
+	_ What are the possible computational models?
 		_ What is the algorithm?
+			_specification...
+			... What is the reward?
+			... What is the training process?
+			... What is the policy?
+			end_
 	_ Which model better explains human behavior?
 		_ What is the hypothesis?
 			_operationalize...
@@ -10,6 +15,6 @@ What is a phenomenon worth exploring?
 			_ What is the result?
 				_ How to evaluate?
 					_specify...
-					... What are the qualitative evaluation?
-					... What are the quantitative evaluation?
+					... Qualitatively do people show the behavioral patterns predicted by the model?
+					... Quantitatively how well does the model fit the behavior?
 					end_

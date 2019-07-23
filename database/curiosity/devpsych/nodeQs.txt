@@ -6,5 +6,6 @@ What is a phenomenon worth exploring?
 		... What are the conditions?
 		end_
 		_ What is the result?
-			_ How to evaluate?
+			_ How to measure the behavior?
+				_ How to reduce the confounding factors? 
 			_ What are the alternative explanations?
