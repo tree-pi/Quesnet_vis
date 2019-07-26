@@ -1,0 +1,42 @@
+What is everyday activity (EA)?
+	_ What are examples of everyday activities (EA)?
+		_a_ cleaning up, setting tables, etc.
+	_ What are the theoretical features?
+		_a_ Hierarchical task structures. 
+		_a_ Complicated interaction in sub-tasks.
+		_a_@[R]Laird one-shot learning for new tasks.
+	_ Why study everyday activities?
+		_specify...
+		... What is the societal benefit?
+			_a_ Aging population have problem performing EA independently.
+		... What is the academic benefit? 
+		 	_a_ able to examine in the lab but complex enough to be interesting. Also forsters understanding from different field perspectives: developing, disease, etc.
+		end_
+			_ Who are the researchers?
+				_a_ integrated research center: https://ease-crc.org/
+			_ What do we want to achieve?
+				_ What do we want to able to engineer?
+					_a_ a robot able to do interactive learning.
+						_ What are the difficulties?
+							_a...
+							... The instruction is diverse: could be procedures, could be merely the objection, could be an optimization problem.
+							... To learn a new task fast, need to reuse the old memory.
+							end_
+						_ What are the solutions we have?
+							_a_ "Rosie" system based on the SOAR cognitive architect.
+				_ What do we want to understand?
+					_a...
+					... What is the mechanism.
+					... Why it breakes down sometimes.
+					end_
+						_ What are the difficulties in EA?
+							_ What are the aspects?
+								_a_ Perception (is that green ring a plate?), saptial reasonings (where to mob? where to put the plates?), planning(which order to brew the tea?), controlling, monitoring and correction (did you throw egg shell into the pan?).
+							_ What are the specific challenges?
+								_a_ Actions are conditioned on the context.
+								_a_ Interruptions may mess up your execution.
+						_ What are the kinds of break-downs?
+							_a_ The severness of errors: overtly error, micro error.
+							_a_ In terms of subtask: Omissions; Comission errors: substitutions, wrong sequences...
+								_ How are these errors correlate with neural anatomical features?
+	###

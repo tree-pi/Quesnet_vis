@@ -1,0 +1,15 @@
+Bonawitz cogsci talk
+What are the problems of treating exploration as an index of curiosity?
+	_a...
+	... Unable to distinguish specific versus diverse exploration if you are sticking to one function.
+	... Unable to distinguish if the external reward is driving the exploration.
+	end_
+		_ How to solve these problems?
+			_proposal...
+			... Compare the demand for explanation conditioned on the level of knowledge gap in different domains.
+			... Connect to executive function impacted by curiosity. "Belief violation occupies more working memory such that the recall correct rate for a new learning task "
+			... Connect to biological signals indicating readiness of new information. #[R]"Begus et al 2016 theta oscillation indicates an expectation of new information". 
+			end_
+				_@me Why do these design better reflect specific cognitive curiosity?
+					_a_@me Measurement should be unrelated with any reward. Better, it shows other effects of curiosity beside information inquisition behavior (enhanced attention, physiological effects).
+

@@ -2,9 +2,8 @@
 <HTML>
 <HEAD>
   <meta charset="utf-8" />
-  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
+  <TITLE>Question Network</TITLE>
 
-  <!-- NPM (http://visjs.org/index.html#download_install): -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -20,19 +19,19 @@
 
   <style type="text/css">
 	#mynetwork {
-      width: 1000px;
-      height: 800px;
+      float:left;
+      width: 700px;
+      height: 600px;
+      margin:5px;
+      border: 1px solid lightgray;
     }
 
-	div.nodeContent {
-      position: relative;
-      width: 400px;
-      height: 780px;
-      margin-top: -802px;
-      margin-left: 1050px;
-      padding: 10px;
-	}
-
+    #nodeContent {
+      float:left;
+      width: 300px;
+      height: 600px;
+      margin-left:20px;
+    }
 	body{
 		background-color: white;
 	}
@@ -41,13 +40,15 @@
 </HEAD>
 
 <BODY>
-<h2>Scientific Knowledge Organized Through Question Network</h2>
-
+<h2>Question Network</h2>
+<div id="instruction">
+Drag to move. Scroll to zoom in and out.
+<div>
 <!-- display the networks  -->
 <div id="mynetwork">
 
 <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
-<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
 </canvas>
 
 </div>
@@ -56,13 +57,10 @@
 
 <!-- display the node content  -->
 <div class="nodeContent">
-<h4>Node Content:</h4>
-<p>
-This properties of the node will be listed here once clicked:
-</p>
+<h4>Click node to show details:</h4>
+
 
 <p id="demo"></p>
-
 
 </div>
 

@@ -20,14 +20,15 @@
 
   <style type="text/css">
 	#mynetwork {
-      width: 1000px;
-      height: 800px;
+      width: 800px;
+      height: 700px;
+      border: 1px solid lightgray;
     }
 
 	div.nodeContent {
       position: relative;
-      width: 400px;
-      height: 780px;
+      width: 200px;
+      height: 700px;
       margin-top: -802px;
       margin-left: 1050px;
       padding: 10px;
@@ -47,24 +48,22 @@
 <div id="mynetwork">
 
 <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
-<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" >
 </canvas>
 
 </div>
-
-</div>
-
 <!-- display the node content  -->
+</div>
 <div class="nodeContent">
-<h4>Node Content:</h4>
-<p>
-This properties of the node will be listed here once clicked:
-</p>
+  <h4>Node Content:</h4>
+  <p>
+  This properties of the node will be listed here once clicked:
+  </p>
 
-<p id="demo"></p>
-
+  <p id="demo"></p>
 
 </div>
+
 
 <script type="text/javascript">
 // declaration 
@@ -117,136 +116,6 @@ var data = {
   }
 
 
-  };
-
-  network = new vis.Network(container, data, options);
-  network.on('click', function (params) {
-    if (params.nodes.length > 0) {
-		var data = nodes.get(params.nodes[0]); // get the data from selected node
-		document.getElementById('demo').innerHTML=JSON.stringify(data,undefined, 2);
-    }
-  })
-
-</script>
-
-</BODY>
-</HTML><!doctype html>
-<HTML>
-<HEAD>
-  <meta charset="utf-8" />
-  <TITLE>Scientific Knowledge Organized Through Question Network</TITLE>
-
-  <!-- NPM (http://visjs.org/index.html#download_install): -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-  <!-- http://visjs.org/index.html#download_install -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
-  
-  <!-- import the css format  -->
-  <link rel="stylesheet" href="styleformat.css" type="text/css">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
-
-  <style type="text/css">
-	#mynetwork {
-      width: 1000px;
-      height: 800px;
-    }
-
-	div.nodeContent {
-      position: relative;
-      width: 400px;
-      height: 780px;
-      margin-top: -802px;
-      margin-left: 1050px;
-      padding: 10px;
-	}
-
-	body{
-		background-color: white;
-	}
-  </style>
-  
-</HEAD>
-
-<BODY>
-<h2>Scientific Knowledge Organized Through Question Network</h2>
-
-<!-- display the networks  -->
-<div id="mynetwork">
-
-<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
-<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
-</canvas>
-
-</div>
-
-</div>
-
-<!-- display the node content  -->
-<div class="nodeContent">
-<h4>Node Content:</h4>
-<p>
-This properties of the node will be listed here once clicked:
-</p>
-
-<p id="demo"></p>
-
-
-</div>
-
-<script type="text/javascript">
-// declaration 
-var network;
-
-var gephiImported;
-
-var nodeContent = document.getElementById('nodeContent');
-
-var nodes = new vis.DataSet([{'color': 'tomato', 'font': {'vadjust': '15'}, 'label': 'What is a phenomenon worth exploring?', 'id': 'q55909', 'size': 10, 'type': 'Root question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\npossible computational models?\n', 'id': 'q48858', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nalgorithm?\n', 'id': 'q82778', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nreward?\n', 'id': 'q43513', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ntraining process?\n', 'id': 'q47279', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\npolicy?\n', 'id': 'q41475', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Which model better\nexplains human behavior?\n', 'id': 'q67449', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nhypothesis?\n', 'id': 'q12529', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\ntask?\n', 'id': 'q26770', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What are the\nconditions?\n', 'id': 'q91815', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'What is the\nresult?\n', 'id': 'q72163', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'How to evaluate?\n', 'id': 'q72968', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Qualitatively do people\nshow the behavioral\npatterns predicted by\nthe model?\n', 'id': 'q57744', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}, {'color': 'dodgerblue', 'font': {'vadjust': '15'}, 'label': 'Quantitatively how well\ndoes the model\nfit the behavior?\n', 'id': 'q58007', 'size': 8, 'type': 'Question', 'content': '', 'speaker': 'Ep19005'}])
-var edges = new vis.DataSet([{'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q36406', 'length': 5, 'arrows': 'to', 'to': 'q52416'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q52416', 'length': 5, 'arrows': 'to', 'to': 'q60349'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q36406', 'length': 5, 'arrows': 'to', 'to': 'q61785'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q61785', 'length': 5, 'arrows': 'to', 'to': 'q73061'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q73061', 'length': 5, 'arrows': 'to', 'to': 'q11163'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q73061', 'length': 5, 'arrows': 'to', 'to': 'q13697'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q73061', 'length': 5, 'arrows': 'to', 'to': 'q30287'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q30287', 'length': 5, 'arrows': 'to', 'to': 'q57055'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q57055', 'length': 5, 'arrows': 'to', 'to': 'q1696'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q57055', 'length': 5, 'arrows': 'to', 'to': 'q98910'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q51337', 'length': 5, 'arrows': 'to', 'to': 'q87467'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q51337', 'length': 5, 'arrows': 'to', 'to': 'q23320'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q23320', 'length': 5, 'arrows': 'to', 'to': 'q95439'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q23320', 'length': 5, 'arrows': 'to', 'to': 'q70578'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q23320', 'length': 5, 'arrows': 'to', 'to': 'q95210'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q23320', 'length': 5, 'arrows': 'to', 'to': 'q994'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q51337', 'length': 5, 'arrows': 'to', 'to': 'q8306'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q8306', 'length': 5, 'arrows': 'to', 'to': 'q35073'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q51337', 'length': 5, 'arrows': 'to', 'to': 'q56497'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q56497', 'length': 5, 'arrows': 'to', 'to': 'q56252'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q56252', 'length': 5, 'arrows': 'to', 'to': 'q3082'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q56252', 'length': 5, 'arrows': 'to', 'to': 'q33348'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q56497', 'length': 5, 'arrows': 'to', 'to': 'q29473'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q56497', 'length': 5, 'arrows': 'to', 'to': 'q99601'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q51337', 'length': 5, 'arrows': 'to', 'to': 'q35972'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q71152', 'length': 5, 'arrows': 'to', 'to': 'q13874'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q13874', 'length': 5, 'arrows': 'to', 'to': 'q68989'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q13874', 'length': 5, 'arrows': 'to', 'to': 'q36957'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q13874', 'length': 5, 'arrows': 'to', 'to': 'q51408'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q13874', 'length': 5, 'arrows': 'to', 'to': 'q57691'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q57691', 'length': 5, 'arrows': 'to', 'to': 'q75840'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q75840', 'length': 5, 'arrows': 'to', 'to': 'q22379'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q57691', 'length': 5, 'arrows': 'to', 'to': 'q60216'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q55909', 'length': 5, 'arrows': 'to', 'to': 'q48858'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q48858', 'length': 5, 'arrows': 'to', 'to': 'q82778'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82778', 'length': 5, 'arrows': 'to', 'to': 'q43513'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82778', 'length': 5, 'arrows': 'to', 'to': 'q47279'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q82778', 'length': 5, 'arrows': 'to', 'to': 'q41475'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q55909', 'length': 5, 'arrows': 'to', 'to': 'q67449'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q67449', 'length': 5, 'arrows': 'to', 'to': 'q12529'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q12529', 'length': 5, 'arrows': 'to', 'to': 'q26770'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'operationalize', 'from': 'q12529', 'length': 5, 'arrows': 'to', 'to': 'q91815'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q12529', 'length': 5, 'arrows': 'to', 'to': 'q72163'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': '', 'from': 'q72163', 'length': 5, 'arrows': 'to', 'to': 'q72968'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q72968', 'length': 5, 'arrows': 'to', 'to': 'q57744'}, {'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'label': 'specification', 'from': 'q72968', 'length': 5, 'arrows': 'to', 'to': 'q58007'}])
-
-var container = document.getElementById('mynetwork');
-var data = {
-    nodes: nodes,
-    edges: edges
-  };
-  var options = {
-    nodes: {
-      shape: 'dot',
-      font: {
-        face: 'Tahoma',
-		size: 14,
-      },
-    },
-    edges: {
-      width: 0.4,
-      smooth: {
-        type: 'continuous'
-      },
-	  font:{
-		size: 10,
-	  }
-    },
-    interaction: {
-      tooltipDelay: 200,
-      hideEdgesOnDrag: true
-    },
-
-	 layout: {
-            hierarchical: {
-                sortMethod: "directed",
-        levelSeparation: 80,
-        nodeSpacing: 50
-            }
-    },
-  physics:{
-    stabilization: false,
-
-  }
   };
 
   network = new vis.Network(container, data, options);

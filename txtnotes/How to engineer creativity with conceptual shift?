@@ -1,0 +1,9 @@
+How to engineer creativity with conceptual shift?
+	_ What is the training data?
+		_ sketches with labels with word embeddings.
+	_ How to evaluate creativity?
+		_a...
+		... combinatory. When two concepts are joined together
+		... explorational. Modifying some new concepts into old sketch.
+		... tranformational. Greatly change the new sketch, abstracting some sketches' inspiration (e.g chair inspaired by flight => the shapes of flight chair).
+		end_
