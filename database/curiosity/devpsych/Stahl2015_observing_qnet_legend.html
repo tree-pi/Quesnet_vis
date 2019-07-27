@@ -1,0 +1,126 @@
+<!doctype html>
+<HTML>
+
+<HEAD>
+  <meta charset="utf-8" />
+<TITLE>Stahl2015_observing</TITLE>
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <!-- Needed for JSON file import (https://stackoverflow.com/questions/33392557/vis-js-simple-example-edges-do-not-show): -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <!-- <link rel="stylesheet" href="styleformat.css" type="text/css"> -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+    width: 700px;
+		height: 550px;
+		margin:5px;
+		border: 1px solid black;
+		
+    }
+	div.nodeContent {
+		width: 300px;
+		height: 550px;
+		margin-left:770px;
+		margin-top: -570px;
+		position: relative;
+	}
+	body{
+		font-family: sans-serif; /* needs link to non-generic fonts*/
+		background-color: lightgray;
+	}
+  </style>
+</HEAD>
+<BODY>
+<h2>
+Observing the unexpected enhances infants’ learning and exploration</h2>
+<h3>
+Stahl et al. 2015 (Coder: Z.Li)</h3>
+<h4>Drag to move. Scroll to zoom in and out.</h4>
+<!-- display the networks  -->
+<div id="mynetwork">
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000">
+</canvas>
+</div>
+</div>
+<!-- display the node content  -->
+<div class="nodeContent">
+<h4>Legend:</h4>
+
+<img id="myImg" src="legend.png" alt="The legend" width="412" height="174.5">
+
+<h4>Node Content:</h4>
+
+<p id="demo">
+  This properties of the node will be listed here once clicked:
+</p>
+</div>
+<a href="index.html">Back to main page</a>
+
+<script type="text/javascript">
+// declaration 
+var network;
+var nodeContent = document.getElementById('nodeContent');
+var nodes = new vis.DataSet([{'speaker': 'Ep66516', 'fulllabel': 'How do infants decide what to learn in the real world without guidance?', 'label': 'How do infants decide what to\nlearn in the real world without\nguidance?\n', 'color': 'tomato', 'type': 'Root question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 10, 'id': 'q85911'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the hypothesis?', 'label': 'What is the\nhypothesis?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q43587'}, {'speaker': 'Ep66516', 'fulllabel': 'They tend to learn about things that violate their prior expectations (core knowledge).', 'label': 'They tend to\nlearn about things\nthat violate their...', 'color': 'Gold', 'type': 'hypothesis', 'font': {'vadjust': '15'}, 'shape': 'diamond', 'content': '', 'size': 8, 'id': 'ah43131'}, {'speaker': 'Ep66516', 'fulllabel': 'What are the previous studies supporting this hypothesis?', 'label': 'What are the\nprevious studies supporting\nthis hypo...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q32084'}, {'speaker': 'Ep66516', 'fulllabel': 'We know that kids respond to surprising events (physical, numerical, social, etc.) differently, like looking longer and other physiological changes(facial expression, pupil dialation, cerebral blood flow, brain electrical activity). Yet it remains unknown what purpose these response serve.', 'label': 'We know that\nkids respond to\nsurprising events (ph...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a92416'}, {'speaker': 'Ep66516', 'fulllabel': 'Does the violation trigger an overall high arousal state for learning in general or only the specific object involved in the violation?', 'label': 'Does the violation\ntrigger an overall\nhigh arousal...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q62096'}, {'speaker': 'Ep66516', 'fulllabel': 'Infants become more interested in the object involved in violation and want to learn more about this object (exp1&2).', 'label': 'Infants become more\ninterested in the\nobject invol...', 'color': 'Gold', 'type': 'hypothesis', 'font': {'vadjust': '15'}, 'shape': 'diamond', 'content': '', 'size': 8, 'id': 'ah35647'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the independent measure?', 'label': 'What is the\nindependent measure?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q38935'}, {'speaker': 'Ep66516', 'fulllabel': 'Whether the object is involved in an event violating or consistent with the expectations.', 'label': 'Whether the object\nis involved in\nan event violati...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a25296'}, {'speaker': 'Ep66516', 'fulllabel': 'What are the expectations and violations?', 'label': 'What are the\nexpectations and violations?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q20689'}, {'speaker': 'Ep66516', 'fulllabel': 'Core knowledge, including object solidity (exp1), object continuity (exp1) and support (exp?).', 'label': 'Core knowledge, including\nobject solidity (exp1),\n...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a52421'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the dependent measure?', 'label': 'What is the\ndependent measure?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q36468'}, {'speaker': 'Ep66516', 'fulllabel': 'How successfully does the infant learn the ', 'label': 'How successfully does\nthe infant learn\nthe\n', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"auditory-visual mapping" of the object.', 'size': 6, 'id': 'a43513'}, {'speaker': 'Ep66516', 'fulllabel': 'How to quantify?', 'label': 'How to quantify?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q80672'}, {'speaker': 'Ep66516', 'fulllabel': 'Learning score regarding looking time proportion between the target and distractor when the perviously exposed auditory stimuli is played. ', 'label': 'Learning score regarding\nlooking time proportion\nb...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"For each infant we calculated a learning score by determining the proportion of time that infants looked at the target object (relative to the new distractor object) during the baseline, then subtracting this value from the proportion of time they looked at the target object during the mapping test, when the taught sound played."', 'size': 6, 'id': 'a73664'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the result?', 'label': 'What is the\nresult?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q79631'}, {'speaker': 'Ep66516', 'fulllabel': 'Infants showed no evidence of learning after ', 'label': 'Infants showed no\nevidence of learning\nafter\n', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"knowledge-consistent events" but showed significant learning after violations.', 'size': 6, 'id': 'a36416'}, {'speaker': 'Ep66516', 'fulllabel': 'What are the alternative explanations?', 'label': 'What are the\nalternative explanations?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q86221'}, {'speaker': 'Ep66516', 'fulllabel': 'Do they just pay more attention to the more familiar object?', 'label': 'Do they just\npay more attention\nto the more\nfamili...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q16926'}, {'speaker': 'Ep66516', 'fulllabel': 'No. The auditory-visual mapping is critical because if a novel sound is played there will not be significant looking time difference (exp2).', 'label': 'No. The auditory-visual\nmapping is critical\nbecaus...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a24747'}, {'speaker': 'Ep66516', 'fulllabel': 'Infants feel more arousal and are ready to learn anything (exp3).', 'label': 'Infants feel more\narousal and are\nready to learn\na...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"the enhanced learning was just due to general arousal or novelty."', 'size': 8, 'id': 'q84255'}, {'speaker': 'Ep66516', 'fulllabel': 'If the mapping learning concerns between a new object instead of the one in violation, will the learning enhancement still show?', 'label': 'If the mapping\nlearning concerns between\na new obj...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q19934'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the result?', 'label': 'What is the\nresult?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q87699'}, {'speaker': 'Ep66516', 'fulllabel': 'No learning enhancement for the object not involved in violation.', 'label': 'No learning enhancement\nfor the object\nnot involve...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a45778'}, {'speaker': 'me', 'fulllabel': "Don't this contradict to the previous studies in adult where ", 'label': "Don't this contradict\nto the previous\nstudies in a...", 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"curiosity state" also enhances encoding of irrelevant stimuli? #[P]Kang2009_The', 'size': 8, 'id': 'q27833'}, {'speaker': 'Ep66516', 'fulllabel': 'What do kids want to learn if they can choose?', 'label': 'What do kids\nwant to learn\nif they can\nchoose?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q93929'}, {'speaker': 'Ep66516', 'fulllabel': 'Infants would like to play more with the object violated expectation (exp4).', 'label': 'Infants would like\nto play more\nwith the object\nvi...', 'color': 'Gold', 'type': 'hypothesis', 'font': {'vadjust': '15'}, 'shape': 'diamond', 'content': '', 'size': 8, 'id': 'ah57967'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the dependent measure?', 'label': 'What is the\ndependent measure?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q46510'}, {'speaker': 'Ep66516', 'fulllabel': 'Explore preference score: how much time during the free play session do infants intereact (look or touch) with the target object substract the distractor.', 'label': 'Explore preference score:\nhow much time\nduring the...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a63568'}, {'speaker': 'me', 'fulllabel': 'How to time that? If manually, is the observer blind to condition?', 'label': 'How to time\nthat? If manually,\nis the observer\nbli...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q98638'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the result?', 'label': 'What is the\nresult?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q16021'}, {'speaker': 'Ep66516', 'fulllabel': 'Explore preference score is significantly higher in violation condition.', 'label': 'Explore preference score\nis significantly higher\ni...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a26615'}, {'speaker': 'Ep66516', 'fulllabel': 'Infants seek evidence to resolve the conflict (exp5).', 'label': 'Infants seek evidence\nto resolve the\nconflict (exp...', 'color': 'Gold', 'type': 'hypothesis', 'font': {'vadjust': '15'}, 'shape': 'diamond', 'content': '', 'size': 8, 'id': 'ah87831'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the dependent measure?', 'label': 'What is the\ndependent measure?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q23175'}, {'speaker': 'Ep66516', 'fulllabel': 'The time spent on testing behaviors specific to certain knowledge. ', 'label': 'The time spent\non testing behaviors\nspecific to ce...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"We analyzed two common exploratory behaviors...banging an object (relevant to testing object solidity) and dropping an object onto the table or floor (relevant to testing object support). "', 'size': 6, 'id': 'a24682'}, {'speaker': 'Ep66516', 'fulllabel': 'What if the different behavior takes different time? E.g., banging takes shorter time than dropping.', 'label': 'What if the\ndifferent behavior takes\ndifferent tim...', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q91166'}, {'speaker': 'Ep66516', 'fulllabel': 'Z-score the action frequency.', 'label': 'Z-score the action\nfrequency.\n', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 6, 'id': 'a38180'}, {'speaker': 'Ep66516', 'fulllabel': 'What is the result?', 'label': 'What is the\nresult?\n', 'color': 'dodgerblue', 'type': 'Question', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '', 'size': 8, 'id': 'q51248'}, {'speaker': 'Ep66516', 'fulllabel': 'Indeed the solitary violation events induce more banging behavior than dropping and the support violation events the other way, only for the target not the distractor. ', 'label': 'Indeed the solitary\nviolation events induce\nmore b...', 'color': 'YellowGreen', 'type': 'Answer', 'font': {'vadjust': '15'}, 'shape': 'dot', 'content': '"infants performed differential actions only after Knowledge-Violation events and only on the objects that had committed the violation. "', 'size': 6, 'id': 'a36114'}])
+var edges = new vis.DataSet([{'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q43587', 'font': {'align': 'middle'}, 'from': 'q85911'}, {'arrows': 'to', 'label': 'hypothesis', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'ah43131', 'font': {'align': 'middle'}, 'from': 'q43587'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q32084', 'font': {'align': 'middle'}, 'from': 'ah43131'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a92416', 'font': {'align': 'middle'}, 'from': 'q32084'}, {'arrows': 'to', 'label': 'specification', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q62096', 'font': {'align': 'middle'}, 'from': 'ah43131'}, {'arrows': 'to', 'label': 'hypothesis', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'ah35647', 'font': {'align': 'middle'}, 'from': 'q62096'}, {'arrows': 'to', 'label': 'operationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q38935', 'font': {'align': 'middle'}, 'from': 'ah35647'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a25296', 'font': {'align': 'middle'}, 'from': 'q38935'}, {'arrows': 'to', 'label': 'specification', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q20689', 'font': {'align': 'middle'}, 'from': 'a25296'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a52421', 'font': {'align': 'middle'}, 'from': 'q20689'}, {'arrows': 'to', 'label': 'operationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q36468', 'font': {'align': 'middle'}, 'from': 'ah35647'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a43513', 'font': {'align': 'middle'}, 'from': 'q36468'}, {'arrows': 'to', 'label': 'specification', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q80672', 'font': {'align': 'middle'}, 'from': 'a43513'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a73664', 'font': {'align': 'middle'}, 'from': 'q80672'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q79631', 'font': {'align': 'middle'}, 'from': 'ah35647'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a36416', 'font': {'align': 'middle'}, 'from': 'q79631'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q86221', 'font': {'align': 'middle'}, 'from': 'a36416'}, {'arrows': 'to', 'label': 'specification', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q16926', 'font': {'align': 'middle'}, 'from': 'q86221'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a24747', 'font': {'align': 'middle'}, 'from': 'q16926'}, {'arrows': 'to', 'label': 'operationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q84255', 'font': {'align': 'middle'}, 'from': 'q62096'}, {'arrows': 'to', 'label': 'opereationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q19934', 'font': {'align': 'middle'}, 'from': 'q84255'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q87699', 'font': {'align': 'middle'}, 'from': 'q84255'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a45778', 'font': {'align': 'middle'}, 'from': 'q87699'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q27833', 'font': {'align': 'middle'}, 'from': 'a45778'}, {'arrows': 'to', 'label': 'specification', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q93929', 'font': {'align': 'middle'}, 'from': 'ah43131'}, {'arrows': 'to', 'label': 'hypothesis', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'ah57967', 'font': {'align': 'middle'}, 'from': 'q93929'}, {'arrows': 'to', 'label': 'operationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q46510', 'font': {'align': 'middle'}, 'from': 'ah57967'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a63568', 'font': {'align': 'middle'}, 'from': 'q46510'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q98638', 'font': {'align': 'middle'}, 'from': 'a63568'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q16021', 'font': {'align': 'middle'}, 'from': 'ah57967'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a26615', 'font': {'align': 'middle'}, 'from': 'q16021'}, {'arrows': 'to', 'label': 'hypothesis', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'ah87831', 'font': {'align': 'middle'}, 'from': 'q93929'}, {'arrows': 'to', 'label': 'operationalize', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q23175', 'font': {'align': 'middle'}, 'from': 'ah87831'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a24682', 'font': {'align': 'middle'}, 'from': 'q23175'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q91166', 'font': {'align': 'middle'}, 'from': 'a24682'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a38180', 'font': {'align': 'middle'}, 'from': 'q91166'}, {'arrows': 'to', 'label': '', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'q51248', 'font': {'align': 'middle'}, 'from': 'ah87831'}, {'arrows': 'to', 'label': 'answer', 'color': {'inherit': 'to'}, 'length': 5, 'to': 'a36114', 'font': {'align': 'middle'}, 'from': 'q51248'}])
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 8,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+	
+	layout: {
+            hierarchical: {
+        sortMethod: "directed",
+				levelSeparation: 100,
+				direction:"UD",
+				nodeSpacing: 550
+            }
+    }	
+  };
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+    var dispstr = data["fulllabel"];
+    if (data["content"].length>0){ //meta-info such as ids don't need to show
+      dispstr+='<br><br>'+data["content"];
+    }
+		document.getElementById('demo').innerHTML= dispstr;
+    }
+  })
+</script>
+
+</BODY>
+</HTML>
