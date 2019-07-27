@@ -1,3 +1,4 @@
+#[E]Observing the unexpected enhances infants’ learning and exploration
 How do infants decide what to learn in the real world without guidance?
 	_ What is the hypothesis?
 		_hypothesis_ They tend to learn about things that violate their prior expectations (core knowledge).

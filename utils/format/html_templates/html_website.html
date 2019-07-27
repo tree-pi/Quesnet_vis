@@ -1,5 +1,6 @@
 <!doctype html>
 <HTML>
+
 <HEAD>
   <meta charset="utf-8" />
   <TITLE>Question Network</TITLE>
@@ -14,7 +15,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
   
   <!-- import the css format  -->
-  <link rel="stylesheet" href="styleformat.css" type="text/css">
+  <!-- <link rel="stylesheet" href="styleformat.css" type="text/css"> -->
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
@@ -29,7 +30,6 @@
 		
 
     }
-
 	div.nodeContent {
 		width: 300px;
 		height: 550px;
@@ -37,20 +37,20 @@
 		margin-top: -500px;
 		position: relative;
 	}
-
 	body{
 		font-family: sans-serif; /* needs link to non-generic fonts*/
 		background-color: lightgray;
 	}
   </style>
-  
 </HEAD>
-
 <BODY>
-<h2>Question Network</h2>
-<h4>Drag to move. Scroll to zoom in and out.</h4>
-<a href="index.html">Back to main page</a>
+<h2>
+Question Network
+</h2>
+<h3>
 
+</h3>
+<h4>Drag to move. Scroll to zoom in and out.</h4>
 <!-- display the networks  -->
 <div id="mynetwork">
 <div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
@@ -58,7 +58,6 @@
 </canvas>
 </div>
 </div>
-
 <!-- display the node content  -->
 <div class="nodeContent">
 <h4>Node Content:</h4>
@@ -66,7 +65,10 @@
   This properties of the node will be listed here once clicked:
 </p>
 </div>
+<a href="index.html">Back to main page</a>
+
 <script type="text/javascript">
+
 
 // declaration 
 var network;
@@ -118,9 +120,9 @@ var data = {
 
     if (params.nodes.length > 0) {
 		var data = nodes.get(params.nodes[0]); // get the data from selected node
-    var dispstr = data["label"];
+    var dispstr = data["fulllabel"];
     if (data["content"].length>0){ //meta-info such as ids don't need to show
-      dispstr+=':<br>'+data["content"];
+      dispstr+='<br><br>'+data["content"];
     }
 		document.getElementById('demo').innerHTML= dispstr;
 
