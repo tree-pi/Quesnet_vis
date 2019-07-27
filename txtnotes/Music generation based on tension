@@ -1,1 +1,8 @@
 Music generation based on tension
+	_ How to measure tension?
+		_a_ Spiral algorithm.
+	_ How to measure the long term structure?
+		_a_ Compression algorithm: COSIATEC (Meredith, 2013) which detects repeated patterns。
+	_ How to generate new music?
+		_Aa_ "morpheus" algorithm which optimizes tension.
+		
