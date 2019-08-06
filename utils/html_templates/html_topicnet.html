@@ -1,0 +1,135 @@
+<!doctype html>
+<HTML>
+
+<HEAD>
+  <meta charset="utf-8" />
+  <TITLE>Question Network</TITLE>
+
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <!-- Needed for JSON file import (https://stackoverflow.com/questions/33392557/vis-js-simple-example-edges-do-not-show): -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <!-- <link rel="stylesheet" href="styleformat.css" type="text/css"> -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+
+    width: 700px;
+		height: 550px;
+		margin:5px;
+		border: 1px solid black;
+		
+
+    }
+	div.nodeContent {
+		width: 300px;
+		height: 550px;
+		margin-left:770px;
+		margin-top: -500px;
+		position: relative;
+	}
+	body{
+		font-family: sans-serif; /* needs link to non-generic fonts*/
+		background-color: lightgray;
+	}
+  </style>
+</HEAD>
+<BODY>
+<h2>
+Question Network
+</h2>
+<h3>
+
+</h3>
+<h4>Drag to move. Scroll to zoom in and out.</h4>
+<!-- display the networks  -->
+<div id="mynetwork">
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000"></canvas>
+</div></div>
+<!-- display the node content  -->
+
+<div class="nodeContent">
+  <h4>Legend:</h4>
+
+<img id="myImg" src="legend.png" alt="The legend" width="140" height="174.5">
+
+<h4>Node Content:</h4>
+<p id="demo">This properties of the node will be listed here once clicked:</p>
+</div>
+<a href="index.html">Back to main page</a>
+
+<script type="text/javascript">
+
+// declaration 
+var network;
+var nodeContent = document.getElementById('nodeContent');
+var nodes = new vis.DataSet([{"id": "q2785", "label": "What is a phenomenon worth exploring?", "type": "Root question", "color": "tomato", "size": 10, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q41917", "label": "What is the\nhypothesis?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q33197", "label": "What are the\nprevious studies supporting\nthis hypothesis?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q35603", "label": "What is the\ntask?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q51348", "label": "What are the\nconditions?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q81408", "label": "What is the\nresult?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q39042", "label": "How to evaluate?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}, {"id": "q17444", "label": "What are the\nalternative explanations?\n", "type": "Question", "color": "dodgerblue", "size": 8, "font": {"vadjust": "15"}, "speaker": "Ep81178", "content": ""}])
+
+var edges = new vis.DataSet([{"from": "q2785", "to": "q41917", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q41917", "to": "q33197", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q41917", "to": "q35603", "label": "operationalize", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q41917", "to": "q51348", "label": "operationalize", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q41917", "to": "q81408", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q81408", "to": "q39042", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}, {"from": "q81408", "to": "q17444", "label": "", "color": {"inherit": "to"}, "font": {"align": "middle"}, "arrows": "to"}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 8,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+	
+
+	layout: {
+            hierarchical: {
+        sortMethod: "directed",
+				levelSeparation: 100,
+				direction:"UD",
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+    var dispstr = data["fulllabel"];
+    if (data["reference"].length>0){ //meta-info such as ids don't need to show
+      dispstr+='<br><br>'+data["reference"];
+    }
+		document.getElementById('demo').innerHTML= dispstr;
+
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>

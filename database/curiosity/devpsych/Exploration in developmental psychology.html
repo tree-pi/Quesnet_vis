@@ -1,0 +1,132 @@
+<!doctype html>
+<HTML>
+
+<HEAD>
+  <meta charset="utf-8" />
+<TITLE>topicnet.</TITLE>
+  <!-- NPM (http://visjs.org/index.html#download_install): -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+  <!-- Needed for JSON file import (https://stackoverflow.com/questions/33392557/vis-js-simple-example-edges-do-not-show): -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- http://visjs.org/index.html#download_install -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  
+  <!-- import the css format  -->
+  <!-- <link rel="stylesheet" href="styleformat.css" type="text/css"> -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+  <style type="text/css">
+	#mynetwork {
+
+    width: 700px;
+		height: 550px;
+		margin:5px;
+		border: 1px solid black;
+		
+
+    }
+	div.nodeContent {
+		width: 300px;
+		height: 550px;
+		margin-left:770px;
+		margin-top: -500px;
+		position: relative;
+	}
+	body{
+		font-family: sans-serif; /* needs link to non-generic fonts*/
+		background-color: lightgray;
+	}
+  </style>
+</HEAD>
+<BODY>
+<h2>
+Exploration in developmental psychology</h2>
+<h3>
+(Coder: Z.Li)</h3>
+<h4>Drag to move. Scroll to zoom in and out.</h4>
+<!-- display the networks  -->
+<div id="mynetwork">
+<div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;">
+<canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="1000" height="1000"></canvas>
+</div></div>
+<!-- display the node content  -->
+
+<div class="nodeContent">
+  <h4>Legend:</h4>
+
+<img id="myImg" src="legend.png" alt="The legend" width="140" height="174.5">
+
+<h4>Node Content:</h4>
+<p id="demo">This properties of the node will be listed here once clicked:</p>
+</div>
+<a href="index.html">Back to main page</a>
+
+<script type="text/javascript">
+
+// declaration 
+var network;
+var nodeContent = document.getElementById('nodeContent');
+var nodes = new vis.DataSet([{'label': 'How does teaching\naffect exploration and\ndiscovery...', 'fulllabel': 'How does teaching affect exploration and discovery of children?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\ntheoretical interpretation of\nthis hyp...', 'fulllabel': 'What is the theoretical interpretation of this hypothesis?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'Who are the\nparticipants?\n...', 'fulllabel': 'Who are the participants?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\nindependent variable?\n...', 'fulllabel': 'What is the independent variable?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\ndependent variable?\n...', 'fulllabel': 'What is the dependent variable?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'How to do\nthe multiple-condition analysis?\n...', 'fulllabel': 'How to do the multiple-condition analysis?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\nresult?\n...', 'fulllabel': 'What is the result?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What are some\nnon-direct teaching resulting\nin the...', 'fulllabel': 'What are some non-direct teaching resulting in the same effect?', 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': "how to manipulate\nthe observer's belief\nabout the ...", 'fulllabel': "how to manipulate the observer's belief about the learner's knowledge state?", 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': "Why does the\ndemonstration on adults\ndon't induce ...", 'fulllabel': "Why does the demonstration on adults don't induce the same effect?", 'reference': {'paper': {'id': 'Ep38733', 'label': 'Bonawitz2011-the', 'author': 'Bonawitz', 'year': '2011', 'title': 'The double-edged sword of pedagogy: Instruction limits spontaneous exploration and discovery'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'How do infants\ndecide what to\nlearn in the\nreal wo...', 'fulllabel': 'How do infants decide what to learn in the real world without guidance?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\nhypothesis?\n...', 'fulllabel': 'What is the hypothesis?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What are the\nprevious studies supporting\nthis hypo...', 'fulllabel': 'What are the previous studies supporting this hypothesis?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'Does the violation\ntrigger an overall\nhigh arousal...', 'fulllabel': 'Does the violation trigger an overall high arousal state for learning in general or only the specific object involved in the violation?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\nindependent measure?\n...', 'fulllabel': 'What is the independent measure?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What are the\nexpectations and violations?\n...', 'fulllabel': 'What are the expectations and violations?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What is the\ndependent measure?\n...', 'fulllabel': 'What is the dependent measure?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'How to quantify?\n...', 'fulllabel': 'How to quantify?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What are the\nalternative explanations?\n...', 'fulllabel': 'What are the alternative explanations?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'Do they just\npay more attention\nto the more\nfamili...', 'fulllabel': 'Do they just pay more attention to the more familiar object?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'Infants feel more\narousal and are\nready to learn\na...', 'fulllabel': 'Infants feel more arousal and are ready to learn anything (exp3).', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': '"the enhanced learning was just due to general arousal or novelty."'}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'If the mapping\nlearning concerns between\na new obj...', 'fulllabel': 'If the mapping learning concerns between a new object instead of the one in violation, will the learning enhancement still show?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What do kids\nwant to learn\nif they can\nchoose?\n...', 'fulllabel': 'What do kids want to learn if they can choose?', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}, {'label': 'What if the\ndifferent behavior takes\ndifferent tim...', 'fulllabel': 'What if the different behavior takes different time? E.g., banging takes shorter time than dropping.', 'reference': {'paper': {'id': 'Ep63386', 'label': 'Stahl2015_observing', 'author': 'Stahl', 'year': '2015', 'title': 'Observing the unexpected enhances infants’ learning and exploration'}, 'content': ''}, 'color': 'dodgerblue', 'size': 8, 'shape': 'dot', 'font': {'vadjust': '15'}}])
+
+var edges = new vis.DataSet([{'from': 'How does teaching affect exploration and discovery of children?', 'to': 'Who are the participants?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'How does teaching affect exploration and discovery of children?', 'to': 'What is the independent variable?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'How does teaching affect exploration and discovery of children?', 'to': 'What is the dependent variable?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'How does teaching affect exploration and discovery of children?', 'to': 'What is the result?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'How do infants decide what to learn in the real world without guidance?', 'to': 'What is the hypothesis?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'Does the violation trigger an overall high arousal state for learning in general or only the specific object involved in the violation?', 'to': 'Infants feel more arousal and are ready to learn anything (exp3).', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'What are the alternative explanations?', 'to': 'Do they just pay more attention to the more familiar object?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}, {'from': 'Infants feel more arousal and are ready to learn anything (exp3).', 'to': 'If the mapping learning concerns between a new object instead of the one in violation, will the learning enhancement still show?', 'color': {'inherit': 'to'}, 'font': {'align': 'middle'}, 'arrows': 'to', 'length': 5}])
+
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {
+    nodes: {
+      shape: 'dot',
+      font: {
+        face: 'Tahoma',
+		size: 14,
+      },
+    },
+    edges: {
+      width: 0.4,
+      smooth: {
+        type: 'continuous'
+      },
+	  font:{
+		size: 8,
+	  }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+	
+
+	layout: {
+            hierarchical: {
+        sortMethod: "directed",
+				levelSeparation: 100,
+				direction:"UD",
+				nodeSpacing: 550
+            }
+    }	
+  };
+
+  network = new vis.Network(container, data, options);
+  network.on('click', function (params) {
+
+    if (params.nodes.length > 0) {
+		var data = nodes.get(params.nodes[0]); // get the data from selected node
+    var dispstr = data["fulllabel"];
+    if (data["reference"].length>0){ //meta-info such as ids don't need to show
+      dispstr+='<br><br>'+data["reference"];
+    }
+		document.getElementById('demo').innerHTML= dispstr;
+
+    }
+  })
+
+</script>
+
+</BODY>
+</HTML>
