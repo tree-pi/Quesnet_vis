@@ -1,0 +1,6 @@
+What are the innate abilities of human?
+	_a_ Human are able to recognize regularity.
+		_specify...
+		... In what domain?
+		... What kind of regularity?
+		end_

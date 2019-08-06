@@ -1,0 +1,4 @@
+What are the questions in social neuroscience?
+	_a_ "uncover the neural underpinning of the human social behavior from both an individual and a dynamical perspective."
+		_specify_ What type of brain activity will be recognized as result of social interaction?
+			_a_
